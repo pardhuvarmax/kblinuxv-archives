@@ -2643,3 +2643,36 @@ entries:
   lab: {reproduction_available: false}
   expected_observations: pending
   benign_twin: pending
+
+- cve_id: CVE-2026-98432
+  component: linux-kernel
+  subsystem: ipv4-tcp
+  class: use-after-free
+  severity: critical   # CVSS 9.8 (3.1, secondary source: AV:N/AC:L/PR:N/UI:N)
+  summary: Use-after-free in ip_build_and_send_pkt()/ip_options_build() when ireq->ireq_opt
+    ownership moves to the child socket in tcp_v4_syn_recv_sock() while another cpu
+    can still build a SYNACK from it, and inet_opt / ireq_opt are freed with plain
+    kfree() instead of after an RCU grace period. Also reachable via request-socket
+    migration (tcp_migrate_req=1 or BPF_SK_REUSEPORT_SELECT_OR_MIGRATE). IPv6 is not
+    affected by the first issue. NVD record published 2026-10-15, status Received.
+  affected: {source: nvd-description, ranges: "introduced around commit 079096f103fa (syn_recv requests in ehash); exact ranges not confirmed"}
+  fixed_in: "stable backports listed in NVD references (git.kernel.org/stable/c/...); exact release versions not confirmed"
+  references:
+    - https://git.kernel.org/stable/c/11a03ce3c4a62d84c10ccdfe47f8075006498568
+    - https://git.kernel.org/stable/c/26d4c36d318cffbbd160884a0e4cec0da4da4936
+    - https://git.kernel.org/stable/c/742f73df544e03744f2981c467d6542fe8172a2a
+    - https://git.kernel.org/stable/c/89b5b1eb7d633c33832b7ff2c02e19a144705036
+    - https://git.kernel.org/stable/c/95a8c8fa9f27dce64c40c41c062de7728bf34ab5
+    - https://git.kernel.org/stable/c/a47406c769f72c070386985488f1c4d057df86b2
+    - https://git.kernel.org/stable/c/b3b027ef0cd322bfa839b9aaf5b27551eea54cf6
+    - https://git.kernel.org/stable/c/e3f33b0a1d89d738e2b913dab519226eaf76e15b
+    - http://www.openwall.com/lists/oss-security/2026/10/30/1
+    - http://www.openwall.com/lists/oss-security/2026/10/30/6
+    - http://www.openwall.com/lists/oss-security/2026/10/31/5
+    - http://www.openwall.com/lists/oss-security/2026/11/03/1
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
