@@ -86,7 +86,7 @@ def main() -> None:
     batch = propose_batch(cands, vulns, args.batch_size)
     lines = [f"| {c['artifact_id']} | {c['cve']} | {vulns[c['cve']]['category']} | {c['language']} | "
              f"[{c['repository']}](https://{c['source_url'].split('/')[2]}/{c['repository']}) | "
-             f"`{c['filename']}` |" for c in batch]
+             f"[`{c['filename']}`]({c['source_url']}) |" for c in batch]
     (out / "proposed-first-batch.md").write_text(
         "# Proposed first batch\n\nSuggestion only: one ready candidate per CVE, spread across vulnerability "
         "categories, preferring candidates whose URL contains the CVE ID, then `EXPLOIT_POC` in C or Python. Nothing here is approved. To approve, copy chosen "
