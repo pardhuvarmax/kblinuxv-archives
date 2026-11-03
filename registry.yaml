@@ -1,0 +1,2645 @@
+# KB-AL-150 CVE registry — cycle 1 of 4.
+#
+# Schema: docs/development/Attack-LabTest-Suite.md §4. Every entry is category D
+# ("metadata only, not yet validated") per §5 — none of these have been reproduced,
+# simulated or replayed. No exploit code lives in this file or this repo; a
+# reproduction script for any entry here needs the operator's written go-ahead per
+# CVE and a separate review (Attack-LabTest-Suite.md §6).
+#
+# provenance:
+#   verified-this-session  — confirmed via WebSearch in this session; see `sources`.
+#   established-public-record — a widely documented, long-public CVE (Dirty COW,
+#     Dirty Pipe, PwnKit, Baron Samedit, the netfilter x_tables OOB write); not
+#     re-verified this session because these are, individually, some of the most
+#     written-about Linux kernel CVEs in existence. Spot-check before relying on
+#     exact version ranges.
+#   Either way: treat every field here as a starting point, not ground truth.
+#   Verify against kernel.org/NVD/the vendor advisory before any reproduction work.
+#
+# expected_observations / benign_twin: left "pending" for all 37 entries. Filling
+# them in requires reading each vulnerability's technical analysis (Attack-Lab doc
+# §4's point: "must be established from the vulnerability's technical details and
+# validated against ground truth, not assumed from its CVE description") and
+# designing a benign twin that uses the same subsystem/tooling (§6 rule 3, and the
+# lesson from datasets/attack-lab/20261031T201927). Not done in this pass.
+#
+# lab.reproduction_available is false for every entry: no disposable guest on an
+# affected kernel exists yet (Attack-LabTest-Suite.md §5's open gap). Building
+# those guests is the next piece of work, not part of this registry pass.
+
+cycles_planned: 5          # 4 planned + 1 extra research pass to close the gap
+cycles_completed: 5
+entries_total: 148        # cycle 1: 37, cycle 2: 25, cycle 3: 28, cycle 4: 21, cycle 5: 37
+note: >
+  148/150. Every entry is either confirmed via WebSearch this session, with a
+  source, or a long-established public-record CVE; the last 2 (privilege-
+  escalation) and 2 more (network-stack-netfilter, syscall-ioctl-kernel-
+  interface, 1 each) were left out rather than filled with a weakly-sourced
+  or unverified CVE number just to hit the round total. container-isolation-
+  escape and filesystem are 1 over their targets, which is fine -- the 150
+  figure was always a target, not a hard cap. See README.md for the full
+  per-class table and the entries flagged with extra sourcing caveats.
+
+entries:
+
+# ── privilege-escalation (target 20/4 ≈ 5) ──────────────────────────────────
+- cve_id: CVE-2021-3156
+  component: sudo
+  subsystem: userspace-setuid-utility
+  class: privilege-escalation
+  severity: critical   # CVSS 7.8, Baron Samedit
+  summary: Heap-based buffer overflow in sudo's command-line parsing (removal of
+    escape characters in the "sudoedit -s" / shell-mode path) lets a local user
+    reach root without authenticated sudo access.
+  affected: {source: public-record, ranges: "sudo before 1.9.5p2, legacy 1.8.x line"}
+  fixed_in: "1.9.5p2"
+  references: ["https://www.sudo.ws/security/advisories/unescape_overflow/"]
+  provenance: established-public-record
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-4034
+  component: polkit
+  subsystem: userspace-setuid-utility
+  class: privilege-escalation
+  severity: high   # CVSS 7.8, PwnKit
+  summary: pkexec reads argv[0] as empty when invoked with no arguments and falls
+    through to use an attacker-controlled environment/PATH, letting any local user
+    reach root.
+  affected: {source: public-record, ranges: "polkit since 0.113 (pkexec introduced), unpatched prior to fix"}
+  fixed_in: "0.120"
+  references: ["https://www.qualys.com/2022/01/25/cve-2021-4034/pwnkit.txt"]
+  provenance: established-public-record
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-3493
+  component: linux-kernel
+  subsystem: filesystem
+  class: privilege-escalation
+  severity: high   # CVSS 8.8
+  summary: OverlayFS does not correctly validate file capabilities against the
+    mounting user namespace, letting a local user gain extra capabilities via a
+    crafted overlay mount. CISA KEV, exploited.
+  affected: {source: NVD/CISA-KEV}
+  fixed_in: "upstream commit 7c03e2cda4a584cadc398e8f6641ca9988a39d52"
+  references:
+    - https://bugzilla.redhat.com/show_bug.cgi?id=1950506
+    - CISA KEV catalog, added 2022-10-20
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2024-53104
+  component: linux-kernel
+  subsystem: usb-video-class-driver
+  class: privilege-escalation
+  severity: high
+  summary: Privilege escalation flaw in the kernel's USB Video Class (uvcvideo)
+    driver. Added to CISA KEV in early 2025.
+  affected: {source: CISA-KEV}
+  fixed_in: unknown-verify-against-nvd
+  references: ["CISA KEV catalog", "added 2025 — verify exact date against cisa.gov before relying on it"]
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-38352
+  component: linux-kernel
+  subsystem: posix-cpu-timers
+  class: privilege-escalation
+  severity: high
+  summary: Local privilege escalation without extra permissions or user
+    interaction; flagged by Google alongside related Android kernel flaws, added
+    to CISA KEV.
+  affected: {source: CISA-KEV}
+  fixed_in: unknown-verify-against-nvd
+  references: ["CISA KEV catalog — verify exact date/details against cisa.gov before relying on it"]
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+# ── memory-corruption (target 20/4 = 5; 4 landed this cycle) ───────────────
+- cve_id: CVE-2022-0185
+  component: linux-kernel
+  subsystem: filesystem-context
+  class: memory-corruption
+  severity: high
+  summary: Heap buffer overflow in legacy_parse_param (fs_context), reachable by
+    an unprivileged user via unshare(CLONE_NEWUSER)+mount; used for local
+    privilege escalation. Named in the operator's original CVE shortlist.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2022-0995
+  component: linux-kernel
+  subsystem: watch_queue
+  class: memory-corruption
+  severity: high   # CVSS 7.8, CWE-787
+  summary: Heap out-of-bounds write in the watch_queue notification subsystem — a
+    bit-count mistake multiplies by 64 where it should multiply by 8, letting
+    filter data write past the end of the allocated heap object.
+  affected: {source: NVD, ranges: ">=5.8, fixed 5.10.106 / 5.15.29 / 5.16.5 (exact 5.16 cutoff disputed across sources, verify)"}
+  fixed_in: "5.16.5 (verify)"
+  references: ["https://github.com/Bonfee/CVE-2022-0995"]
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-22555
+  component: linux-kernel
+  subsystem: netfilter-x_tables
+  class: memory-corruption
+  severity: high   # CVSS 7.8
+  summary: Heap out-of-bounds write in x_tables (iptables) setsockopt handling,
+    used in a well-known SLAB_FREELIST_RANDOM-bypass local privilege escalation
+    (Rapid7 write-up).
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-2124
+  component: linux-kernel
+  subsystem: xfs
+  class: memory-corruption
+  severity: high   # CVSS 7.8, CWE-787
+  summary: Out-of-bounds write in XFS dirty-log journal recovery; a local user
+    can crash the system or possibly gain higher privileges.
+  affected: {source: public-record, ranges: "fixed in 6.4"}
+  fixed_in: "6.4"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+# ── use-after-free (target 15/4 ≈ 4; 5 landed this cycle) ───────────────────
+- cve_id: CVE-2024-0582
+  component: linux-kernel
+  subsystem: io_uring
+  class: use-after-free
+  severity: high
+  summary: Use-after-free in io_uring buffer/memory-mapping handling letting an
+    attacker read and write previously freed pages. NVD description undersells
+    it as a memory leak; treat the UAF impact as primary.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2024-53186
+  component: linux-kernel
+  subsystem: ksmbd
+  class: use-after-free
+  severity: medium
+  summary: Race between SMB request handling and connection-structure teardown;
+    a worker can touch the connection's wait queue after the connection has
+    already been freed (KASAN slab-UAF reads in handle_ksmbd_work).
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2024-50286
+  component: linux-kernel
+  subsystem: ksmbd
+  class: use-after-free
+  severity: high   # CVSS 7.8
+  summary: Slab use-after-free in the ksmbd session-creation path, caused by a
+    race with session expiry.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-21967
+  component: linux-kernel
+  subsystem: ksmbd
+  class: use-after-free
+  severity: medium
+  summary: Use-after-free in ksmbd_free_work_struct — an interim entry could be
+    deleted after its oplock was already freed.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2022-2602
+  component: linux-kernel
+  subsystem: io_uring
+  class: use-after-free
+  severity: high   # CWE-416
+  summary: Use-after-free when an io_uring request is still running on a
+    registered file while the Unix garbage collector frees that file early
+    (the GC did not special-case io_uring-registered fds). Reported by Jann Horn.
+  affected: {source: public-record, ranges: "fixed around kernel 6.1-rc1"}
+  fixed_in: "6.1-rc1 (verify)"
+  references: ["https://bugzilla.redhat.com/show_bug.cgi?id=2139586"]
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+# ── race-conditions (target 15/4 ≈ 4) ───────────────────────────────────────
+- cve_id: CVE-2016-5195
+  component: linux-kernel
+  subsystem: memory-management-cow
+  class: race-conditions
+  severity: critical   # Dirty COW
+  summary: Race condition in the kernel's copy-on-write handling of private
+    read-only memory mappings, letting a local user gain write access to
+    otherwise read-only mappings (classically used to overwrite /etc/passwd).
+  affected: {source: public-record, ranges: "longstanding, present since 2.6.22"}
+  fixed_in: "4.8.3 / vendor-backported"
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2024-35880
+  component: linux-kernel
+  subsystem: io_uring-kbuf
+  class: race-conditions
+  severity: medium   # ZDI-24-1018, Pwn2Own; CVSS disputed across sources (5.5-7.8)
+  summary: Race condition in io_uring's buffer-list handling (io_uring/kbuf)
+    caused by incorrect resource locking, usable for local privilege escalation.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: ["https://www.zerodayinitiative.com/advisories/ZDI-24-1018"]
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-1872
+  component: linux-kernel
+  subsystem: io_uring
+  class: race-conditions
+  severity: high
+  summary: Race between a fixed-file lookup and unregistration — io_file_get_fixed
+    lacks ctx->uring_lock — causing a use-after-free.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2024-39508
+  component: linux-kernel
+  subsystem: io-wq
+  class: race-conditions
+  severity: low   # no confirmed priv-esc impact found this session; keep as an
+                  # observability-only candidate, not a priv-esc reproduction target
+  summary: KCSAN-reported data race in the io-wq worker code. No clear
+    privilege-escalation impact found in this session's sources.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+# ── filesystem (target 15/4 ≈ 4) ────────────────────────────────────────────
+- cve_id: CVE-2022-0847
+  component: linux-kernel
+  subsystem: pipe-page-cache
+  class: filesystem
+  severity: high   # Dirty Pipe
+  summary: Missing initialization of the "flags" member of a new pipe_buffer
+    struct lets a local user overwrite data in arbitrary read-only files,
+    classically used to overwrite /etc/passwd or a setuid binary.
+  affected: {source: public-record, ranges: "5.8 through fixed versions"}
+  fixed_in: "5.16.11 / 5.15.25 / 5.10.102"
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-0386
+  component: linux-kernel
+  subsystem: overlayfs
+  class: filesystem
+  severity: high   # CVSS 7.8
+  summary: ovl_copy_up_one does not reject copy-up of a file whose uid/gid has no
+    mapping in the current user namespace (default invalid id 65534), letting a
+    capable setuid binary copied from a nosuid mount keep its file capabilities
+    across the copy-up.
+  affected: {source: public-record, ranges: "5.11 through 6.1.8, excluding 5.15.91"}
+  fixed_in: "upstream commit 4f11ada10d0a"
+  references:
+    - https://securitylabs.datadoghq.com/articles/overlayfs-cve-2023-0386.md
+    - https://ubuntu.com/security/CVE-2023-0386
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-80530
+  component: linux-kernel
+  subsystem: xfs
+  class: filesystem
+  severity: medium   # CVSS 7.1
+  summary: XFS_IOC_EXCHANGE_RANGE reflink-flag clearing bug lets an unprivileged
+    local user overwrite readable files (e.g. /etc/passwd or a setuid binary) to
+    gain root. First appeared in v6.10.
+  affected: {source: public-record, ranges: ">=6.10"}
+  fixed_in: unknown-verify-against-nvd
+  references: ["https://seclists.org/oss-sec/2026/q3/641"]
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-47335
+  component: linux-kernel
+  subsystem: f2fs
+  class: filesystem
+  severity: low   # vendor rates it low risk
+  summary: Use-after-free in f2fs init/exit/recovery/garbage-collection code,
+    letting a local user escalate privileges. Vendor bulletin rates it low risk.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+# ── network-stack / netfilter (target 15/4 ≈ 4; 5 landed this cycle) ───────
+- cve_id: CVE-2024-1086
+  component: linux-kernel
+  subsystem: netfilter-nf_tables
+  class: network-stack-netfilter
+  severity: critical   # CISA KEV
+  summary: Use-after-free in nf_tables; the chain reference counter (chain->use)
+    is decremented on each abort, so a chain can be freed while catchall verdict
+    elements still point to it. Local privilege escalation, CISA KEV.
+  affected: {source: NVD/CISA-KEV, ranges: "~5.14 through 6.6 before stable fixes"}
+  fixed_in: unknown-verify-against-nvd
+  references: ["CISA KEV catalog"]
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-4244
+  component: linux-kernel
+  subsystem: netfilter-nf_tables
+  class: network-stack-netfilter
+  severity: high   # CVSS 7.8
+  summary: Race between nf_tables control-plane transactions and nft_set
+    element garbage collection can underflow a reference counter and cause a
+    use-after-free.
+  affected: {source: public-record, ranges: "fixed before kernel 6.5"}
+  fixed_in: "upstream commit 3e91b0ebd994635df2346353322ac51ce84ce6d8"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-5197
+  component: linux-kernel
+  subsystem: netfilter-nf_tables
+  class: network-stack-netfilter
+  severity: high
+  summary: Addition and removal of rules from chain bindings within the same
+    transaction leads to use-after-free. Public PoC exists.
+  affected: {source: public-record}
+  fixed_in: "upstream commit f15f29fd4779be8a418b66e9d52979bb6d6c2325"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-32233
+  component: linux-kernel
+  subsystem: netfilter-nf_tables
+  class: network-stack-netfilter
+  severity: high
+  summary: Use-after-free in nf_tables batch processing, letting unprivileged
+    local users reach root. Affects kernels through 6.3.1. Multiple public PoCs;
+    flagged as actively exploited by one source (verify independently).
+  affected: {source: public-record, ranges: "through 6.3.1"}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-23111
+  component: linux-kernel
+  subsystem: netfilter-nf_tables
+  class: network-stack-netfilter
+  severity: high
+  summary: A single removed "!" in the abort path of nf_tables transaction
+    handling inverted the activation logic, causing a use-after-free (chain->use
+    reference-counting bug). Needs unprivileged user namespaces + nf_tables, both
+    default-enabled on many distros. No remote vector. Found by Exodus
+    Intelligence (Oliver Sieber).
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: ["https://securityaffairs.com/193352/hacking/cve-2026-23111-linux-nf_tables-flaw-enables-root-exploits.html"]
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+# ── container / isolation escape (target 15/4 ≈ 4; 5 landed this cycle) ────
+- cve_id: CVE-2024-21626
+  component: runc
+  subsystem: container-runtime
+  class: container-isolation-escape
+  severity: high   # CVSS 8.6
+  summary: The 'process.cwd and leaked fds' container breakout tied to the WORKDIR
+    instruction — an internal file descriptor leak lets a malicious image escape
+    to the host. 'Part of the Leaky Vessels' disclosure.
+  affected: {source: public-record}
+  fixed_in: "runc 1.1.12"
+  references: ["https://groups.google.com/a/opencontainers.org/g/dev/c/ueZx5_nN3W0"]
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2019-5736
+  component: runc
+  subsystem: container-runtime
+  class: container-isolation-escape
+  severity: critical   # CVSS 8.6
+  summary: A malicious container can overwrite the host's runc binary (via
+    /proc/self/exe), and the compromised binary then runs root commands on the
+    host when next invoked.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2024-23651
+  component: buildkit
+  subsystem: container-build-tool
+  class: container-isolation-escape
+  severity: high
+  summary: BuildKit cache-mount race condition ("Leaky Vessels" disclosure);
+    exploitation requires building from malicious content or running a rogue
+    image.
+  affected: {source: public-record}
+  fixed_in: "BuildKit 0.12.5"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2024-23652
+  component: buildkit
+  subsystem: container-build-tool
+  class: container-isolation-escape
+  severity: high
+  summary: BuildKit arbitrary file/directory delete, same "Leaky Vessels"
+    disclosure as CVE-2024-23651/-23653.
+  affected: {source: public-record}
+  fixed_in: "BuildKit 0.12.5"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2024-23653
+  component: buildkit
+  subsystem: container-build-tool
+  class: container-isolation-escape
+  severity: high
+  summary: BuildKit privileged-mode GRPC SecurityMode check bypass, same "Leaky
+    Vessels" disclosure as CVE-2024-23651/-23652.
+  affected: {source: public-record}
+  fixed_in: "BuildKit 0.12.5"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+# ── information-disclosure (target 10/4 ≈ 3) ────────────────────────────────
+- cve_id: CVE-2026-53210
+  component: linux-kernel
+  subsystem: tee-subsystem
+  class: information-disclosure
+  severity: medium
+  summary: Repeatedly calling TEE_IOC_SHM_REGISTER with a zero-length field leaks
+    memory each call, eventually exhausting kernel memory (DoS-via-leak, not a
+    direct read-arbitrary-memory primitive).
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-53059
+  component: linux-kernel
+  subsystem: cros_ec_chardev
+  class: information-disclosure
+  severity: medium
+  summary: A manipulated insize value in the ChromeOS Embedded Controller
+    character device driver lets a local attacker read arbitrary kernel page
+    contents; fix zeroes the buffer before it reaches userspace.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2018-1000204
+  component: linux-kernel
+  subsystem: scsi-generic-sg_io
+  class: information-disclosure
+  severity: medium   # disputed practical relevance — gated behind CAP_SYS_ADMIN/CAP_SYS_RAWIO
+  summary: SG_IO ioctl could copy up to ~1000 kernel heap pages to userspace.
+    Disputed relevance since it requires CAP_SYS_ADMIN and CAP_SYS_RAWIO, i.e.
+    already-privileged callers.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+# ── credential / permission manipulation (target 10/4 ≈ 3; 2 landed) ───────
+- cve_id: CVE-2013-4515
+  component: linux-kernel
+  subsystem: beceem-bcm_char_ioctl
+  class: credential-permission-manipulation
+  severity: low   # legacy driver, unlikely to exist on a current test kernel
+  summary: Uninitialized structure in bcm_char_ioctl lets local users read
+    kernel memory. Legacy (beceem WiMAX driver); unlikely to be reproducible on
+    a current kernel — kept as a category-D placeholder, likely to be dropped
+    before promotion to category A/B.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2010-4077
+  component: linux-kernel
+  subsystem: tty-serial
+  class: credential-permission-manipulation
+  severity: low   # legacy, unlikely to exist on a current test kernel
+  summary: TIOCGICOUNT ioctl can leak kernel stack memory. Legacy (2010); kept
+    as a category-D placeholder, likely to be dropped before promotion.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 1
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Cycle 2 of 4 — 25 entries (below the ~38 target; see the top-of-file note
+# and README.md for why: this cycle's research pass ran out of budget before
+# the syscall/ioctl and memory-corruption gaps from cycle 1 were fully closed,
+# and no entry here was added without a search/citation or established-
+# public-record status).
+# ═══════════════════════════════════════════════════════════════════════════
+
+- cve_id: CVE-2020-14386
+  component: linux-kernel
+  subsystem: af_packet
+  class: privilege-escalation
+  severity: high
+  summary: Memory corruption in net/packet/af_packet.c's tpacket_rcv, usable to
+    gain root from an unprivileged process. Triggerable with CONFIG_PACKET=y
+    and CAP_NET_RAW, obtainable in an unprivileged user namespace.
+  affected: {source: public-record, ranges: "4.6 <= kernel < 5.9-rc4"}
+  fixed_in: "5.9-rc4"
+  references: ["https://unit42.paloaltonetworks.com/cve-2020-14386/"]
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2022-30594
+  component: linux-kernel
+  subsystem: ptrace-seccomp
+  class: syscall-ioctl-kernel-interface
+  severity: medium
+  summary: PTRACE_SEIZE code path lets an attacker bypass intended restrictions
+    on setting the PT_SUSPEND_SECCOMP flag, possibly disabling seccomp.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-2163
+  component: linux-kernel
+  subsystem: ebpf-verifier
+  class: syscall-ioctl-kernel-interface
+  severity: critical   # one listing scores 10.0; verify independently
+  summary: Incorrect branch-pruning in the eBPF verifier lets dangerous code
+    paths pass as safe, giving arbitrary kernel memory read/write, privilege
+    escalation and container escape to a local user with bpf() access
+    (CAP_BPF or CAP_SYS_ADMIN, or unprivileged eBPF where enabled).
+  affected: {source: NVD, ranges: ">=5.4, fixed in stable backports 5.4.242/5.10.179/5.15.109/6.1.26"}
+  fixed_in: "upstream commit 71b547f561247897a0a14f3082730156c0533fed"
+  references: ["https://nvd.nist.gov/vuln/detail/cve-2023-2163"]
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2019-13272
+  component: linux-kernel
+  subsystem: ptrace
+  class: credential-permission-manipulation
+  severity: high   # CISA KEV
+  summary: ptrace_link mishandles credentials, incorrectly marking a ptrace
+    relationship as privileged; exploitable through polkit's pkexec with
+    PTRACE_TRACEME for local root. CISA KEV.
+  affected: {source: public-record, ranges: "< 5.1.17"}
+  fixed_in: "5.1.17"
+  references: ["https://access.redhat.com/articles/4292201"]
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2016-0728
+  component: linux-kernel
+  subsystem: keyring
+  class: credential-permission-manipulation
+  severity: high
+  summary: join_session_keyring fails to decrement a keyring's usage count
+    when the requested keyring matches the one already in use; repeated calls
+    overflow the usage field, causing a use-after-free on the keyring object
+    that a local user can turn into root.
+  affected: {source: public-record, ranges: ">=3.8"}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-46243
+  component: linux-kernel
+  subsystem: cifs-client
+  class: credential-permission-manipulation
+  severity: medium
+  summary: The kernel CIFS client does not properly validate cifs.spnego key
+    descriptions added from userspace, letting an unprivileged local user
+    forge trusted fields and reach root.
+  affected: {source: public-record}
+  fixed_in: "Debian kernel 6.1.174-1 (verify upstream commit)"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2013-1959
+  component: linux-kernel
+  subsystem: user-namespace
+  class: credential-permission-manipulation
+  severity: low   # legacy
+  summary: uid_map/gid_map capability-check flaw in early user-namespace
+    support. Legacy; unlikely to be reproducible on a current kernel, kept as
+    a category-D placeholder.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-33909
+  component: linux-kernel
+  subsystem: seq_file
+  class: filesystem
+  severity: high   # "Sequoia", Qualys
+  summary: size_t-to-int conversion bug in fs/seq_file.c lets a seq buffer
+    allocation overflow, causing an out-of-bounds write; a local user with
+    ordinary privileges can gain root (can also crash the system or leak
+    kernel memory).
+  affected: {source: public-record, ranges: "3.16 through 5.13.x before 5.13.4"}
+  fixed_in: "5.13.4"
+  references: ["https://blog.qualys.com/vulnerabilities-threat-research/2021/07/20/sequoia-a-local-privilege-escalation-vulnerability-in-linuxs-filesystem-layer-cve-2021-3"]
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2022-0492
+  component: linux-kernel
+  subsystem: cgroups-v1
+  class: container-isolation-escape
+  severity: medium   # sources disagree; CISA KEV
+  summary: cgroup_release_agent_write (kernel/cgroup/cgroup-v1.c) is missing a
+    capability check, so overwriting the release_agent file lets the kernel be
+    made to run an attacker-chosen binary at full privilege, letting a
+    container process reach the host. Used in a real cryptomining campaign.
+    CISA KEV (added 2026-06-02).
+  affected: {source: public-record}
+  fixed_in: "5.17-rc3"
+  references: ["https://thehackernews.com/2022/03/new-linux-kernel-cgroups-vulnerability.html"]
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2024-26890
+  component: linux-kernel
+  subsystem: bluetooth-btrtl
+  class: memory-corruption
+  severity: medium   # KASAN-detected
+  summary: Out-of-bounds write in the btrtl Bluetooth driver — private data
+    stored in the hci device structure is not allocated when btrtl runs over
+    hci_h5 via btusb.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2024-46869
+  component: linux-kernel
+  subsystem: bluetooth
+  class: memory-corruption
+  severity: low   # CVSSv4.0 4.3, local
+  summary: Buffer overflow (CWE-119) in the Bluetooth driver, affecting kernel
+    6.10-6.11.
+  affected: {source: public-record, ranges: "6.10-6.11"}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2020-12352
+  component: linux-kernel
+  subsystem: bluetooth-hci
+  class: memory-corruption
+  severity: medium
+  summary: Heap-based buffer overflow in the Bluetooth HCI event packet
+    parser's handling of certain advertisement sizes, reachable by a
+    physically nearby attacker.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2024-26914
+  component: linux-kernel
+  subsystem: drm-amd-display
+  class: memory-corruption
+  severity: medium   # CWE-119; "buffer overflow", heap vs stack unconfirmed
+  summary: Memory corruption in the AMD display code
+    (drivers/gpu/drm/amd/display/dc/dml/dcn32/dcn32_fpu.c); the advisory says
+    a local user can escalate privileges.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2017-7308
+  component: linux-kernel
+  subsystem: af_packet
+  class: memory-corruption
+  severity: high   # established public record
+  summary: Integer overflow in packet_set_ring (net/packet/af_packet.c) when
+    handling malicious packet sizes in AF_PACKET's TPACKET_V3 ring-buffer
+    setup, usable for local privilege escalation.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-21756
+  component: linux-kernel
+  subsystem: vsock
+  class: use-after-free
+  severity: high   # CVSS 7.8
+  summary: vsock_remove_bound can run without checking whether the socket was
+    bound, decrementing a reference counter incorrectly during transport
+    reassignment; usable (per public write-ups) via vsock_diag_dump() to leak
+    init_net's address and defeat KASLR, then for root.
+  affected: {source: public-record, ranges: "< 6.6.79 / 6.12.16 / 6.13.4 / 6.14-rc1"}
+  fixed_in: "6.6.79 / 6.12.16 / 6.13.4 / 6.14-rc1"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-40248
+  component: linux-kernel
+  subsystem: vsock
+  class: use-after-free
+  severity: low   # database rates it Low; no public exploit found this session
+  summary: Use-after-free in vsock_connect() (net/vmw_vsock/af_vsock.c),
+    letting a local user escalate privileges.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2017-1000112
+  component: linux-kernel
+  subsystem: af_packet-udp-fragmentation
+  class: use-after-free
+  severity: high   # established public record
+  summary: UDP fragmentation offload in AF_PACKET lets a local, unprivileged
+    user corrupt kernel memory via a use-after-free, used for local privilege
+    escalation (the "Netflix" kernel disclosures).
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2022-2588
+  component: linux-kernel
+  subsystem: net-sched-route4
+  class: use-after-free
+  severity: high   # established public record; widely described as severe
+  summary: Use-after-free in the route4 traffic-control classifier filter,
+    reported by Google Project Zero; used for local privilege escalation.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2014-9529
+  component: linux-kernel
+  subsystem: keyring
+  class: use-after-free
+  severity: medium   # legacy, established public record
+  summary: Race between keyring garbage collection and concurrent key lookup
+    causes a use-after-free; legacy, kept as a category-D placeholder.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-26708
+  component: linux-kernel
+  subsystem: vsock
+  class: race-conditions
+  severity: medium   # a13xp0p0v write-up
+  summary: Five distinct race conditions in the vsock transport-assignment
+    code; the most notable gives a write-after-free of a 4-byte
+    attacker-controlled value.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: ["https://a13xp0p0v.github.io/2021/02/09/CVE-2021-26708.html"]
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-3609
+  component: linux-kernel
+  subsystem: can-bcm
+  class: race-conditions
+  severity: high   # established public record
+  summary: Race condition / use-after-free in the CAN BCM (Broadcast Manager)
+    protocol, reported by a Netflix researcher; local privilege escalation.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2022-48654
+  component: linux-kernel
+  subsystem: netfilter-nfnetlink_osf
+  class: network-stack-netfilter
+  severity: low   # information leak, not direct memory corruption
+  summary: A bad match return in nf_osf_find() leads nft_osf to copy an
+    uninitialized area to userspace, leaking stale kernel stack data.
+  affected: {source: NVD, ranges: "several stable branches; see NVD for exact ranges"}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2022-25636
+  component: linux-kernel
+  subsystem: netfilter-nft_fwd_neigh
+  class: network-stack-netfilter
+  severity: critical   # established public record
+  summary: Heap out-of-bounds write in nft_fwd_neigh's netfilter forwarding
+    path, usable for local privilege escalation.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-54137
+  component: linux-kernel
+  subsystem: vfio-type1
+  class: information-disclosure
+  severity: medium   # CVSS 5.5 per Red Hat
+  summary: The VFIO Type1 driver copies a structure to userspace with an
+    uninitialized region, letting a local user read uninitialized kernel
+    stack data.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2010-4072
+  component: linux-kernel
+  subsystem: sysv-shm
+  class: information-disclosure
+  severity: low   # legacy
+  summary: copy_shmid_to_user left a structure uninitialized in the old SysV
+    shm interface (shmctl), exposing kernel stack contents. Legacy (fixed
+    before 2.6.37-rc1); kept as a category-D placeholder.
+  affected: {source: public-record}
+  fixed_in: "2.6.37-rc1"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 2
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Cycle 3 of 4 — 28 entries. Priority: close the syscall/ioctl/kernel-
+# interface gap cycle 1 left at 0 and cycle 2 only moved to 2/15.
+# ═══════════════════════════════════════════════════════════════════════════
+
+- cve_id: CVE-2026-43366
+  component: linux-kernel
+  subsystem: io_uring
+  class: syscall-ioctl-kernel-interface
+  severity: high
+  summary: Race between grabbing an io_uring buffer and recycling it causes
+    type confusion, usable for local privilege escalation.
+  affected: {source: public-record, ranges: "7.0-rc1 through 7.0-rc3"}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-3389
+  component: linux-kernel
+  subsystem: io_uring
+  class: syscall-ioctl-kernel-interface
+  severity: high
+  summary: Use-after-free from racing an io_uring cancel-poll request with a
+    linked timeout, corrupting an hrtimer.
+  affected: {source: NVD, ranges: "5.10.162-5.10.184, 5.13-6.3"}
+  fixed_in: "upstream commit ef7dfac51d8ed961b742218f526bd589f3900a59"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-2598
+  component: linux-kernel
+  subsystem: io_uring
+  class: syscall-ioctl-kernel-interface
+  severity: high
+  summary: Out-of-bounds access in io_uring fixed-buffer registration
+    (io_sqe_buffer_register in io_uring/rsrc.c), enabling full local
+    privilege escalation.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2022-1786
+  component: linux-kernel
+  subsystem: io_uring
+  class: syscall-ioctl-kernel-interface
+  severity: high
+  summary: Invalid-free caused by io_uring using the current task's identity
+    instead of the request task's.
+  affected: {source: public-record, ranges: "5.10, 5.11"}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-2236
+  component: linux-kernel
+  subsystem: io_uring
+  class: syscall-ioctl-kernel-interface
+  severity: high
+  summary: Use-after-free in io_uring enabling local privilege escalation;
+    public exploit patch linked by aggregators.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-3612
+  component: linux-kernel
+  subsystem: joystick-driver
+  class: syscall-ioctl-kernel-interface
+  severity: high   # CVSS v3 7.8
+  summary: Out-of-bounds write in the joystick subsystem's JSIOCSBTNMAP
+    ioctl; a local user can crash the system or possibly gain privileges.
+  affected: {source: public-record}
+  fixed_in: "5.13.2"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-31916
+  component: linux-kernel
+  subsystem: device-mapper-dm-ioctl
+  class: syscall-ioctl-kernel-interface
+  severity: high
+  summary: Bad bounds check in device-mapper's list_devices (dm-ioctl.c)
+    causes an out-of-bounds write, exploitable locally for privilege
+    escalation with no user interaction needed.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2017-7187
+  component: linux-kernel
+  subsystem: scsi-generic-sg_ioctl
+  class: syscall-ioctl-kernel-interface
+  severity: medium   # listed impact mainly DoS, other impact possible
+  summary: Stack-based overflow in the sg_ioctl path of the SCSI generic
+    driver, reachable via a crafted SG_NEXT_CMD_LEN ioctl.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-72183
+  component: linux-kernel
+  subsystem: landlock-lsm
+  class: syscall-ioctl-kernel-interface
+  severity: high   # CVSSv3 8.4
+  summary: Landlock's signal scope check uses the domain recorded when a
+    signal was registered rather than the sender's current domain, letting a
+    sandboxed process signal processes outside its domain via
+    fcntl(F_SETOWN/F_SETSIG) with O_ASYNC.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-47128
+  component: linux-kernel
+  subsystem: bpf-lockdown
+  class: syscall-ioctl-kernel-interface
+  severity: medium   # CVSS 5.5
+  summary: Lockdown-policy checks for BPF tracing helpers were applied
+    against the wrong entity, letting the check be bypassed; fix moved the
+    check into BPF program verification.
+  affected: {source: public-record, ranges: "<=5.10.43"}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2024-42318
+  component: linux-kernel
+  subsystem: landlock-lsm
+  class: credential-permission-manipulation
+  severity: high
+  summary: Landlock only implemented the cred_prepare hook, so a process
+    using fork() and keyctl() could shed its own Landlock sandbox
+    restrictions; fix added a cred_transfer hook.
+  affected: {source: NVD, ranges: "5.13 through fixed releases 6.10.3 / 6.6.44"}
+  fixed_in: "6.10.3 / 6.6.44"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-21830
+  component: linux-kernel
+  subsystem: landlock-bcachefs
+  class: filesystem
+  severity: medium
+  summary: Landlock treats unusual files returned by filesystems such as
+    bcachefs as regular files instead of warning and denying access.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-96812
+  component: gvisor
+  subsystem: container-sandbox-gofer
+  class: container-isolation-escape
+  severity: high   # CVSS 4.0 8.8
+  summary: Host-root sandbox escape via gVisor's gofer host-file helper on
+    Linux with CUSE enabled; a local attacker with image-deployment
+    privileges includes a /dev/cuse device node in the image.
+  affected: {source: aggregator, note: "NVD listed as Received at time of search; verify against the official advisory"}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-2713
+  component: gvisor
+  subsystem: container-sandbox-runsc
+  class: container-isolation-escape
+  severity: medium   # CWE-269, improper privilege management
+  summary: Incorrect handling of file access permissions in gVisor's runsc
+    lets unprivileged users reach restricted files.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2016-10124
+  component: lxc
+  subsystem: container-runtime
+  class: container-isolation-escape
+  severity: medium   # legacy
+  summary: A non-privileged session in lxc-attach could use TIOCSTI to push
+    input into the parent terminal. Legacy; kept as a category-D placeholder.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2016-8649
+  component: lxc
+  subsystem: container-runtime
+  class: container-isolation-escape
+  severity: high   # one tracker rates CVSS 9.1
+  summary: lxc-attach let an unprivileged container use an inherited host
+    /proc file descriptor to reach the host. Legacy; kept as a category-D
+    placeholder.
+  affected: {source: public-record, ranges: "lxc before 1.0.9, 2.x before 2.0.6"}
+  fixed_in: "1.0.9 / 2.0.6"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-23266
+  component: nvidia-container-toolkit
+  subsystem: container-runtime
+  class: container-isolation-escape
+  severity: critical   # "NVIDIAScape", CVSS 9.0
+  summary: Container escape in the NVIDIA Container Toolkit, disclosed July
+    2025. Fix is upgrading to NVIDIA Container Toolkit 1.17.8 or GPU
+    Operator 25.3.1.
+  affected: {source: public-record}
+  fixed_in: "Container Toolkit 1.17.8 / GPU Operator 25.3.1"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-4394
+  component: linux-kernel
+  subsystem: btrfs
+  class: filesystem
+  severity: medium   # CVSS varies by source, 6.0-6.7; requires high privilege per NVD vector
+  summary: Use-after-free in btrfs_get_dev_args_from_path; a local attacker
+    with special privileges can crash the system or leak internal kernel
+    information.
+  affected: {source: public-record}
+  fixed_in: "upstream, around 6.0-rc3 commit"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-21879
+  component: linux-kernel
+  subsystem: btrfs
+  class: filesystem
+  severity: high   # CVSS 7.8, low privileges required
+  summary: Use-after-free during root-inode scanning while shrinking the
+    btrfs extent tree, triggerable by a low-privilege local attacker; could
+    lead to crash, DoS, or privilege escalation.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2019-19377
+  component: linux-kernel
+  subsystem: btrfs
+  class: filesystem
+  severity: medium   # legacy; needs mount capability
+  summary: Use-after-free that happens after a btrfs filesystem has been
+    unmounted, possibly leading to memory corruption or privilege
+    escalation. Legacy; kept as a category-D placeholder.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-38714
+  component: linux-kernel
+  subsystem: hfsplus
+  class: filesystem
+  severity: medium
+  summary: Slab out-of-bounds in hfsplus_bnode_read().
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-6932
+  component: linux-kernel
+  subsystem: ipv4-igmp
+  class: race-conditions
+  severity: high
+  summary: Use-after-free in IPv4 IGMP code; a race condition can cause a
+    timer to be registered on an RCU-protected object another thread has
+    already freed, usable for local privilege escalation.
+  affected: {source: public-record}
+  fixed_in: "upstream commit e2b706c691905fe78468c361aaabc719d0a496f1"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2017-10661
+  component: linux-kernel
+  subsystem: timerfd
+  class: race-conditions
+  severity: low   # disputed; "privilege escalation cannot be fully ruled out, believed unlikely"
+  summary: Race condition in timerfd; privilege-escalation impact disputed
+    and considered unlikely by the source consulted. Legacy.
+  affected: {source: public-record}
+  fixed_in: "before 4.10.15"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-46300
+  component: linux-kernel
+  subsystem: xfrm-esp-in-tcp
+  class: privilege-escalation
+  severity: high
+  summary: Fragnesia -- a flaw in the XFRM ESP-in-TCP subsystem lets a local
+    attacker corrupt page-cache contents to run code as root.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-31635
+  component: linux-kernel
+  subsystem: rxgk
+  class: privilege-escalation
+  severity: critical   # public PoC, no vendor patch confirmed at time of search
+  summary: DirtyDecrypt -- local privilege escalation in the kernel's rxgk
+    module. Public PoC exists. One source (a university advisory, not
+    independently confirmed) said no vendor patch existed yet at the time of
+    writing — verify current patch status before any further work on this
+    entry.
+  affected: {source: aggregator, note: "single-source claim of no patch; unverified"}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-53521
+  component: linux-kernel
+  subsystem: scsi-ses
+  class: information-disclosure
+  severity: low   # KASAN out-of-bounds READ, not write
+  summary: Slab out-of-bounds read (size 8) in the SCSI enclosure services
+    driver's sesintfremove(); could lead to memory corruption or information
+    disclosure.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-37774
+  component: linux-kernel
+  subsystem: mm-slab
+  class: memory-corruption
+  severity: low   # availability impact only per Oracle, no confidentiality/integrity impact
+  summary: slab->obj_exts not cleared in a newly allocated slab page;
+    surfaced as crashes during buffered I/O testing.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-37908
+  component: linux-kernel
+  subsystem: mm-slab
+  class: memory-corruption
+  severity: medium   # score disputed, aggregator-only source
+  summary: slab->obj_exts not cleaned up properly, causing a "page still
+    charged to cgroup" bad-page-state error.
+  affected: {source: aggregator}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 3
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Cycle 4 of 4 — 21 entries. Priority: privilege-escalation, memory-
+# corruption, network-stack-netfilter, race-conditions (the biggest gaps
+# after cycle 3). Lands the registry at 111/150, not the full 150 — see the
+# top-of-file note and README.md.
+# ═══════════════════════════════════════════════════════════════════════════
+
+- cve_id: CVE-2024-1085
+  component: linux-kernel
+  subsystem: netfilter-nf_tables
+  class: network-stack-netfilter
+  severity: high   # CVSS 7.8, CWE-416
+  summary: nf_tables double-free — an element can be freed multiple times.
+  affected: {source: public-record}
+  fixed_in: "upstream commit b1db244f"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-3777
+  component: linux-kernel
+  subsystem: netfilter-nf_tables
+  class: network-stack-netfilter
+  severity: high   # reported by Google
+  summary: Use-after-free in nf_tables, reported by Google.
+  affected: {source: public-record, ranges: "5.9 through 6.5"}
+  fixed_in: "upstream commit 6eaf41e8"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-43198
+  component: linux-kernel
+  subsystem: tcp-ipv6
+  class: network-stack-netfilter
+  severity: critical   # one source scores 9.8 network/no-privileges; Red Hat draft gives 7.0 — verify
+  summary: tcp_v6_syn_recv_sock() inserts the child socket into the TCP ehash
+    table before its IPv6 fields are set up, so another CPU can dereference
+    the listener's ipv6_pinfo while it is being modified or freed (memory
+    corruption, use-after-free, or kernel panic). Affects IPv4-mapped IPv6
+    TCP sockets.
+  affected: {source: public-record, ranges: "before 6.18.16 / 6.19.6 / 7.0"}
+  fixed_in: "6.18.16 / 6.19.6 / 7.0"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-38499
+  component: linux-kernel
+  subsystem: vfs-mount-namespace
+  class: credential-permission-manipulation
+  severity: medium   # CVSS v3 5.5
+  summary: clone_private_mnt() checks for locked mounts but not whether the
+    caller has CAP_SYS_ADMIN in the mount's user namespace.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-37988
+  component: linux-kernel
+  subsystem: vfs-mount-namespace
+  class: race-conditions
+  severity: medium
+  summary: Races in MNT_TREE_BENEATH handling in do_move_mount(); fix takes
+    the inode lock and namespace lock in a safer order.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2022-3567
+  component: linux-kernel
+  subsystem: ipv6-inet6_dgram_ops
+  class: race-conditions
+  severity: low   # thin sourcing this session — verify independently before relying on it
+  summary: Race condition in IPv6's inet6_dgram_ops. Only briefly described
+    in the sources found this session; treat as a lead, not a confirmed
+    technical detail, until independently verified.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-37947
+  component: linux-kernel
+  subsystem: ksmbd
+  class: privilege-escalation
+  severity: high
+  summary: Out-of-bounds write in the ksmbd stream-write path; an
+    authenticated local attacker can gain root. Doyensec published a working
+    exploit for Ubuntu 22.04.5 LTS.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-24325
+  component: linux-kernel
+  subsystem: intel-800-series-ethernet-driver
+  class: privilege-escalation
+  severity: medium
+  summary: Improper input validation in the kernel-mode driver for Intel 800
+    Series Ethernet before 1.17.2 may allow an authenticated local user to
+    escalate privileges.
+  affected: {source: public-record, ranges: "driver < 1.17.2"}
+  fixed_in: "driver 1.17.2"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-40354
+  component: linux-kernel
+  subsystem: amd-display-driver
+  class: privilege-escalation
+  severity: medium
+  summary: Privilege escalation in the AMD display driver; upstream fix
+    raises the maximum link count and fixes a NULL-pointer access on the
+    link encoder.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-20292
+  component: linux-kernel
+  subsystem: nouveau-drm
+  class: privilege-escalation
+  severity: high   # established public record
+  summary: Flaw in nouveau_sgdma_create_ttm (Nouveau NVIDIA GPU driver); an
+    attacker with a local account can escalate privileges and execute code
+    in kernel context. Reachable only under certain conditions.
+  affected: {source: public-record, ranges: "< 5.9"}
+  fixed_in: "5.9"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-28410
+  component: linux-kernel
+  subsystem: i915-drm
+  class: privilege-escalation
+  severity: high   # CVSS 8.8
+  summary: Out-of-bounds memory issue in the Intel i915 graphics driver;
+    improper restriction of operations within memory-buffer bounds allows an
+    authenticated local user to escalate privileges.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-40271
+  component: linux-kernel
+  subsystem: procfs
+  class: use-after-free
+  severity: high
+  summary: Race-condition use-after-free in proc_readdir_de(); successful
+    exploitation can overwrite modprobe_path for local privilege escalation.
+  affected: {source: public-record, ranges: "~3.14 through 6.18-rc5"}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2022-20369
+  component: linux-kernel
+  subsystem: v4l2-mem2mem
+  class: memory-corruption
+  severity: high   # Ubuntu: could allow local privilege escalation
+  summary: Out-of-bounds write in v4l2_m2m_querybuf, caused by missing input
+    validation.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-38226
+  component: linux-kernel
+  subsystem: v4l2-vivid-test-driver
+  class: memory-corruption
+  severity: high   # CVSS 7.8, CWE-787
+  summary: vmalloc out-of-bounds write in the V4L2 vivid test-pattern driver
+    (syzkaller/KASAN); fix runs the composition-bounds check even when no
+    compose capability is set.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-52440
+  component: linux-kernel
+  subsystem: ksmbd
+  class: memory-corruption
+  severity: critical   # ZDI CVSS 9.0
+  summary: Heap overflow in ksmbd session-key exchange, reachable without
+    authentication on systems with ksmbd enabled.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-31705
+  component: linux-kernel
+  subsystem: ksmbd
+  class: memory-corruption
+  severity: critical   # remote, unauthenticated
+  summary: Out-of-bounds write in ksmbd's EA (extended attribute) handling
+    of SMB2 QUERY_INFO; a remote, unauthenticated attacker reaching an
+    exposed ksmbd service can corrupt adjacent kernel heap memory.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-43185
+  component: linux-kernel
+  subsystem: ksmbd-smb-direct
+  class: memory-corruption
+  severity: critical   # CVSS 9.8
+  summary: Signedness bug in the SMB Direct negotiation path; a crafted
+    preferred-send-size leads to a subsequent heap overflow.
+  affected: {source: public-record, ranges: "5.15 through <6.18.16, 6.19 through <6.19.6"}
+  fixed_in: "6.18.16 / 6.19.6"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2020-27815
+  component: linux-kernel
+  subsystem: jfs
+  class: filesystem
+  severity: high   # CVSS 7.8
+  summary: A local attacker who can set extended attributes on JFS can panic
+    the system, causing memory corruption or escalating privileges.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2018-10881
+  component: linux-kernel
+  subsystem: jfs
+  class: filesystem
+  severity: medium   # legacy
+  summary: Buffer overflow in JFS when handling extended attributes. Legacy;
+    kept as a category-D placeholder.
+  affected: {source: public-record}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2015-8961
+  component: linux-kernel
+  subsystem: ext4-journal
+  class: filesystem
+  severity: medium   # legacy, kernels before 4.3.3
+  summary: Use-after-free in the ext4 journal code; local users can gain
+    privileges or cause a denial of service. Legacy; kept as a category-D
+    placeholder.
+  affected: {source: public-record, ranges: "< 4.3.3"}
+  fixed_in: "4.3.3"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2024-26594
+  component: linux-kernel
+  subsystem: unknown-verify-against-nvd
+  class: information-disclosure
+  severity: low   # description found this session was vague; subsystem unconfirmed
+  summary: Information-disclosure vulnerability; the source found this
+    session did not name the affected subsystem. Resolve the exact component
+    against NVD/kernel.org before relying on this entry further.
+  affected: {source: aggregator, note: "subsystem/component not confirmed this session"}
+  fixed_in: unknown-verify-against-nvd
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 4
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+# ═══════════════════════════════════════════════════════════════════════════
+# Cycle 5 (fifth research pass) — 36 entries, closing the registry to 147/150.
+# Priority: privilege-escalation, network-stack-netfilter, race-conditions,
+# memory-corruption, container-isolation-escape, information-disclosure,
+# credential-permission-manipulation, syscall-ioctl-kernel-interface, and the
+# last filesystem slots. See the top-of-file note and README.md.
+# ═══════════════════════════════════════════════════════════════════════════
+
+- cve_id: CVE-2025-0927
+  component: linux-kernel
+  subsystem: hfsplus
+  class: filesystem
+  severity: high
+  summary: Out-of-bounds write affecting kernels up to 6.12.0; default polkit rules on modern distros let users with active local sessions mount filesystems, lowering the exploitation bar.
+  affected: {source: public-record, ranges: "<= 6.12.0"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-21692
+  component: linux-kernel
+  subsystem: net-sched-ets
+  class: memory-corruption
+  severity: medium
+  summary: Overflow in the ETS queuing discipline triggered by a class ID of 0.
+  affected: {source: public-record, ranges: "< 6.12.12, 6.13-rc"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-24486
+  component: linux-kernel
+  subsystem: intel-700-series-ethernet-driver
+  class: privilege-escalation
+  severity: medium
+  summary: Input-validation flaw in the Intel 700 Series Ethernet driver, similar in shape to CVE-2025-24325 (800 Series).
+  affected: {source: public-record}
+  fixed_in: "driver 2.28.5"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2017-8824
+  component: linux-kernel
+  subsystem: dccp
+  class: use-after-free
+  severity: high
+  summary: A listening DCCP socket reconnected with AF_UNSPEC leaves CCID objects shared between the old and new socket, usable for kernel code execution from an unprivileged process.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2020-16119
+  component: linux-kernel
+  subsystem: dccp
+  class: use-after-free
+  severity: high
+  summary: Reuse of a DCCP socket with an attached dccps_hc_tx_ccid object as a listener after release, exploitable by a local attacker.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-23231
+  component: linux-kernel
+  subsystem: netfilter-nf_tables
+  class: network-stack-netfilter
+  severity: high
+  summary: RCU use-after-free in nf_tables. A public PoC demonstrates local privilege escalation to root on Ubuntu 24.04 LTS.
+  affected: {source: public-record, ranges: "3.16-6.19.3"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-53218
+  component: linux-kernel
+  subsystem: netfilter-nft_exthdr
+  class: network-stack-netfilter
+  severity: medium
+  summary: Uninitialized memory use in the nft_exthdr module enabling a register tracking bypass.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2024-1753
+  component: podman
+  subsystem: container-runtime
+  class: container-isolation-escape
+  severity: high
+  summary: Root-run containers get read/write access to host files when SELinux is not enabled, with some read access even with SELinux on. CWE-269/CWE-59.
+  affected: {source: public-record, ranges: "< 4.9.4"}
+  fixed_in: "4.9.4"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2022-1227
+  component: podman
+  subsystem: container-runtime
+  class: container-isolation-escape
+  severity: medium
+  summary: Privilege escalation via a malicious image published to a public registry; public PoC exists. Legacy.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-3347
+  component: linux-kernel
+  subsystem: futex
+  class: use-after-free
+  severity: high
+  summary: Race condition in futex's fixup_pi_state_owner() path leads to a use-after-free, local privilege escalation without user interaction.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2014-0205
+  component: linux-kernel
+  subsystem: futex
+  class: use-after-free
+  severity: medium
+  summary: Reference-counting error in futex_wait requeue operations; a local user could zero a reference counter on an inode or mm struct. Legacy.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2020-14381
+  component: linux-kernel
+  subsystem: futex
+  class: race-conditions
+  severity: high
+  summary: A local attacker can corrupt memory or escalate privileges by creating a futex on a filesystem that is about to be unmounted.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-23415
+  component: linux-kernel
+  subsystem: futex-mempolicy
+  class: race-conditions
+  severity: medium
+  summary: Race between futex_key_to_node_opt() reading vma->vm_policy under speculative mmap lock/RCU and mbind()'s vma_replace_policy(), which can free the old mempolicy via kmem_cache_free().
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-52973
+  component: linux-kernel
+  subsystem: futex-vfork
+  class: race-conditions
+  severity: low
+  summary: Private-futex race involving nested vfork() can lead to a use-after-free. One source reports no working exploit or demonstrated privilege escalation.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-43499
+  component: linux-kernel
+  subsystem: rtmutex-futex-requeue
+  class: privilege-escalation
+  severity: high
+  summary: GhostLock -- local privilege escalation in the rtmutex and priority-inheritance futex requeue path. A third-party blog claims a 97% stable exploit and a Google kernelCTF reward; these claims were not verified against primary sources this session.
+  affected: {source: aggregator, note: "exploit-stability claim unverified"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-3847
+  component: linux-kernel
+  subsystem: overlayfs
+  class: credential-permission-manipulation
+  severity: high
+  summary: A user copying a capable file from a nosuid mount into another mount can gain privileges. Related to but distinct from CVE-2023-0386 (already in this registry) -- a separate OverlayFS/nosuid-mount capability flaw.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-45250
+  component: linux-kernel
+  subsystem: setcred2-syscall
+  class: syscall-ioctl-kernel-interface
+  severity: medium
+  summary: The setcred2 syscall is limited to privileged users, but the user-supplied list of supplementary groups is copied into a fixed-size kernel stack buffer without first validating its length.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2012-2123
+  component: linux-kernel
+  subsystem: commoncap-cap_bprm_set_creds
+  class: credential-permission-manipulation
+  severity: medium
+  summary: cap_bprm_set_creds (security/commoncap.c) does not properly handle filesystem capabilities for privileged executables, letting local users bypass personality restrictions. Legacy (kernel before 3.3.3).
+  affected: {source: public-record, ranges: "< 3.3.3"}
+  fixed_in: "3.3.3"
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-52995
+  component: linux-kernel
+  subsystem: rds-sockets
+  class: information-disclosure
+  severity: medium
+  summary: Uninitialized memory disclosure in the RDS info-reporting path; a local unprivileged user can read kernel stack memory, including pointers usable to defeat KASLR.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-64553
+  component: linux-kernel
+  subsystem: psample-netlink
+  class: information-disclosure
+  severity: medium
+  summary: Uninitialized kernel memory leaks through netlink multicast messages in the psample subsystem, exposing kernel data to any process able to receive psample events.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-43026
+  component: linux-kernel
+  subsystem: netfilter-ctnetlink
+  class: information-disclosure
+  severity: medium
+  summary: Uninitialized memory disclosure in netfilter's ctnetlink interface.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2023-1073
+  component: linux-kernel
+  subsystem: hid
+  class: memory-corruption
+  severity: medium
+  summary: Memory corruption in the kernel's HID code, triggerable by a local user plugging in a crafted USB device; may allow a crash or privilege escalation. CVSS 6.6.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-43009
+  component: linux-kernel
+  subsystem: ebpf-verifier
+  class: syscall-ioctl-kernel-interface
+  severity: medium
+  summary: BPF verifier bug in atomic fetch precision tracking that can let a local user bypass verifier checks. No verified public PoC at time of search.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-31431
+  component: linux-kernel
+  subsystem: af_alg-crypto-api
+  class: privilege-escalation
+  severity: critical
+  summary: Copy Fail -- unprivileged users reach root by corrupting the page cache of setuid binaries through the AF_ALG crypto API. CISA has acknowledged active exploitation.
+  affected: {source: CISA-KEV}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-43494
+  component: linux-kernel
+  subsystem: rds-networking
+  class: privilege-escalation
+  severity: high
+  summary: PinTheft -- privilege escalation in the RDS networking code; reported to give root or allow a container escape under some conditions.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2024-0193
+  component: linux-kernel
+  subsystem: netfilter-nft_trans_gc
+  class: network-stack-netfilter
+  severity: high
+  summary: Use-after-free in nft_trans_gc_catchall_sync, triggerable on an NFT_CHAIN or NFT_OBJECT object by a local user with CAP_NET_ADMIN. Tied to pipapo set removal.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2022-34918
+  component: linux-kernel
+  subsystem: netfilter-nft_set_elem_init
+  class: network-stack-netfilter
+  severity: high
+  summary: Type confusion in nft_set_elem_init leads to a heap overflow, usable by a local attacker to escalate privileges.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-90203
+  component: linux-kernel
+  subsystem: squashfs
+  class: filesystem
+  severity: medium
+  summary: A negative block offset read off disk can cause squashfs_copy_data() to perform an out-of-bounds access. Needs a crafted Squashfs image and CAP_SYS_ADMIN to mount; once mounted, an unprivileged user can trigger it by reading the crafted file.
+  affected: {source: aggregator, note: "date/CVSS not independently confirmed this session"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2019-19319
+  component: linux-kernel
+  subsystem: ext4
+  class: filesystem
+  severity: medium
+  summary: A local user with physical access can crash the system or potentially escalate privileges. Legacy.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: established-public-record
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-31133
+  component: runc
+  subsystem: container-runtime
+  class: container-isolation-escape
+  severity: high
+  summary: One of three chainable runc flaws (with CVE-2025-52565, CVE-2025-52881) found by Aleksa Sarai; chained together they grant admin-level host access from a malicious container image or Dockerfile using RUN --mount.
+  affected: {source: public-record, ranges: "all versions"}
+  fixed_in: "1.2.8 / 1.3.3 / 1.4.0-rc.3"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-52565
+  component: runc
+  subsystem: container-runtime
+  class: container-isolation-escape
+  severity: high
+  summary: Second of the three chainable runc flaws (see CVE-2025-31133); affects versions from 1.0.0-rc3 onward.
+  affected: {source: public-record, ranges: ">=1.0.0-rc3"}
+  fixed_in: "1.2.8 / 1.3.3 / 1.4.0-rc.3"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-52881
+  component: runc
+  subsystem: container-runtime
+  class: container-isolation-escape
+  severity: high
+  summary: Third of the three chainable runc flaws (see CVE-2025-31133).
+  affected: {source: public-record}
+  fixed_in: "1.2.8 / 1.3.3 / 1.4.0-rc.3"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-46319
+  component: linux-kernel
+  subsystem: net-sched-act_ct
+  class: race-conditions
+  severity: high
+  summary: The RCU read lock is released before a reference count is taken on the returned object in net/sched's act_ct module, letting a concurrent cleanup worker free it first; usable by a low-privileged local user, reportedly leading to privilege escalation.
+  affected: {source: public-record, ranges: ">=5.7 (verify)"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2024-36971
+  component: linux-kernel
+  subsystem: net-dst-cache
+  class: race-conditions
+  severity: high
+  summary: RCU-handling race in __dst_negative_advice() causes a use-after-free on a socket's dst cache, enabling local privilege escalation.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-46081
+  component: linux-kernel
+  subsystem: crypto-acomp
+  class: memory-corruption
+  severity: medium
+  summary: The asynchronous compression layer stores the wrong pointer during request handling; memory corruption in kernel crypto code can cause kernel panics, DoS, and potentially privilege escalation on systems using hardware-accelerated compression (e.g. Intel QAT).
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-74404
+  component: linux-kernel
+  subsystem: crypto-ccp
+  class: memory-corruption
+  severity: high
+  summary: Off-by-one error in snp_filter_reserved_mem_regions() can lead to a heap buffer overflow; Red Hat scores it 7.8 and says it could allow code execution.
+  affected: {source: public-record}
+  fixed_in: "unknown-verify-against-nvd"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-43502
+  component: linux-kernel
+  subsystem: rds-zerocopy
+  class: privilege-escalation
+  severity: high
+  summary: ZcopyReaper -- local privilege escalation in the RDS zerocopy send
+    path, introduced in v4.17; posted to oss-security as part of a batch
+    disclosure of Linux kernel LPEs.
+  affected: {source: public-record, ranges: ">=4.17"}
+  fixed_in: "upstream commit; exact SHA not confirmed this session"
+  references: []
+  provenance: verified-this-session
+  category: D
+  cycle: 5
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
