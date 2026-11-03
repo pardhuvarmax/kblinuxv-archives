@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"strings"
 
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/pyjson"
 )
@@ -32,6 +33,38 @@ func FindRepo(dir string) (Repo, error) {
 		}
 		d = parent
 	}
+}
+
+// ConfigFile is where `kblva config set-root` remembers the repository (the user config directory).
+func ConfigFile() string {
+	d, err := os.UserConfigDir()
+	if err != nil {
+		return ""
+	}
+	return filepath.Join(d, "kblva", "root")
+}
+
+// Locate finds the repository for a command. Order: --root, the working directory (searching upward),
+// $KBLVA_ROOT, then the path saved by `kblva config set-root`. source says which one matched.
+func Locate(flagRoot string) (repo Repo, source string, err error) {
+	if flagRoot != "" {
+		r, err := FindRepo(flagRoot)
+		return r, "--root", err
+	}
+	if r, err := FindRepo("."); err == nil {
+		return r, "working directory", nil
+	}
+	if env := os.Getenv("KBLVA_ROOT"); env != "" {
+		r, err := FindRepo(env)
+		return r, "$KBLVA_ROOT", err
+	}
+	if cf := ConfigFile(); cf != "" {
+		if b, err := os.ReadFile(cf); err == nil {
+			r, err := FindRepo(strings.TrimSpace(string(b)))
+			return r, "saved root (" + cf + ")", err
+		}
+	}
+	return Repo{}, "", fmt.Errorf("not inside a KB-LVA repository; run `kblva config set-root PATH`, set $KBLVA_ROOT, or pass --root")
 }
 
 // ReadJSONL reads one JSON value per line. A missing file is an empty list.

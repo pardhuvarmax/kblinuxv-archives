@@ -20,6 +20,8 @@ type App struct {
 	json    bool
 	noColor bool
 	repo    data.Repo
+	// rootSource says how the repository was found (for doctor and config show).
+	rootSource string
 }
 
 // Repo resolves the repository once, from --root or the working directory.
@@ -27,15 +29,11 @@ func (a *App) Repo() (data.Repo, error) {
 	if a.repo.Root != "" {
 		return a.repo, nil
 	}
-	start := a.root
-	if start == "" {
-		start = "."
-	}
-	r, err := data.FindRepo(start)
+	r, src, err := data.Locate(a.root)
 	if err != nil {
 		return r, err
 	}
-	a.repo = r
+	a.repo, a.rootSource = r, src
 	return r, nil
 }
 
@@ -75,7 +73,7 @@ its own, and never merges.`,
 	root.PersistentFlags().BoolVar(&app.json, "json", false, "machine-readable JSON output where supported")
 	root.PersistentFlags().BoolVar(&app.noColor, "no-color", false, "disable colors")
 	root.AddCommand(app.cmdRun(), app.cmdStatus(), app.cmdShow(), app.cmdDoctor(), app.cmdImport(), app.cmdTriage(),
-		app.cmdResolve(), app.cmdPropose(), app.cmdApprove(), app.cmdAcquire(), app.cmdMeta(), app.cmdDocs(), app.cmdReview(), app.cmdValidate())
+		app.cmdResolve(), app.cmdPropose(), app.cmdApprove(), app.cmdAcquire(), app.cmdMeta(), app.cmdDocs(), app.cmdReview(), app.cmdValidate(), app.cmdConfig(), app.cmdMan())
 	if err := root.Execute(); err != nil {
 		fmt.Fprintln(os.Stderr, ui.Fail(err.Error()))
 		return 1

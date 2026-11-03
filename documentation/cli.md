@@ -2,6 +2,20 @@
 
 `kblva` is the KB-LVA pipeline as one Go binary. Build it with `make build` (`bin/kblva`) or `make install`. Run it from anywhere inside the repository, or point at it with `--root`.
 
+## Install
+
+System-wide, like any pacman package (installs `/usr/bin/kblva`, bash/zsh/fish completions, man pages and docs):
+
+```
+cd packaging/arch && makepkg -f
+sudo pacman -U kblva-*.pkg.tar.zst
+kblva config set-root /path/to/this/repository    # once; then kblva works from any directory
+```
+
+Per-user alternative: `make install` puts the binary in `$(go env GOPATH)/bin`. Upgrade a package install by pulling, rebuilding and running `pacman -U` again; remove it with `sudo pacman -R kblva`.
+
+`kblva` finds the repository by: `--root`, the working directory (searching upward), `$KBLVA_ROOT`, then the path saved by `kblva config set-root`. `kblva config show` says which one it used.
+
 Global flags: `--root DIR`, `--json` (machine-readable output where supported), `--no-color`. Shell completion: `kblva completion bash|zsh|fish`.
 
 ## Run a batch
@@ -41,6 +55,7 @@ kblva run --size 15     # resolve, select, ask, pull, document, check, open a PR
 | `review sheet` | Static facts and red flags per artifact (never a verdict) |
 | `review record` | Record your verdict: `--accept`, or `--reject --reason TEXT` |
 | `review status` | Count artifacts per verification state |
+| `config` | `set-root [PATH]`, `show`, `unset-root`: remember the repository so kblva runs from anywhere |
 | `validate` | Schemas, hashes and policy; or `validate schema|hashes|policy` |
 
 ## What it will not do

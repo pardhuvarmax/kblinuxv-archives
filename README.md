@@ -75,7 +75,7 @@ Every folder has its own README.
 
 ## The `kblva` CLI
 
-The pipeline is one Go binary. `make build`, then `bin/kblva doctor` and `bin/kblva run` run a whole batch and end at a pull request you merge. Command reference: `documentation/cli.md`.
+The pipeline is one Go binary. `make build`, then `bin/kblva doctor` and `bin/kblva run` run a whole batch and end at a pull request you merge. To install it system-wide as a pacman package, see `packaging/arch/` and `documentation/cli.md`. Command reference: `documentation/cli.md`.
 
 ## Automation
 

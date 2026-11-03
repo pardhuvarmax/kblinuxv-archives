@@ -218,7 +218,8 @@ func (a *App) cmdDoctor() *cobra.Command {
 				}
 			}
 			r, rerr := a.Repo()
-			check(rerr == nil, "inside a KB-LVA repository", "not inside a KB-LVA repository", true)
+			check(rerr == nil, "repository found: "+a.repo.Root+" (by "+a.rootSource+")",
+				"no repository found: run `kblva config set-root PATH`, set $KBLVA_ROOT, or cd into it", true)
 			if rerr != nil {
 				return fmt.Errorf("doctor found problems")
 			}

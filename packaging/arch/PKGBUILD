@@ -1,0 +1,46 @@
+# Maintainer: pardhuvarmax <140948604+pardhuvarmax@users.noreply.github.com>
+#
+# Builds kblva from this checkout and installs it system-wide, like any pacman package:
+#   cd packaging/arch && makepkg -f && sudo pacman -U kblva-*.pkg.tar.zst
+# (`makepkg -s` installs the build dependency `go` for you.)
+pkgname=kblva
+pkgver=0.1.0.r26.g8646e63
+pkgrel=1
+pkgdesc='KB-LVA pipeline: curate Linux vulnerability reproduction artifacts into a provenance-checked dataset'
+arch=('x86_64')
+url='https://github.com/pardhuvarmax/kblinuxv-archives'
+# The repository has no license file yet; replace this once one is chosen.
+license=('custom:unspecified')
+depends=('git')
+makedepends=('go')
+optdepends=('github-cli: open pull requests and read your GitHub token (kblva run)')
+options=('!debug')
+
+pkgver() {
+  cd "$startdir/../.."
+  printf '0.1.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
+}
+
+build() {
+  cd "$startdir/../.."
+  export CGO_ENABLED=0 GOFLAGS="-trimpath -mod=readonly -modcacherw"
+  go build -ldflags "-s -w -X github.com/pardhuvarmax/kblinuxv-archives/internal/cli.version=$pkgver" \
+    -o "$srcdir/kblva" ./cmd/kblva
+}
+
+check() {
+  cd "$startdir/../.."
+  go test ./cmd/... ./internal/...
+}
+
+package() {
+  cd "$startdir/../.."
+  install -Dm755 "$srcdir/kblva" "$pkgdir/usr/bin/kblva"
+  install -Dm644 documentation/cli.md "$pkgdir/usr/share/doc/$pkgname/cli.md"
+  install -Dm644 README.md "$pkgdir/usr/share/doc/$pkgname/README.md"
+  "$srcdir/kblva" completion bash | install -Dm644 /dev/stdin "$pkgdir/usr/share/bash-completion/completions/kblva"
+  "$srcdir/kblva" completion zsh  | install -Dm644 /dev/stdin "$pkgdir/usr/share/zsh/site-functions/_kblva"
+  "$srcdir/kblva" completion fish | install -Dm644 /dev/stdin "$pkgdir/usr/share/fish/vendor_completions.d/kblva.fish"
+  "$srcdir/kblva" man "$srcdir/man"
+  install -Dm644 -t "$pkgdir/usr/share/man/man1" "$srcdir"/man/*.1
+}
