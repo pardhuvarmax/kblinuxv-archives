@@ -50,13 +50,17 @@ def summarize_nvd(c: dict) -> dict:
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--root", type=Path, default=Path("."))
-    root = ap.parse_args().root
+    ap.add_argument("--refresh", action="store_true", help="Re-fetch CVEs that already have a record")
+    args = ap.parse_args()
+    root = args.root
     cves = sorted({json.loads(x)["cve"] for x in (root / "metadata/artifacts.jsonl").read_text().splitlines()})
     registry = {str(e["cve_id"]).upper(): e for e in yaml.safe_load(
         (root / "discovery/registry/registry.yaml").read_text())["entries"]}
     path = root / "metadata/vulnerabilities.jsonl"
     cur = {json.loads(x)["cve"]: json.loads(x) for x in path.read_text().splitlines()} if path.is_file() else {}
     now = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+    if not args.refresh:
+        cves = [c for c in cves if c not in cur]
     for i, cve in enumerate(cves):
         if i:
             time.sleep(0.7 if os.getenv("NVD_API_KEY") else 6.5)

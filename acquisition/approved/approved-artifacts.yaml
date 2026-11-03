@@ -31,3 +31,50 @@ approved_artifacts:
     approved: true
   - artifact_id: LVA-2019-15666-005
     approved: true
+# Batch 002: approved by the repository owner on 2026-11-04 ("go ahead" on proposed-batch-002.md, all 23).
+  - artifact_id: LVA-2016-9793-006
+    approved: true
+  - artifact_id: LVA-2018-5333-004
+    approved: true
+  - artifact_id: LVA-2021-31440-003
+    approved: true
+  - artifact_id: LVA-2026-23271-002
+    approved: true
+  - artifact_id: LVA-2017-5123-006
+    approved: true
+  - artifact_id: LVA-2017-11176-003
+    approved: true
+  - artifact_id: LVA-2017-16995-011
+    approved: true
+  - artifact_id: LVA-2019-15666-006
+    approved: true
+  - artifact_id: LVA-2021-41073-003
+    approved: true
+  - artifact_id: LVA-2017-6074-006
+    approved: true
+  - artifact_id: LVA-2022-1015-005
+    approved: true
+  - artifact_id: LVA-2021-4154-004
+    approved: true
+  - artifact_id: LVA-2020-27194-002
+    approved: true
+  - artifact_id: LVA-2025-21702-004
+    approved: true
+  - artifact_id: LVA-2017-8890-002
+    approved: true
+  - artifact_id: LVA-2022-2639-006
+    approved: true
+  - artifact_id: LVA-2022-32250-005
+    approved: true
+  - artifact_id: LVA-2019-9213-004
+    approved: true
+  - artifact_id: LVA-2020-8835-004
+    approved: true
+  - artifact_id: LVA-2021-3490-003
+    approved: true
+  - artifact_id: LVA-2021-42008-005
+    approved: true
+  - artifact_id: LVA-2021-43267-004
+    approved: true
+  - artifact_id: LVA-2022-27666-006
+    approved: true

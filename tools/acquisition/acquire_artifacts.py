@@ -122,6 +122,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--root", type=Path, default=Path("."))
     ap.add_argument("--batch", default="001")
+    ap.add_argument("--force", action="store_true", help="Re-retrieve artifacts that are already recorded")
     args = ap.parse_args()
     root = args.root
 
@@ -131,6 +132,12 @@ def main() -> int:
             for x in (root / "discovery/normalized/artifacts.jsonl").read_text().splitlines()}
     vulns = {json.loads(x)["cve"]: json.loads(x)
              for x in (root / "discovery/normalized/vulnerabilities.jsonl").read_text().splitlines()}
+
+    done = set()
+    prov_path = root / "metadata/provenance.jsonl"
+    if prov_path.is_file() and not args.force:
+        done = {json.loads(x)["artifact_id"] for x in prov_path.read_text().splitlines()}
+    approved = [a for a in approved if a not in done]
 
     now = datetime.now(timezone.utc).replace(microsecond=0).isoformat()
     meta, prov, verif, lic, sums, log = [], [], [], [], [], []
