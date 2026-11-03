@@ -1,2 +1,6 @@
 kb_poc_discovery.py
 .venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+local-only/
