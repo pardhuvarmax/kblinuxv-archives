@@ -3,3 +3,4 @@ kb_poc_discovery.py
 __pycache__/
 *.pyc
 .pytest_cache/
+local-only/
