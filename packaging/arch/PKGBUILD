@@ -4,7 +4,7 @@
 #   cd packaging/arch && makepkg -f && sudo pacman -U kblva-*.pkg.tar.zst
 # (`makepkg -s` installs the build dependency `go` for you.)
 pkgname=kblva
-pkgver=0.1.0.r26.g8646e63
+pkgver=0.1.0
 pkgrel=1
 pkgdesc='KB-LVA pipeline: curate Linux vulnerability reproduction artifacts into a provenance-checked dataset'
 arch=('x86_64')
