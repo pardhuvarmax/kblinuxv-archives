@@ -1,0 +1,297 @@
+// Package docs generates README.md files for the CVE and artifact folders under corpus/ and local-only/.
+//
+// corpus/ holds redistributable artifacts. local-only/ holds unlicensed ones: git-ignored, never published, and
+// its READMEs (including an index) exist only to navigate your local copies. Offline: reads metadata/*.jsonl
+// and the files on disk.
+package docs
+
+import (
+	"crypto/sha256"
+	"encoding/hex"
+	"fmt"
+	"os"
+	"path"
+	"path/filepath"
+	"sort"
+	"strings"
+
+	"github.com/pardhuvarmax/kblinuxv-archives/internal/data"
+	"github.com/pardhuvarmax/kblinuxv-archives/internal/meta"
+	"github.com/pardhuvarmax/kblinuxv-archives/internal/triage"
+)
+
+const localBanner = "> **LOCAL ONLY.** This folder is git-ignored and must never be committed, pushed or shared: the source " +
+	"repositories carry no redistributable license.\n"
+
+func esc(s string) string {
+	s = strings.NewReplacer("&", "&amp;", "<", "&lt;", ">", "&gt;").Replace(s)
+	return strings.ReplaceAll(s, "|", `\|`)
+}
+
+func link(u string) string { return triage.MDURL(u) }
+
+func runes(s string, n int) string {
+	r := []rune(s)
+	if len(r) > n {
+		return string(r[:n])
+	}
+	return s
+}
+
+func orDefault(s, d string) string {
+	if s == "" {
+		return d
+	}
+	return s
+}
+
+func fileName(p data.Provenance) string { return path.Base(p.Path) }
+
+func cveReadme(v meta.Vuln, stored, other []data.Artifact, prov map[string]data.Provenance, local bool) string {
+	nvd := v.NVD
+	if nvd == nil {
+		nvd = &meta.NVD{}
+	}
+	score := "not in NVD record"
+	if nvd.CVSS != nil {
+		score = fmt.Sprintf("%s %s (CVSS %s, `%s`)", nvd.CVSS.Score, data.Str(nvd.CVSS.Severity), nvd.CVSS.Version, nvd.CVSS.Vector)
+	}
+	ranges := orDefault(v.Registry.Affected.String("ranges"), "not confirmed")
+	fixed := "unknown"
+	switch f := v.Registry.FixedIn.(type) {
+	case string:
+		fixed = orDefault(f, "unknown")
+	case nil:
+	default:
+		fixed = fmt.Sprint(f)
+	}
+	L := []string{"# " + v.CVE, ""}
+	if local {
+		L = append(L, localBanner)
+	}
+	L = append(L,
+		fmt.Sprintf("*%s / %s, class `%s`*", esc(data.Str(v.Component)), esc(data.Str(v.Subsystem)), esc(data.Str(v.Category))), "",
+		"| Field | Value |", "| --- | --- |",
+		fmt.Sprintf("| NVD | [%s](https://nvd.nist.gov/vuln/detail/%s) |", v.CVE, v.CVE),
+		fmt.Sprintf("| Severity | %s |", esc(score)),
+		fmt.Sprintf("| Published / modified | %s / %s |", esc(runes(orDefault(nvd.Published, "?"), 10)), esc(runes(orDefault(nvd.LastModified, "?"), 10))),
+		fmt.Sprintf("| NVD status | %s |", esc(orDefault(nvd.Status, "no NVD record"))),
+		fmt.Sprintf("| Weakness (CWE) | %s |", esc(orDefault(strings.Join(nvd.CWE, ", "), "not assigned"))),
+		fmt.Sprintf("| Affected (registry) | %s |", esc(ranges)),
+		fmt.Sprintf("| Fixed in (registry) | %s |", esc(fixed)), "")
+	if nvd.Description != "" {
+		d := strings.TrimSpace(nvd.Description)
+		cut := runes(d, 2500)
+		if len([]rune(d)) > 2500 {
+			cut += " ..."
+		}
+		L = append(L, "## Description (NVD)", "", "> "+strings.ReplaceAll(esc(cut), "\n", "\n> "), "")
+	}
+	if s := data.Str(v.Registry.Summary); s != "" {
+		L = append(L, "## Registry summary", "", esc(s), "")
+	}
+	L = append(L, "## Artifacts in this folder", "",
+		"| Artifact | File | Type | Source (pinned) | License | SHA-256 | State |", "| --- | --- | --- | --- | --- | --- | --- |")
+	for _, a := range stored {
+		p := prov[a.ArtifactID]
+		L = append(L, fmt.Sprintf("| `%s` | [`%s`](%s/) | %s | [%s](%s) | %s | `%s…` | %s |", a.ArtifactID, esc(fileName(p)), a.ArtifactID,
+			esc(a.Artifact.Type), esc(p.Repository), link(p.SourceURL), esc(orDefault(data.Str(p.License), "none")), p.SHA256[:12], esc(a.Verification.State)))
+	}
+	L = append(L, "")
+	if len(other) > 0 {
+		L = append(L, "## Other retrieved artifacts for this CVE (not stored here)", "",
+			"Retrieved and hashed but kept out of the repository because the source has no redistributable license. "+
+				"Local copies, if you fetched them, are in the git-ignored `local-only/` folder.", "",
+			"| Artifact | File | Source (pinned) | SHA-256 |", "| --- | --- | --- | --- |")
+		for _, a := range other {
+			p := prov[a.ArtifactID]
+			L = append(L, fmt.Sprintf("| `%s` | `%s` | [%s](%s) | `%s…` |", a.ArtifactID, esc(fileName(p)), esc(p.Repository), link(p.SourceURL), p.SHA256[:12]))
+		}
+		L = append(L, "")
+	}
+	var refs []string
+	seen := map[string]bool{}
+	add := func(u string) {
+		if !seen[u] {
+			seen[u] = true
+			refs = append(refs, u)
+		}
+	}
+	for _, u := range v.Registry.References {
+		add(u)
+	}
+	for _, r := range nvd.References {
+		add(r.URL)
+	}
+	if len(refs) > 0 {
+		L = append(L, "## References", "")
+		for i, u := range refs {
+			if i == 20 {
+				break
+			}
+			L = append(L, fmt.Sprintf("- <%s>", u))
+		}
+		if len(refs) > 20 {
+			L = append(L, fmt.Sprintf("- ... and %d more in `metadata/vulnerabilities.jsonl`", len(refs)-20))
+		}
+		L = append(L, "")
+	}
+	L = append(L, "## Sources and status", "",
+		fmt.Sprintf("Vulnerability data: NVD API and the KB-LVA registry, retrieved %s. "+
+			"Artifact data: `metadata/provenance.jsonl`. This README is generated by `kblva docs`.", esc(runes(v.RetrievedAt, 10))), "",
+		"Artifacts are `RETRIEVED` only: not source-reviewed and not lab-validated. They may be exploits. "+
+			"Do not run them outside an isolated, disposable lab. Licenses are repository-level and not verified per file.", "")
+	return strings.Join(L, "\n")
+}
+
+func artifactReadme(a data.Artifact, p data.Provenance, local bool) string {
+	name := fileName(p)
+	verify := "Verify: `sha256sum -c manifests/SHA256SUMS` from the repository root."
+	banner := ""
+	if local {
+		verify = "Verify: `sha256sum " + name + "` should print the SHA-256 above."
+		banner = localBanner
+	}
+	host := ""
+	if parts := strings.Split(p.SourceURL, "/"); len(parts) > 2 {
+		host = parts[2]
+	}
+	return fmt.Sprintf("# %s\n\n%s\n`%s` for [%s](../README.md).\n\n| Field | Value |\n| --- | --- |\n"+
+		"| Type | %s (%s) |\n| Repository | [%s](https://%s/%s) (owner `%s`) |\n| Pinned file | [%s](%s) at commit `%s` |\n"+
+		"| License | %s (%s) |\n| Retrieved | %s |\n| SHA-256 | `%s` |\n| State | %s |\n\n"+
+		"%s Original attribution applies; the file is unmodified. Do not run it outside an isolated lab.\n",
+		a.ArtifactID, banner, esc(name), a.CVE, esc(a.Artifact.Type), esc(orDefault(data.Str(a.Artifact.Language), "unknown language")),
+		esc(p.Repository), host, esc(p.Repository), esc(data.Str(p.RepositoryOwner)), esc(p.Path), link(p.SourceURL), p.Commit,
+		esc(orDefault(data.Str(p.License), "none")), esc(p.LicenseScope), esc(p.RetrievedAt), p.SHA256, esc(a.Verification.State), verify)
+}
+
+// Result counts the READMEs written.
+type Result struct{ Corpus, Local int }
+
+// Generate writes every README.
+func Generate(r data.Repo) (Result, error) {
+	arts, err := data.ReadJSONL[data.Artifact](r.P("metadata/artifacts.jsonl"))
+	if err != nil {
+		return Result{}, err
+	}
+	pl, err := data.ReadJSONL[data.Provenance](r.P("metadata/provenance.jsonl"))
+	if err != nil {
+		return Result{}, err
+	}
+	prov := map[string]data.Provenance{}
+	for _, p := range pl {
+		prov[p.ArtifactID] = p
+	}
+	vl, err := data.ReadJSONL[meta.Vuln](r.P("metadata/vulnerabilities.jsonl"))
+	if err != nil {
+		return Result{}, err
+	}
+	vulns := map[string]meta.Vuln{}
+	for _, v := range vl {
+		vulns[v.CVE] = v
+	}
+	var res Result
+	if res.Local, err = writeLocal(r, arts, prov, vulns); err != nil {
+		return res, err
+	}
+	byCVE := map[string][]data.Artifact{}
+	var cves []string
+	for _, a := range arts {
+		if _, ok := byCVE[a.CVE]; !ok {
+			cves = append(cves, a.CVE)
+		}
+		byCVE[a.CVE] = append(byCVE[a.CVE], a)
+	}
+	sort.Strings(cves)
+	for _, cve := range cves {
+		var stored, other []data.Artifact
+		for _, a := range byCVE[cve] {
+			if a.StoredPath() != "" {
+				stored = append(stored, a)
+			} else {
+				other = append(other, a)
+			}
+		}
+		if len(stored) == 0 {
+			continue
+		}
+		folder := filepath.Dir(filepath.Dir(r.P(stored[0].StoredPath())))
+		if err := data.WriteFile(filepath.Join(folder, "README.md"), []byte(cveReadme(vulns[cve], stored, other, prov, false))); err != nil {
+			return res, err
+		}
+		for _, a := range stored {
+			if err := data.WriteFile(filepath.Join(filepath.Dir(r.P(a.StoredPath())), "README.md"), []byte(artifactReadme(a, prov[a.ArtifactID], false))); err != nil {
+				return res, err
+			}
+			res.Corpus++
+		}
+		res.Corpus++
+	}
+	return res, nil
+}
+
+func writeLocal(r data.Repo, arts []data.Artifact, prov map[string]data.Provenance, vulns map[string]meta.Vuln) (int, error) {
+	type loc struct {
+		a  data.Artifact
+		p  data.Provenance
+		ok bool
+	}
+	var local []loc
+	for _, a := range arts {
+		p := prov[a.ArtifactID]
+		if a.StoredPath() != "" {
+			continue
+		}
+		b, err := os.ReadFile(r.P("local-only", a.CVE, a.ArtifactID, fileName(p)))
+		if err != nil {
+			continue
+		}
+		h := sha256.Sum256(b)
+		local = append(local, loc{a, p, hex.EncodeToString(h[:]) == p.SHA256})
+	}
+	set := map[string]bool{}
+	for _, l := range local {
+		set[l.a.CVE] = true
+	}
+	cves := make([]string, 0, len(set))
+	for c := range set {
+		cves = append(cves, c)
+	}
+	sort.Strings(cves)
+	n := 0
+	for _, cve := range cves {
+		var mine []data.Artifact
+		for _, l := range local {
+			if l.a.CVE == cve {
+				mine = append(mine, l.a)
+			}
+		}
+		if err := data.WriteFile(r.P("local-only", cve, "README.md"), []byte(cveReadme(vulns[cve], mine, nil, prov, true))); err != nil {
+			return n, err
+		}
+		n++
+		for _, a := range mine {
+			if err := data.WriteFile(r.P("local-only", cve, a.ArtifactID, "README.md"), []byte(artifactReadme(a, prov[a.ArtifactID], true))); err != nil {
+				return n, err
+			}
+			n++
+		}
+	}
+	rows := make([]string, len(local))
+	for i, l := range local {
+		ok := "ok"
+		if !l.ok {
+			ok = "**MISMATCH**"
+		}
+		f := esc(fileName(l.p))
+		rows[i] = fmt.Sprintf("| [%s](%s/README.md) | [`%s`](%s/%s/README.md) | [`%s`](%s/%s/%s) | %s | %s |", l.a.CVE, l.a.CVE,
+			l.a.ArtifactID, l.a.CVE, l.a.ArtifactID, f, l.a.CVE, l.a.ArtifactID, f, esc(l.p.Repository), ok)
+	}
+	text := fmt.Sprintf("# local-only\n\n%s\nUnlicensed artifacts, fetched at their pinned commits for local research. Metadata still records them as\n"+
+		"`unknown` license with no stored path. Regenerate this index with `kblva docs`; fetch\nmissing files with `kblva acquire --sync-local`.\n\n"+
+		"%d files. \"Hash\" compares each file with the SHA-256 recorded in `metadata/provenance.jsonl`.\n\n"+
+		"| CVE | Artifact | File | Repository | Hash |\n| --- | --- | --- | --- | --- |\n%s\n\n"+
+		"These may be working exploits. Do not run them outside an isolated, disposable lab.\n",
+		localBanner, len(local), strings.Join(rows, "\n"))
+	return n + 1, data.WriteFile(r.P("local-only/README.md"), []byte(text))
+}
