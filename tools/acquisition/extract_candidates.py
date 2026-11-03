@@ -84,13 +84,13 @@ def main() -> None:
     (out / "candidates.json").write_text(json.dumps(cands, indent=1) + "\n")
 
     batch = propose_batch(cands, vulns, args.batch_size)
-    lines = [f"| {c['artifact_id']} | {vulns[c['cve']]['category']} | {c['language']} | "
+    lines = [f"| {c['artifact_id']} | {c['cve']} | {vulns[c['cve']]['category']} | {c['language']} | "
              f"`{c['repository']}` | `{c['filename']}` |" for c in batch]
     (out / "proposed-first-batch.md").write_text(
         "# Proposed first batch\n\nSuggestion only: one ready candidate per CVE, spread across vulnerability "
         "categories, preferring candidates whose URL contains the CVE ID, then `EXPLOIT_POC` in C or Python. Nothing here is approved. To approve, copy chosen "
         "IDs into `acquisition/approved/approved-artifacts.yaml`.\n\n"
-        "| Artifact ID | Category | Language | Repository | File |\n| --- | --- | --- | --- | --- |\n"
+        "| Artifact ID | CVE | Category | Language | Repository | File |\n| --- | --- | --- | --- | --- | --- |\n"
         + "\n".join(lines) + "\n")
     approved = root / "acquisition/approved/approved-artifacts.yaml"
     if not approved.exists():
