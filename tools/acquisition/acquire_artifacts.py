@@ -6,8 +6,13 @@ to disk as opaque bytes. Only artifacts listed in acquisition/approved/approved-
     python tools/acquisition/acquire_artifacts.py [--root .] [--batch 001]
 
 Redistribution: a file is stored under corpus/ only when its repository carries an allow-listed open-source
-license. Otherwise it is hashed and recorded (reference-only) and the bytes are discarded. Repository-level
-licenses are not proof of the file author's license; reviewers must confirm.
+license. Otherwise it is hashed, recorded as reference-only, and written to the git-ignored local-only/ folder
+for local research. It never enters git. Repository-level licenses are not proof of the file author's license;
+reviewers must confirm.
+
+    python tools/acquisition/acquire_artifacts.py --sync-local
+
+fetches any reference-only artifact missing from local-only/ at its pinned commit and checks its recorded SHA-256.
 """
 import argparse
 import hashlib
@@ -108,6 +113,40 @@ def repo_license(host: str, repo: str) -> tuple[str | None, str | None]:
     return (None if spdx in (None, "NOASSERTION") else spdx), d["owner"]["login"]
 
 
+def local_path(root: Path, cve: str, aid: str, name: str) -> Path:
+    return root / "local-only" / cve / aid / name
+
+
+def sync_local(root: Path) -> int:
+    """Fetch recorded reference-only artifacts into local-only/, verifying the recorded hash."""
+    prov = [json.loads(x) for x in (root / "metadata/provenance.jsonl").read_text().splitlines()]
+    arts = {json.loads(x)["artifact_id"]: json.loads(x)
+            for x in (root / "metadata/artifacts.jsonl").read_text().splitlines()}
+    bad = 0
+    for p in prov:
+        a = arts[p["artifact_id"]]
+        if a["redistribution"].get("stored_path"):
+            continue
+        out = local_path(root, a["cve"], p["artifact_id"], Path(p["path"]).name)
+        if out.is_file() and hashlib.sha256(out.read_bytes()).hexdigest() == p["sha256"]:
+            continue
+        try:
+            host, repo, commit, path = parse_pinned(p["source_url"])
+            data = fetch(raw_url(host, repo, commit, path))
+        except (Refused, requests.RequestException) as e:
+            print(f"{p['artifact_id']}: REFUSED ({e})")
+            bad += 1
+            continue
+        if hashlib.sha256(data).hexdigest() != p["sha256"]:
+            print(f"{p['artifact_id']}: HASH MISMATCH, not saved")
+            bad += 1
+            continue
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_bytes(data)
+        print(f"{p['artifact_id']}: saved to {out.relative_to(root)}")
+    return 1 if bad else 0
+
+
 def upsert(path: Path, rows: list[dict]) -> None:
     """Replace-by-artifact_id into a JSONL file, keeping it sorted."""
     cur = {}
@@ -122,10 +161,14 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--root", type=Path, default=Path("."))
     ap.add_argument("--batch", default="001")
+    ap.add_argument("--sync-local", action="store_true",
+                    help="Only fill local-only/ for recorded reference-only artifacts that are missing locally")
     ap.add_argument("--force", action="store_true", help="Re-retrieve artifacts that are already recorded")
     args = ap.parse_args()
     root = args.root
 
+    if args.sync_local:
+        return sync_local(root)
     approved = [a["artifact_id"] for a in yaml.safe_load(
         (root / "acquisition/approved/approved-artifacts.yaml").read_text())["approved_artifacts"] if a.get("approved")]
     arts = {json.loads(x)["artifact_id"]: json.loads(x)
@@ -156,6 +199,10 @@ def main() -> int:
         sha = hashlib.sha256(data).hexdigest()
         allowed = spdx in SPDX_ALLOW
         stored = None
+        if not allowed:  # no redistributable license: keep a local copy only, git-ignored
+            out = local_path(root, rec["cve"], aid, Path(path).name)
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_bytes(data)
         if allowed:
             stored = f"corpus/{corpus_dir(vulns[rec['cve']])}/{rec['cve']}/{aid}/{Path(path).name}"
             out = root / stored
@@ -175,7 +222,7 @@ def main() -> int:
                       "lab_validated": False, "reason": None})
         lic.append({"artifact_id": aid, "license": spdx, "status": "approved" if allowed else "unknown",
                     "stored": bool(stored)})
-        log.append((aid, "STORED" if stored else "REFERENCE-ONLY",
+        log.append((aid, "STORED" if stored else "LOCAL-ONLY",
                     f"{spdx or 'no license'}, {len(data)} bytes, sha256 {sha[:12]}"))
 
     upsert(root / "metadata/artifacts.jsonl", meta)
@@ -200,8 +247,8 @@ not reviewed or validated.
 | --- | --- | --- |
 {lines}
 
-`STORED` means the repository's license is on the allow-list and the file is in `corpus/`. `REFERENCE-ONLY` means
-the license is missing or not allow-listed: the file was hashed and recorded, but its bytes were discarded.
+`STORED` means the repository's license is on the allow-list and the file is in `corpus/`. `LOCAL-ONLY` means
+the license is missing or not allow-listed: the file was hashed and recorded and kept in the git-ignored local-only/ folder.
 Licenses are repository-level and must be confirmed per file during review.
 """)
     for a, s, d in log:

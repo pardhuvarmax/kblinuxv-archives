@@ -11,4 +11,5 @@ Rules: no workflow compiles or executes acquired PoCs, none sets `LAB_VALIDATED`
 granted only to the workflows that need them. Pin third-party actions to reviewed commit SHAs. Never use
 `pull_request_target` to run untrusted code.
 
-These are skeletons: each currently runs a placeholder step.
+`validation.yml` (schemas and tests) and `pull-request-checks.yml` (hash integrity and policy) are real and read-only.
+`discovery-import.yml` and `acquisition.yml` are still skeletons that run a placeholder step; acquisition runs locally for now.

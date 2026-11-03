@@ -1,10 +1,15 @@
-"""Generate README.md files for the CVE folders and artifact folders under corpus/.
+"""Generate README.md files for the CVE and artifact folders under corpus/ and local-only/.
 
-Offline: reads metadata/*.jsonl only (build them with generate_metadata.py and acquire_artifacts.py).
+corpus/ holds redistributable artifacts. local-only/ holds unlicensed ones: git-ignored, never published, and
+its READMEs (including an index) exist only to navigate your local copies.
+
+Offline: reads metadata/*.jsonl and the files on disk (build them with generate_metadata.py and
+acquire_artifacts.py).
 
     python tools/processing/generate_readmes.py [--root .]
 """
 import argparse
+import hashlib
 import html
 import json
 from pathlib import Path
@@ -23,12 +28,16 @@ def md_link(url: str) -> str:
     return quote(url, safe=":/?&=#%@+~-._")
 
 
-def cve_readme(v: dict, stored: list[dict], other: list[dict], prov: dict) -> str:
+LOCAL_BANNER = ("> **LOCAL ONLY.** This folder is git-ignored and must never be committed, pushed or shared: the source "
+                "repositories carry no redistributable license.\n")
+
+
+def cve_readme(v: dict, stored: list[dict], other: list[dict], prov: dict, local: bool = False) -> str:
     nvd, reg = v.get("nvd") or {}, v.get("registry") or {}
     cvss = nvd.get("cvss")
     score = f"{cvss['score']} {cvss['severity'] or ''} (CVSS {cvss['version']}, `{cvss['vector']}`)" if cvss else "not in NVD record"
     aff = reg.get("affected") or {}
-    lines = [f"# {v['cve']}", "",
+    lines = [f"# {v['cve']}", ""] + ([LOCAL_BANNER] if local else []) + [
              f"*{esc(v.get('component'))} / {esc(v.get('subsystem'))}, class `{esc(v.get('category'))}`*", "",
              "| Field | Value |", "| --- | --- |",
              f"| NVD | [{v['cve']}](https://nvd.nist.gov/vuln/detail/{v['cve']}) |",
@@ -47,13 +56,14 @@ def cve_readme(v: dict, stored: list[dict], other: list[dict], prov: dict) -> st
               "| Artifact | File | Type | Source (pinned) | License | SHA-256 | State |", "| --- | --- | --- | --- | --- | --- | --- |"]
     for a in stored:
         p = prov[a["artifact_id"]]
-        lines.append(f"| `{a['artifact_id']}` | [`{esc(Path(a['redistribution']['stored_path']).name)}`]({a['artifact_id']}/) | "
+        lines.append(f"| `{a['artifact_id']}` | [`{esc(Path(p['path']).name)}`]({a['artifact_id']}/) | "
                      f"{esc(a['artifact']['type'])} | [{esc(p['repository'])}]({md_link(p['source_url'])}) | "
                      f"{esc(p['license'] or 'none')} | `{p['sha256'][:12]}…` | {esc(a['verification']['state'])} |")
     lines += [""]
     if other:
         lines += ["## Other retrieved artifacts for this CVE (not stored here)", "",
-                  "Retrieved and hashed but kept out of the repository because the source has no redistributable license.", "",
+                  "Retrieved and hashed but kept out of the repository because the source has no redistributable license. "
+                  "Local copies, if you fetched them, are in the git-ignored `local-only/` folder.", "",
                   "| Artifact | File | Source (pinned) | SHA-256 |", "| --- | --- | --- | --- |"]
         for a in other:
             p = prov[a["artifact_id"]]
@@ -71,10 +81,13 @@ def cve_readme(v: dict, stored: list[dict], other: list[dict], prov: dict) -> st
     return "\n".join(lines)
 
 
-def artifact_readme(a: dict, p: dict) -> str:
-    name = Path(a["redistribution"]["stored_path"]).name
+def artifact_readme(a: dict, p: dict, local: bool = False) -> str:
+    name = Path(p["path"]).name
+    verify = ("Verify: `sha256sum " + name + "` should print the SHA-256 above." if local
+              else "Verify: `sha256sum -c manifests/SHA256SUMS` from the repository root.")
     return f"""# {a['artifact_id']}
 
+{LOCAL_BANNER if local else ""}
 `{esc(name)}` for [{a['cve']}](../README.md).
 
 | Field | Value |
@@ -87,9 +100,46 @@ def artifact_readme(a: dict, p: dict) -> str:
 | SHA-256 | `{p['sha256']}` |
 | State | {esc(a['verification']['state'])} |
 
-Verify: `sha256sum -c manifests/SHA256SUMS` from the repository root. Original attribution and license apply; the file is
-unmodified. Do not run it outside an isolated lab.
+{verify} Original attribution applies; the file is unmodified. Do not run it outside an isolated lab.
 """
+
+
+def write_local(root: Path, arts: list[dict], prov: dict, vulns: dict) -> int:
+    """READMEs for local-only/: one per CVE folder, one per artifact folder, and a top-level index."""
+    local = []
+    for a in arts:
+        p = prov[a["artifact_id"]]
+        f = root / "local-only" / a["cve"] / a["artifact_id"] / Path(p["path"]).name
+        if not a["redistribution"].get("stored_path") and f.is_file():
+            local.append((a, p, hashlib.sha256(f.read_bytes()).hexdigest() == p["sha256"]))
+    n = 0
+    for cve in sorted({a["cve"] for a, _, _ in local}):
+        mine = [a for a, _, _ in local if a["cve"] == cve]
+        (root / "local-only" / cve / "README.md").write_text(cve_readme(vulns[cve], mine, [], prov, local=True))
+        n += 1
+        for a in mine:
+            (root / "local-only" / cve / a["artifact_id"] / "README.md").write_text(
+                artifact_readme(a, prov[a["artifact_id"]], local=True))
+            n += 1
+    rows = "\n".join(f"| [{a['cve']}]({a['cve']}/README.md) | [`{a['artifact_id']}`]({a['cve']}/{a['artifact_id']}/README.md) | "
+                     f"[`{esc(Path(p['path']).name)}`]({a['cve']}/{a['artifact_id']}/{esc(Path(p['path']).name)}) | "
+                     f"{esc(p['repository'])} | {'ok' if ok else '**MISMATCH**'} |" for a, p, ok in local)
+    (root / "local-only/README.md").write_text(f"""# local-only
+
+{LOCAL_BANNER}
+Unlicensed artifacts, fetched at their pinned commits for local research. Metadata still records them as
+`unknown` license with no stored path. Regenerate this index with `tools/processing/generate_readmes.py`; fetch
+missing files with `tools/acquisition/acquire_artifacts.py --sync-local`.
+
+{len(local)} files. "Hash" compares each file with the SHA-256 recorded in `metadata/provenance.jsonl`.
+
+| CVE | Artifact | File | Repository | Hash |
+| --- | --- | --- | --- | --- |
+{rows}
+
+These may be working exploits. Do not run them outside an isolated, disposable lab.
+""")
+    return n + 1
 
 
 def main() -> None:
@@ -99,7 +149,7 @@ def main() -> None:
     arts = jl(root / "metadata/artifacts.jsonl")
     prov = {p["artifact_id"]: p for p in jl(root / "metadata/provenance.jsonl")}
     vulns = {v["cve"]: v for v in jl(root / "metadata/vulnerabilities.jsonl")}
-    n = 0
+    n = write_local(root, arts, prov, vulns)
     for cve in sorted({a["cve"] for a in arts}):
         mine = [a for a in arts if a["cve"] == cve]
         stored = [a for a in mine if a["redistribution"].get("stored_path")]
