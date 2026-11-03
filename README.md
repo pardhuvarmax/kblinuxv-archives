@@ -15,7 +15,7 @@ reproduced it.
 
 ## Status
 
-M0 (foundation) is done and M1 (discovery import) is working: both scan snapshots are normalized into `discovery/normalized/` and validate against the schemas. Acquisition (M3) has not started.
+M0 (foundation) is done and M1 (discovery import) is working: both scan snapshots are normalized into `discovery/normalized/` and validate against the schemas. M2 candidate triage has run and a first batch is proposed in `acquisition/candidates/`; nothing is approved and acquisition (M3) has not started.
 
 | Metric (initial scan, 2026-11-03) | Value |
 | --- | --- |

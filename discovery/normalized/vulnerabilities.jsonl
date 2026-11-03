@@ -146,4 +146,4 @@
 {"cve": "CVE-2026-80530", "component": "linux-kernel", "subsystem": "xfs", "category": "filesystem", "severity": "medium", "snapshot": "initial-scan", "artifact_count": 23, "reproduction_candidate_count": 2}
 {"cve": "CVE-2026-90203", "component": "linux-kernel", "subsystem": "squashfs", "category": "filesystem", "severity": "medium", "snapshot": "initial-scan", "artifact_count": 25, "reproduction_candidate_count": 0}
 {"cve": "CVE-2026-96812", "component": "gvisor", "subsystem": "container-sandbox-gofer", "category": "container-isolation-escape", "severity": "high", "snapshot": "initial-scan", "artifact_count": 16, "reproduction_candidate_count": 0}
-{"cve": "CVE-2026-98432", "component": null, "subsystem": null, "category": null, "severity": null, "snapshot": "single-CVE-2026-98432", "artifact_count": 61, "reproduction_candidate_count": 5}
+{"cve": "CVE-2026-98432", "component": "linux-kernel", "subsystem": "ipv4-tcp", "category": "use-after-free", "severity": "critical", "snapshot": "single-CVE-2026-98432", "artifact_count": 61, "reproduction_candidate_count": 5}

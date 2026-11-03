@@ -11,6 +11,7 @@ from collections import Counter, defaultdict
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
+import yaml  # noqa: E402
 from normalize import normalize_cve  # noqa: E402
 
 
@@ -21,6 +22,19 @@ def load_snapshots(raw: Path) -> list[tuple[str, dict]]:
         snaps.append((f.parent.name, doc))
     snaps.sort(key=lambda s: s[1]["summary"]["generated_utc"])
     return snaps
+
+
+def load_registry(path: Path) -> dict[str, dict]:
+    doc = yaml.safe_load(path.read_text()) or {}
+    return {str(e["cve_id"]).upper(): e for e in doc.get("entries", []) if "cve_id" in e}
+
+
+def enrich(vuln: dict, reg: dict) -> None:
+    """Fill fields the scan left empty (e.g. a single-CVE scan) from the registry entry."""
+    for field, key in (("component", "component"), ("subsystem", "subsystem"),
+                       ("category", "class"), ("severity", "severity")):
+        if not vuln[field] and reg.get(key):
+            vuln[field] = str(reg[key])
 
 
 def write_jsonl(path: Path, rows: list[dict]) -> None:
@@ -93,11 +107,13 @@ def main() -> None:
     ap.add_argument("--root", type=Path, default=Path("."))
     root = ap.parse_args().root
     snaps = load_snapshots(root / "discovery/raw")
+    registry = load_registry(root / "discovery/registry/registry.yaml")
     vulns: dict[str, dict] = {}
     arts: dict[str, list[dict]] = {}
     for name, doc in snaps:  # later snapshots replace earlier ones per CVE
         for entry in doc["results"]:
             v, a = normalize_cve(entry, name)
+            enrich(v, registry.get(v["cve"], {}))
             vulns[v["cve"]], arts[v["cve"]] = v, a
     vlist = sorted(vulns.values(), key=lambda v: v["cve"])
     alist = [a for cve in sorted(arts) for a in arts[cve]]
