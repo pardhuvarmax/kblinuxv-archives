@@ -101,6 +101,7 @@ def main() -> None:
     ap.add_argument("--cves", type=Path, help="Text file of CVE IDs: propose only from these CVEs")
     ap.add_argument("--with-licenses", action="store_true",
                     help="Look up repository licenses (GitHub API, metadata only) and prefer storable ones")
+    ap.add_argument("--no-proposal", action="store_true", help="Only refresh candidates.json and the report")
     ap.add_argument("--output", help="Proposal file name under acquisition/candidates/ "
                                      "(default: proposed-first-batch.md; other batches must name their own)")
     args = ap.parse_args()
@@ -123,32 +124,33 @@ def main() -> None:
     out = root / "acquisition/candidates"
     (out / "candidates.json").write_text(json.dumps(cands, indent=1) + "\n")
 
-    approved_ids = {a["artifact_id"] for a in yaml.safe_load(
-        (root / "acquisition/approved/approved-artifacts.yaml").read_text()).get("approved_artifacts") or []}
-    pool = [c for c in cands if c["artifact_id"] not in approved_ids]
-    if args.cves:
-        only = set(args.cves.read_text().split())
-        pool = [c for c in pool if c["cve"] in only]
-    licenses = None
-    if args.with_licenses:
-        ready_repos = {c["repository"] for c in pool if c["triage"] == "ready" and c["repository"]}
-        licenses = repo_licenses(ready_repos)
-        (out / "repo-licenses.json").write_text(json.dumps(licenses, indent=1, sort_keys=True) + "\n")
-    batch = propose_batch(pool, vulns, args.batch_size, licenses)
-    lines = [f"| {c['artifact_id']} | {c['cve']} | {vulns[c['cve']]['category']} | {c['language']} | "
-             f"[{c['repository']}](https://{c['source_url'].split('/')[2]}/{c['repository']}) | "
-             f"[`{c['filename']}`]({md_url(c['source_url'])}) | {(licenses or {}).get(c['repository']) or ('none' if licenses else '?')} | {', '.join(c['flags']) or '-'} |" for c in batch]
-    scope = sorted(only) if args.cves else sorted({c["cve"] for c in pool})
-    missing = [v for v in scope if v not in {c["cve"] for c in batch}]
-    name = args.output or "proposed-first-batch.md"
-    (out / name).write_text(
-        f"# Proposed batch ({name})\n\nSuggestion only: one ready candidate per CVE, spread across vulnerability "
-        "categories, preferring candidates whose URL contains the CVE ID, then `EXPLOIT_POC` in C or Python. Nothing here is approved. To approve, copy chosen "
-        "IDs into `acquisition/approved/approved-artifacts.yaml`.\n\n"
-        "| Artifact ID | CVE | Category | Language | Repository | File | Repo license | Flags |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n"
-        + "\n".join(lines) + "\n"
-        + (f"\n## No suitable ready candidate\n\nThese CVEs have no direct, pinned, exploit-looking source file yet "
-           f"(only helpers, headers, tools or unresolved leads): {', '.join(missing)}.\n" if missing else ""))
+    if not args.no_proposal:
+        approved_ids = {a["artifact_id"] for a in yaml.safe_load(
+            (root / "acquisition/approved/approved-artifacts.yaml").read_text()).get("approved_artifacts") or []}
+        pool = [c for c in cands if c["artifact_id"] not in approved_ids]
+        if args.cves:
+            only = set(args.cves.read_text().split())
+            pool = [c for c in pool if c["cve"] in only]
+        licenses = None
+        if args.with_licenses:
+            ready_repos = {c["repository"] for c in pool if c["triage"] == "ready" and c["repository"]}
+            licenses = repo_licenses(ready_repos)
+            (out / "repo-licenses.json").write_text(json.dumps(licenses, indent=1, sort_keys=True) + "\n")
+        batch = propose_batch(pool, vulns, args.batch_size, licenses)
+        lines = [f"| {c['artifact_id']} | {c['cve']} | {vulns[c['cve']]['category']} | {c['language']} | "
+                 f"[{c['repository']}](https://{c['source_url'].split('/')[2]}/{c['repository']}) | "
+                 f"[`{c['filename']}`]({md_url(c['source_url'])}) | {(licenses or {}).get(c['repository']) or ('none' if licenses else '?')} | {', '.join(c['flags']) or '-'} |" for c in batch]
+        scope = sorted(only) if args.cves else sorted({c["cve"] for c in pool})
+        missing = [v for v in scope if v not in {c["cve"] for c in batch}]
+        name = args.output or "proposed-first-batch.md"
+        (out / name).write_text(
+            f"# Proposed batch ({name})\n\nSuggestion only: one ready candidate per CVE, spread across vulnerability "
+            "categories, preferring candidates whose URL contains the CVE ID, then `EXPLOIT_POC` in C or Python. Nothing here is approved. To approve, copy chosen "
+            "IDs into `acquisition/approved/approved-artifacts.yaml`.\n\n"
+            "| Artifact ID | CVE | Category | Language | Repository | File | Repo license | Flags |\n| --- | --- | --- | --- | --- | --- | --- | --- |\n"
+            + "\n".join(lines) + "\n"
+            + (f"\n## No suitable ready candidate\n\nThese CVEs have no direct, pinned, exploit-looking source file yet "
+               f"(only helpers, headers, tools or unresolved leads): {', '.join(missing)}.\n" if missing else ""))
     approved = root / "acquisition/approved/approved-artifacts.yaml"
     if not approved.exists():
         approved.write_text("# Artifacts approved for retrieval. Retrieval approval is not redistribution approval.\n"
@@ -181,7 +183,7 @@ Generated by `tools/acquisition/extract_candidates.py`. Heuristic, name- and URL
 
 `ready` still means only "worth a human look": none of these are reviewed, retrieved or validated.
 """)
-    print(dict(t), f"| proposed batch: {len(batch)}")
+    print(dict(t), "" if args.no_proposal else f"| proposed batch: {len(batch)}")
 
 
 if __name__ == "__main__":
