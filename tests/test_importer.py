@@ -9,7 +9,7 @@ SHA = "6d8c93dabf674cea102713781cc534d577412357"
 
 def hit(url, cls="EXPLOIT_POC", cand=True, source="github_code"):
     return {"source": source, "kind": "code", "title": "t", "url": url, "snippet": "",
-            "artifact_class": cls, "is_reproduction_candidate": cand}
+            "artifact_class": cls, "is_reproduction_candidate": cand, "_snapshot": "snap"}
 
 
 def test_github_file_is_pinned():
@@ -34,8 +34,17 @@ def test_dedup_merges_refs_and_never_validates():
     entry = {"cve_id": "CVE-2021-3156", "sources": [
         hit("https://github.com/o/r"), hit("https://github.com/o/r/", source="github_repositories"),
         hit("https://example.org/p", cls="PATCH_REFERENCE", cand=False)]}
-    vuln, arts = normalize_cve(entry, "snap")
+    vuln, arts = normalize_cve(entry)
     assert len(arts) == 2 and vuln["reproduction_candidate_count"] == 1
     assert arts[0]["artifact_id"] == "LVA-2021-3156-001" and len(arts[0]["discovery"]["refs"]) == 2
     assert all(a["verification"]["state"] == "DISCOVERED" and not a["verification"]["lab_validated"]
                for a in arts)
+
+
+def test_issued_ids_never_change_and_new_urls_get_next_seq():
+    entry = {"cve_id": "CVE-2021-3156", "sources": [hit("https://github.com/o/a"), hit("https://github.com/o/b")]}
+    known = {"https://github.com/o/b": "LVA-2021-3156-001"}
+    _, arts = normalize_cve(entry, known)
+    ids = {a["artifact"]["source_url"]: a["artifact_id"] for a in arts}
+    assert ids["https://github.com/o/b"] == "LVA-2021-3156-001"
+    assert ids["https://github.com/o/a"] == "LVA-2021-3156-002"

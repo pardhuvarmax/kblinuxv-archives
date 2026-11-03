@@ -2676,3 +2676,387 @@ entries:
   lab: {reproduction_available: false}
   expected_observations: pending
   benign_twin: pending
+
+- cve_id: CVE-2015-8550
+  component: xen
+  subsystem: pv-backends
+  class: race-conditions
+  severity: high   # CVSS 8.2
+  summary: "Double fetch of memory shared between a Xen PV frontend and backend lets a local guest OS administrator crash the host or gain privileges. NVD names Xen, not the Linux kernel, so check how it applies to Linux PV backends."
+  affected: {source: nvd-description}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2015-8550"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2016-9793
+  component: linux-kernel
+  subsystem: net-core-sock
+  class: memory-corruption
+  severity: high   # CVSS 7.8
+  summary: "sock_setsockopt in net/core/sock.c mishandles negative sk_sndbuf and sk_rcvbuf values, letting local users cause memory corruption and a crash, or possibly other impact."
+  affected: {source: nvd-description, ranges: "<4.8.14"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2016-9793"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2017-11176
+  component: linux-kernel
+  subsystem: posix-mqueue-netlink
+  class: use-after-free
+  severity: high   # CVSS 7.8
+  summary: "mq_notify does not set the sock pointer to NULL on entry to its retry logic. A user-space close of a Netlink socket then causes a use-after-free (DoS or other impact)."
+  affected: {source: nvd-description, ranges: "through 4.11.9"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2017-11176"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2017-16995
+  component: linux-kernel
+  subsystem: bpf-verifier
+  class: memory-corruption
+  severity: high   # CVSS 7.8
+  summary: "check_alu_op in kernel/bpf/verifier.c mishandles sign extension, letting local users cause memory corruption or possibly other impact."
+  affected: {source: nvd-description, ranges: "through 4.4"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2017-16995"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2017-5123
+  component: linux-kernel
+  subsystem: waitid
+  class: syscall-ioctl-kernel-interface
+  severity: high   # CVSS 8.8
+  summary: "Insufficient data validation in the waitid system call allowed a user to escape sandboxes on Linux."
+  affected: {source: nvd-description}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2017-5123"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2017-6074
+  component: linux-kernel
+  subsystem: dccp
+  class: memory-corruption
+  severity: high   # CVSS 7.8
+  summary: "dccp_rcv_state_process mishandles DCCP_PKT_REQUEST packet data structures in the LISTEN state (double free), reachable via an IPV6_RECVPKTINFO setsockopt call. Local users can obtain root or cause a DoS."
+  affected: {source: nvd-description, ranges: "through 4.9.11"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2017-6074"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2017-8890
+  component: linux-kernel
+  subsystem: ipv4-inet-connection-sock
+  class: use-after-free
+  severity: high   # CVSS 7.8
+  summary: "inet_csk_clone_lock in net/ipv4/inet_connection_sock.c allows a double free (DoS or possibly other impact) when cloning a listener's socket."
+  affected: {source: nvd-description, ranges: "through 4.10.15"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2017-8890"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2018-5333
+  component: linux-kernel
+  subsystem: rds
+  class: network-stack-netfilter
+  severity: medium   # CVSS 5.5
+  summary: "rds_cmsg_atomic in net/rds/rdma.c mishandles failed page pinning or an invalid address, leading to a NULL pointer dereference in rds_atomic_free_op."
+  affected: {source: nvd-description, ranges: "through 4.14.13"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2018-5333"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2019-15666
+  component: linux-kernel
+  subsystem: xfrm
+  class: network-stack-netfilter
+  severity: medium   # CVSS 4.4
+  summary: "Out-of-bounds array access in __xfrm_policy_unlink because verify_newpolicy_info in net/xfrm/xfrm_user.c mishandles directions; causes a denial of service."
+  affected: {source: nvd-description, ranges: "<5.0.19"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2019-15666"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2019-9213
+  component: linux-kernel
+  subsystem: mm-mmap
+  class: memory-corruption
+  severity: medium   # CVSS 5.5
+  summary: "expand_downwards in mm/mmap.c lacks a check against the mmap minimum address (it checks the capability of the wrong task), making kernel NULL pointer dereferences easier to exploit on non-SMAP platforms."
+  affected: {source: nvd-description, ranges: "<4.20.14"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2019-9213"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2020-27194
+  component: linux-kernel
+  subsystem: bpf-verifier
+  class: memory-corruption
+  severity: medium   # CVSS 5.5
+  summary: "scalar32_min_max_or in kernel/bpf/verifier.c mishandles bounds tracking for 64-bit values (CID-5b9fbeb75b6a)."
+  affected: {source: nvd-description, ranges: "<5.8.15"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2020-27194"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2020-8835
+  component: linux-kernel
+  subsystem: bpf-verifier
+  class: memory-corruption
+  severity: high   # CVSS 7.8
+  summary: "The BPF verifier did not properly restrict register bounds for 32-bit operations, giving out-of-bounds reads and writes in kernel memory."
+  affected: {source: nvd-description, ranges: ">=5.5.0"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2020-8835"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-31440
+  component: linux-kernel
+  subsystem: bpf-verifier
+  class: privilege-escalation
+  severity: high   # CVSS 7.0
+  summary: "Lack of proper validation of user-supplied eBPF programs before execution lets a low-privileged local attacker escalate privileges and run code in the kernel context (ZDI-CAN-13661)."
+  affected: {source: nvd-description, ranges: "5.11.15 per NVD"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2021-31440"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-3490
+  component: linux-kernel
+  subsystem: bpf-verifier
+  class: memory-corruption
+  severity: high   # CVSS 7.8
+  summary: "eBPF ALU32 bounds tracking for AND, OR and XOR did not properly update 32-bit bounds, giving out-of-bounds reads and writes and arbitrary code execution in the kernel."
+  affected: {source: nvd-description}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2021-3490"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-41073
+  component: linux-kernel
+  subsystem: io_uring
+  class: use-after-free
+  severity: high   # CVSS 7.8
+  summary: "loop_rw_iter in fs/io_uring.c lets local users gain privileges by using IORING_OP_PROVIDE_BUFFERS to trigger a free of a kernel buffer."
+  affected: {source: nvd-description, ranges: "5.10 through 5.14.6"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2021-41073"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-4154
+  component: linux-kernel
+  subsystem: cgroup-v1
+  class: use-after-free
+  severity: high   # CVSS 8.8
+  summary: "Use-after-free in cgroup1_parse_param in kernel/cgroup/cgroup-v1.c lets a local user escalate privileges via the fsconfig syscall."
+  affected: {source: nvd-description}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2021-4154"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-42008
+  component: linux-kernel
+  subsystem: hamradio-6pack
+  class: memory-corruption
+  severity: high   # CVSS 7.8
+  summary: "decode_data in drivers/net/hamradio/6pack.c has a slab out-of-bounds write; input from a process with CAP_NET_ADMIN can lead to root access."
+  affected: {source: nvd-description, ranges: "<5.13.13"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2021-42008"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2021-43267
+  component: linux-kernel
+  subsystem: tipc-crypto
+  class: memory-corruption
+  severity: critical   # CVSS 9.8
+  summary: "The TIPC crypto code in net/tipc/crypto.c insufficiently validates user-supplied sizes for the MSG_CRYPTO message type, allowing remote attackers to exploit it."
+  affected: {source: nvd-description, ranges: "<5.14.16"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2021-43267"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2022-1015
+  component: linux-kernel
+  subsystem: nf_tables
+  class: network-stack-netfilter
+  severity: medium   # CVSS 6.6
+  summary: "Out-of-bounds write in net/netfilter/nf_tables_api.c, reachable by a local user."
+  affected: {source: nvd-description}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2022-1015"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2022-2639
+  component: linux-kernel
+  subsystem: openvswitch
+  class: memory-corruption
+  severity: high   # CVSS 7.8
+  summary: "Integer coercion error in the openvswitch module: with a large number of actions, reserve_sfa_size() mishandles the size when reserving memory for a new flow action."
+  affected: {source: nvd-description}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2022-2639"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2022-27666
+  component: linux-kernel
+  subsystem: ipsec-esp
+  class: memory-corruption
+  severity: high   # CVSS 7.8
+  summary: "Heap buffer overflow in the IPsec ESP transformation code (net/ipv4/esp4.c, net/ipv6/esp6.c) lets a local attacker overwrite kernel heap objects and possibly escalate privileges."
+  affected: {source: nvd-description}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2022-27666"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2022-32250
+  component: linux-kernel
+  subsystem: nf_tables
+  class: use-after-free
+  severity: high   # CVSS 7.8
+  summary: "An incorrect NFT_STATEFUL_EXPR check in nf_tables_api.c leads to a use-after-free that lets a local user able to create user and net namespaces escalate to root."
+  affected: {source: nvd-description, ranges: "through 5.18.1"}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2022-32250"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2025-21702
+  component: linux-kernel
+  subsystem: net-sched-pfifo
+  class: network-stack-netfilter
+  severity: high   # CVSS 7.8
+  summary: "pfifo_tail_enqueue must drop the new packet when sch->limit is 0; otherwise it can mishandle the queue. Resolved upstream per the NVD record."
+  affected: {source: nvd-description}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2025-21702"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending
+
+- cve_id: CVE-2026-23271
+  component: linux-kernel
+  subsystem: perf-events
+  class: race-conditions
+  severity: high   # CVSS 7.8
+  summary: "Race between __perf_event_overflow() and perf_remove_from_context(): __perf_event_overflow() must run with IRQs disabled on all callchains. Resolved upstream per the NVD record."
+  affected: {source: nvd-description}
+  fixed_in: "unknown-verify-against-nvd"
+  references: ["https://nvd.nist.gov/vuln/detail/CVE-2026-23271"]
+  provenance: verified-this-session
+  category: D
+  cycle: 6
+  lab: {reproduction_available: false}
+  expected_observations: pending
+  benign_twin: pending

@@ -15,7 +15,7 @@ reproduced it.
 
 ## Status
 
-M0 (foundation) is done and M1 (discovery import) is working: both scan snapshots are normalized into `discovery/normalized/` and validate against the schemas. M2 candidate triage has run and a first batch is proposed in `acquisition/candidates/`; nothing is approved and acquisition (M3) has not started.
+M0 (foundation) is done and M1 (discovery import) is working: all scan snapshots are normalized into `discovery/normalized/` and validate against the schemas. M2 candidate triage has run and a first batch is proposed in `acquisition/candidates/`; nothing is approved and acquisition (M3) has not started.
 
 | Metric (initial scan, 2026-11-03) | Value |
 | --- | --- |
@@ -26,7 +26,18 @@ M0 (foundation) is done and M1 (discovery import) is working: both scan snapshot
 | Artifacts acquired | 0 |
 | Lab-validated reproductions | 0 |
 
-617 candidates are leads, not confirmed exploits.
+Current dataset after all imports (`discovery/reports/import-report.md`):
+
+| Metric | Value |
+| --- | --- |
+| Registered CVEs | 173 |
+| Artifact records | 6,494 |
+| Reproduction candidates (file-level) | 1,061 |
+| Candidates triaged `ready` / `needs-review` / `needs-resolution` | 267 / 532 / 262 |
+| Artifacts acquired | 0 |
+| Lab-validated reproductions | 0 |
+
+Candidates are leads, not confirmed exploits.
 
 ## Data lifecycle
 

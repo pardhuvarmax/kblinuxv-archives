@@ -270,6 +270,288 @@
   ]
  },
  {
+  "artifact_id": "LVA-2015-8550-001",
+  "cve": "CVE-2015-8550",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2015/CVE-2015-8550.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2015-8550.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2015-8550-002",
+  "cve": "CVE-2015-8550",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/docs/api/v1/cve/CVE-2015-8550.json",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2015-8550.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2015-8550-003",
+  "cve": "CVE-2015-8550",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2015-8550/exp.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exp.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2015-8550-004",
+  "cve": "CVE-2015-8550",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2015-8550/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2015-8550-005",
+  "cve": "CVE-2015-8550",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2015-8550/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2015-8550-006",
+  "cve": "CVE-2015-8550",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/kaismax/CVE-Poc/blob/6d8c93dabf674cea102713781cc534d577412357/2015/CVE-2015-8550.md",
+  "repository": "kaismax/CVE-Poc",
+  "commit": "6d8c93dabf674cea102713781cc534d577412357",
+  "filename": "CVE-2015-8550.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2015-8550-007",
+  "cve": "CVE-2015-8550",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2015/CVE-2015-8550.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2015-8550.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2015-8550-008",
+  "cve": "CVE-2015-8550",
+  "type": "crash_reproducer",
+  "source_url": "http://lists.opensuse.org/opensuse-security-announce/2016-03/msg00094.html",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2015-8550-009",
+  "cve": "CVE-2015-8550",
+  "type": "crash_reproducer",
+  "source_url": "http://lists.opensuse.org/opensuse-security-announce/2016-04/msg00045.html",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2015-8550-010",
+  "cve": "CVE-2015-8550",
+  "type": "crash_reproducer",
+  "source_url": "http://lists.opensuse.org/opensuse-security-announce/2016-07/msg00005.html",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2015-8550-011",
+  "cve": "CVE-2015-8550",
+  "type": "crash_reproducer",
+  "source_url": "http://www.debian.org/security/2016/dsa-3434",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2015-8550-012",
+  "cve": "CVE-2015-8550",
+  "type": "crash_reproducer",
+  "source_url": "http://www.debian.org/security/2016/dsa-3471",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2015-8550-013",
+  "cve": "CVE-2015-8550",
+  "type": "crash_reproducer",
+  "source_url": "http://www.debian.org/security/2016/dsa-3519",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2015-8550-014",
+  "cve": "CVE-2015-8550",
+  "type": "crash_reproducer",
+  "source_url": "http://www.oracle.com/technetwork/topics/security/ovmbulletinjul2016-3090546.html",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2015-8550-015",
+  "cve": "CVE-2015-8550",
+  "type": "crash_reproducer",
+  "source_url": "http://www.securityfocus.com/bid/79592",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2015-8550-016",
+  "cve": "CVE-2015-8550",
+  "type": "crash_reproducer",
+  "source_url": "http://www.securitytracker.com/id/1034479",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2015-8550-017",
+  "cve": "CVE-2015-8550",
+  "type": "crash_reproducer",
+  "source_url": "http://xenbits.xen.org/xsa/advisory-155.html",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2015-8550-018",
+  "cve": "CVE-2015-8550",
+  "type": "crash_reproducer",
+  "source_url": "https://security.gentoo.org/glsa/201604-03",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
   "artifact_id": "LVA-2015-8961-001",
   "cve": "CVE-2015-8961",
   "type": "exploit_poc",
@@ -765,6 +1047,360 @@
   ]
  },
  {
+  "artifact_id": "LVA-2016-9793-001",
+  "cve": "CVE-2016-9793",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2016/CVE-2016-9793.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2016-9793.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2016-9793-002",
+  "cve": "CVE-2016-9793",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bcoles/kernel-exploits/blob/b8d8339f2dac047d5077c20a16c2ffffcc6d8b69/CVE-2016-9793/cve-2016-9793.c",
+  "repository": "bcoles/kernel-exploits",
+  "commit": "b8d8339f2dac047d5077c20a16c2ffffcc6d8b69",
+  "filename": "cve-2016-9793.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2016-9793-003",
+  "cve": "CVE-2016-9793",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2016-9793/exp.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exp.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2016-9793-004",
+  "cve": "CVE-2016-9793",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2016-9793/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2016-9793-005",
+  "cve": "CVE-2016-9793",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2016-9793/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2016-9793-006",
+  "cve": "CVE-2016-9793",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/helloexp/0day/blob/29bd78f73941b39e36d38cd1653433dcf2ce588e/98-Linux\u63d0\u6743/2016/CVE-2016-9793/poc.c",
+  "repository": "helloexp/0day",
+  "commit": "29bd78f73941b39e36d38cd1653433dcf2ce588e",
+  "filename": "poc.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2016-9793-007",
+  "cve": "CVE-2016-9793",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/jiayy/android_vuln_poc-exp/blob/99d398a381cdbe12c0019075b8fa47b200e8a49f/android/EXP-CVE-2016-9793/poc.c",
+  "repository": "jiayy/android_vuln_poc-exp",
+  "commit": "99d398a381cdbe12c0019075b8fa47b200e8a49f",
+  "filename": "poc.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2016-9793-008",
+  "cve": "CVE-2016-9793",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/kaismax/CVE-Poc/blob/6d8c93dabf674cea102713781cc534d577412357/2016/CVE-2016-9793.md",
+  "repository": "kaismax/CVE-Poc",
+  "commit": "6d8c93dabf674cea102713781cc534d577412357",
+  "filename": "CVE-2016-9793.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2016-9793-009",
+  "cve": "CVE-2016-9793",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2016/CVE-2016-9793.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2016-9793.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2016-9793-010",
+  "cve": "CVE-2016-9793",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/xairy/kernel-exploits/blob/6f0a60595b8a3b6e0d5aea2e47ca742b6bd0907e/CVE-2016-9793/poc.c",
+  "repository": "xairy/kernel-exploits",
+  "commit": "6f0a60595b8a3b6e0d5aea2e47ca742b6bd0907e",
+  "filename": "poc.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2016-9793-011",
+  "cve": "CVE-2016-9793",
+  "type": "exploit_poc",
+  "source_url": "https://gitlab.com/penetration-test-learn/10vuln/os-exploit/bcoles-kernel-exploits",
+  "repository": "penetration-test-learn/10vuln/os-exploit/bcoles-kernel-exploits",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2016-9793-012",
+  "cve": "CVE-2016-9793",
+  "type": "crash_reproducer",
+  "source_url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=b98b0bc8c431e3ceb4b26b0dfc8db509518fb290",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2016-9793-013",
+  "cve": "CVE-2016-9793",
+  "type": "crash_reproducer",
+  "source_url": "http://www.kernel.org/pub/linux/kernel/v4.x/ChangeLog-4.8.14",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2016-9793-014",
+  "cve": "CVE-2016-9793",
+  "type": "crash_reproducer",
+  "source_url": "http://www.openwall.com/lists/oss-security/2016/12/03/1",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2016-9793-015",
+  "cve": "CVE-2016-9793",
+  "type": "crash_reproducer",
+  "source_url": "http://www.securityfocus.com/bid/94655",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2016-9793-016",
+  "cve": "CVE-2016-9793",
+  "type": "crash_reproducer",
+  "source_url": "http://www.securitytracker.com/id/1037968",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2016-9793-017",
+  "cve": "CVE-2016-9793",
+  "type": "crash_reproducer",
+  "source_url": "https://access.redhat.com/errata/RHSA-2017:0931",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2016-9793-018",
+  "cve": "CVE-2016-9793",
+  "type": "crash_reproducer",
+  "source_url": "https://access.redhat.com/errata/RHSA-2017:0932",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2016-9793-019",
+  "cve": "CVE-2016-9793",
+  "type": "crash_reproducer",
+  "source_url": "https://access.redhat.com/errata/RHSA-2017:0933",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2016-9793-020",
+  "cve": "CVE-2016-9793",
+  "type": "crash_reproducer",
+  "source_url": "https://bugzilla.redhat.com/show_bug.cgi?id=1402013",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2016-9793-021",
+  "cve": "CVE-2016-9793",
+  "type": "crash_reproducer",
+  "source_url": "https://github.com/torvalds/linux/commit/b98b0bc8c431e3ceb4b26b0dfc8db509518fb290",
+  "repository": "torvalds/linux",
+  "commit": "b98b0bc8c431e3ceb4b26b0dfc8db509518fb290",
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "commit",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2016-9793-022",
+  "cve": "CVE-2016-9793",
+  "type": "crash_reproducer",
+  "source_url": "https://github.com/xairy/kernel-exploits/tree/master/CVE-2016-9793",
+  "repository": "xairy/kernel-exploits",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2016-9793-023",
+  "cve": "CVE-2016-9793",
+  "type": "crash_reproducer",
+  "source_url": "https://source.android.com/security/bulletin/2017-03-01.html",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
   "artifact_id": "LVA-2017-1000112-001",
   "cve": "CVE-2017-1000112",
   "type": "exploit_poc",
@@ -983,6 +1619,34 @@
   ]
  },
  {
+  "artifact_id": "LVA-2017-1000112-044",
+  "cve": "CVE-2017-1000112",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-1000112/exp.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exp.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-1000112-045",
+  "cve": "CVE-2017-1000112",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-1000112/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
   "artifact_id": "LVA-2017-10661-001",
   "cve": "CVE-2017-10661",
   "type": "exploit_poc",
@@ -1084,6 +1748,873 @@
   "repository": "ww9210/Linux_kernel_exploits",
   "commit": "0f8459307f897de4dc146e82ea08dff99945ddf1",
   "filename": "main.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-11176-001",
+  "cve": "CVE-2017-11176",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/0xT11/CVE-POC/blob/2b6f11c3712c0efb88ac3edeab3d0aafa1f7a090/2017/CVE-2017-11176.json",
+  "repository": "0xT11/CVE-POC",
+  "commit": "2b6f11c3712c0efb88ac3edeab3d0aafa1f7a090",
+  "filename": "CVE-2017-11176.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-11176-002",
+  "cve": "CVE-2017-11176",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/DoubleMice/cve-2017-11176",
+  "repository": "DoubleMice/cve-2017-11176",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-11176-003",
+  "cve": "CVE-2017-11176",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/NUS-Curiosity/KernJC/blob/798845a541a5396395c7e0c1670cb4872dac7105/db/pocs/cve-2017-11176/poc.c",
+  "repository": "NUS-Curiosity/KernJC",
+  "commit": "798845a541a5396395c7e0c1670cb4872dac7105",
+  "filename": "poc.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-11176-004",
+  "cve": "CVE-2017-11176",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2017/CVE-2017-11176.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2017-11176.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-11176-005",
+  "cve": "CVE-2017-11176",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-11176/___sys_sendmsg%28%29%E5%87%BD%E6%95%B0%E2%80%94%E5%A0%86%E5%96%B7%E5%88%86%E6%9E%90.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "___sys_sendmsg%28%29%E5%87%BD%E6%95%B0%E2%80%94%E5%A0%86%E5%96%B7%E5%88%86%E6%9E%90.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-11176-006",
+  "cve": "CVE-2017-11176",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-11176/exp-centos-3100.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exp-centos-3100.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-11176-007",
+  "cve": "CVE-2017-11176",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-11176/exp-slab-4119.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exp-slab-4119.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-11176-008",
+  "cve": "CVE-2017-11176",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-11176/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-11176-009",
+  "cve": "CVE-2017-11176",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-11176/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-11176-010",
+  "cve": "CVE-2017-11176",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/kaismax/CVE-Poc/blob/6d8c93dabf674cea102713781cc534d577412357/2017/CVE-2017-11176.md",
+  "repository": "kaismax/CVE-Poc",
+  "commit": "6d8c93dabf674cea102713781cc534d577412357",
+  "filename": "CVE-2017-11176.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-11176-011",
+  "cve": "CVE-2017-11176",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/lexfo/cve-2017-11176/blob/6f67e70a049874df3f5ee5bafb0d5857b907b175/cve-2017-11176.c",
+  "repository": "lexfo/cve-2017-11176",
+  "commit": "6f67e70a049874df3f5ee5bafb0d5857b907b175",
+  "filename": "cve-2017-11176.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-11176-012",
+  "cve": "CVE-2017-11176",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/rix4uni/cvemapping/blob/d2c3b136fe6b535628f56494d6ca021bc0de8de3/2017/CVE-2017-11176/cve-2017-11176.c",
+  "repository": "rix4uni/cvemapping",
+  "commit": "d2c3b136fe6b535628f56494d6ca021bc0de8de3",
+  "filename": "cve-2017-11176.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-11176-013",
+  "cve": "CVE-2017-11176",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2017/CVE-2017-11176.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2017-11176.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-11176-014",
+  "cve": "CVE-2017-11176",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sefcom/KHeaps/blob/fab83c0aa8f814c6adaa5507832afaac3e54db8c/exploit_env/CVEs/CVE-2017-11176/poc/README.md",
+  "repository": "sefcom/KHeaps",
+  "commit": "fab83c0aa8f814c6adaa5507832afaac3e54db8c",
+  "filename": "README.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-16995-001",
+  "cve": "CVE-2017-16995",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2017/CVE-2017-16995.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2017-16995.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-16995-002",
+  "cve": "CVE-2017-16995",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/anldori/CVE-2017-16995",
+  "repository": "anldori/CVE-2017-16995",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-16995-003",
+  "cve": "CVE-2017-16995",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-16995/exp.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exp.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-16995-004",
+  "cve": "CVE-2017-16995",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-16995/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-16995-005",
+  "cve": "CVE-2017-16995",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-16995/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-16995-006",
+  "cve": "CVE-2017-16995",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/gugronnier/CVE-2017-16995",
+  "repository": "gugronnier/CVE-2017-16995",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-16995-007",
+  "cve": "CVE-2017-16995",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/ivilpez/cve-2017-16995.c",
+  "repository": "ivilpez/cve-2017-16995.c",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-16995-008",
+  "cve": "CVE-2017-16995",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/jollheef/lpe/blob/4a58aa80f4ab8f3389b12609887f04c3730bea07/CVE-2017-16995/CVE-2017-16995.c",
+  "repository": "jollheef/lpe",
+  "commit": "4a58aa80f4ab8f3389b12609887f04c3730bea07",
+  "filename": "CVE-2017-16995.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-16995-009",
+  "cve": "CVE-2017-16995",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/littlebin404/CVE-2017-16995",
+  "repository": "littlebin404/CVE-2017-16995",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-16995-010",
+  "cve": "CVE-2017-16995",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/mthcht/awesome-lists/blob/58919e225b5e89cc98f246333a601d107f5d9765/Lists/Others/Defender_yara_rules/Linux/Exploit/CVE-2017-16995.yara",
+  "repository": "mthcht/awesome-lists",
+  "commit": "58919e225b5e89cc98f246333a601d107f5d9765",
+  "filename": "CVE-2017-16995.yara",
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code",
+   "defensive-name"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-16995-011",
+  "cve": "CVE-2017-16995",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/out-of-tree/out-of-tree/blob/fb536f5292dea13982987325c756de1ad06262c8/examples/kernel-exploit/CVE-2017-16995.c",
+  "repository": "out-of-tree/out-of-tree",
+  "commit": "fb536f5292dea13982987325c756de1ad06262c8",
+  "filename": "CVE-2017-16995.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-16995-012",
+  "cve": "CVE-2017-16995",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/qazbnm456/awesome-cve-poc/blob/fc862e38e03ea68cdc62618d14891a426daff1a4/CVE-2017-16995.md",
+  "repository": "qazbnm456/awesome-cve-poc",
+  "commit": "fc862e38e03ea68cdc62618d14891a426daff1a4",
+  "filename": "CVE-2017-16995.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-16995-013",
+  "cve": "CVE-2017-16995",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/rlarabee/exploits/blob/db64753f2335a01825f78d66665adfff3670653e/cve-2017-16995/cve-2017-16995.c",
+  "repository": "rlarabee/exploits",
+  "commit": "db64753f2335a01825f78d66665adfff3670653e",
+  "filename": "cve-2017-16995.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-16995-014",
+  "cve": "CVE-2017-16995",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2017/CVE-2017-16995.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2017-16995.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-16995-015",
+  "cve": "CVE-2017-16995",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/vnik5287/CVE-2017-16995",
+  "repository": "vnik5287/CVE-2017-16995",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-5123-001",
+  "cve": "CVE-2017-5123",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/0x5068656e6f6c/CVE-2017-5123",
+  "repository": "0x5068656e6f6c/CVE-2017-5123",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-5123-002",
+  "cve": "CVE-2017-5123",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/FloatingGuy/CVE-2017-5123",
+  "repository": "FloatingGuy/CVE-2017-5123",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-5123-003",
+  "cve": "CVE-2017-5123",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/ProjectZeroDays/AI-Driven-Zero-Click-Exploit-Deployment-Framework/blob/e9a6e8808e9309ff108c3d895ce3c86d37bdc444/src/exploits/other_exploits/cve_poc/exploit_poc_documentation/CVE-2017-5123.md",
+  "repository": "ProjectZeroDays/AI-Driven-Zero-Click-Exploit-Deployment-Framework",
+  "commit": "e9a6e8808e9309ff108c3d895ce3c86d37bdc444",
+  "filename": "CVE-2017-5123.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-5123-004",
+  "cve": "CVE-2017-5123",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2017/CVE-2017-5123.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2017-5123.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-5123-005",
+  "cve": "CVE-2017-5123",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-5123/exp/exploit_null_ptr.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit_null_ptr.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-5123-006",
+  "cve": "CVE-2017-5123",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-5123/exp/expoit_cred.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "expoit_cred.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-5123-007",
+  "cve": "CVE-2017-5123",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-5123/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-5123-008",
+  "cve": "CVE-2017-5123",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-5123/jif/jif.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "jif.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-5123-009",
+  "cve": "CVE-2017-5123",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-5123/jif/test-clone.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "test-clone.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-5123-010",
+  "cve": "CVE-2017-5123",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-5123/jif/test.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "test.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-5123-011",
+  "cve": "CVE-2017-5123",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-5123/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-5123-012",
+  "cve": "CVE-2017-5123",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-5123/start_nosmep.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start_nosmep.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-5123-013",
+  "cve": "CVE-2017-5123",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/c3r34lk1ll3r/CVE-2017-5123",
+  "repository": "c3r34lk1ll3r/CVE-2017-5123",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-5123-014",
+  "cve": "CVE-2017-5123",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/kaismax/CVE-Poc/blob/6d8c93dabf674cea102713781cc534d577412357/2017/CVE-2017-5123.md",
+  "repository": "kaismax/CVE-Poc",
+  "commit": "6d8c93dabf674cea102713781cc534d577412357",
+  "filename": "CVE-2017-5123.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-5123-015",
+  "cve": "CVE-2017-5123",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/qazbnm456/awesome-cve-poc/blob/fc862e38e03ea68cdc62618d14891a426daff1a4/CVE-2017-5123.md",
+  "repository": "qazbnm456/awesome-cve-poc",
+  "commit": "fc862e38e03ea68cdc62618d14891a426daff1a4",
+  "filename": "CVE-2017-5123.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-5123-016",
+  "cve": "CVE-2017-5123",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2017/CVE-2017-5123.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2017-5123.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-6074-001",
+  "cve": "CVE-2017-6074",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/34zY/CVE-2017-6074-DOS",
+  "repository": "34zY/CVE-2017-6074-DOS",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-6074-002",
+  "cve": "CVE-2017-6074",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2017/CVE-2017-6074.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2017-6074.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-6074-003",
+  "cve": "CVE-2017-6074",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-6074/exp.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exp.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-6074-004",
+  "cve": "CVE-2017-6074",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-6074/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-6074-005",
+  "cve": "CVE-2017-6074",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/dahua966/WEB-AWD-Framework/blob/cb83a1dee368f5b985508557bec1c54f743100c9/getRoot/POC/CVE-2017-6074_poc.c",
+  "repository": "dahua966/WEB-AWD-Framework",
+  "commit": "cb83a1dee368f5b985508557bec1c54f743100c9",
+  "filename": "CVE-2017-6074_poc.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-6074-006",
+  "cve": "CVE-2017-6074",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/helloexp/0day/blob/29bd78f73941b39e36d38cd1653433dcf2ce588e/98-Linux\u63d0\u6743/2017/CVE-2017-6074/poc.c",
+  "repository": "helloexp/0day",
+  "commit": "29bd78f73941b39e36d38cd1653433dcf2ce588e",
+  "filename": "poc.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-6074-007",
+  "cve": "CVE-2017-6074",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/helloexp/0day/blob/29bd78f73941b39e36d38cd1653433dcf2ce588e/98-Linux\u63d0\u6743/2017/CVE-2017-6074/trigger.c",
+  "repository": "helloexp/0day",
+  "commit": "29bd78f73941b39e36d38cd1653433dcf2ce588e",
+  "filename": "trigger.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-6074-008",
+  "cve": "CVE-2017-6074",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/jiayy/android_vuln_poc-exp/blob/99d398a381cdbe12c0019075b8fa47b200e8a49f/android/EXP-CVE-2017-6074/trigger.c",
+  "repository": "jiayy/android_vuln_poc-exp",
+  "commit": "99d398a381cdbe12c0019075b8fa47b200e8a49f",
+  "filename": "trigger.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-6074-009",
+  "cve": "CVE-2017-6074",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/kaismax/CVE-Poc/blob/6d8c93dabf674cea102713781cc534d577412357/2017/CVE-2017-6074.md",
+  "repository": "kaismax/CVE-Poc",
+  "commit": "6d8c93dabf674cea102713781cc534d577412357",
+  "filename": "CVE-2017-6074.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-6074-010",
+  "cve": "CVE-2017-6074",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/kkamagui/linux-kernel-exploits/blob/2e779e45193a7d0cf071fab05454e00c6d84c98f/kernel-4.4.0-21-generic/CVE-2017-6074/CVE-2017-6074.c",
+  "repository": "kkamagui/linux-kernel-exploits",
+  "commit": "2e779e45193a7d0cf071fab05454e00c6d84c98f",
+  "filename": "CVE-2017-6074.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-6074-011",
+  "cve": "CVE-2017-6074",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2017/CVE-2017-6074.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2017-6074.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-6074-012",
+  "cve": "CVE-2017-6074",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/xairy/kernel-exploits/blob/6f0a60595b8a3b6e0d5aea2e47ca742b6bd0907e/CVE-2017-6074/poc.c",
+  "repository": "xairy/kernel-exploits",
+  "commit": "6f0a60595b8a3b6e0d5aea2e47ca742b6bd0907e",
+  "filename": "poc.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-6074-013",
+  "cve": "CVE-2017-6074",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/xairy/kernel-exploits/blob/6f0a60595b8a3b6e0d5aea2e47ca742b6bd0907e/CVE-2017-6074/trigger.c",
+  "repository": "xairy/kernel-exploits",
+  "commit": "6f0a60595b8a3b6e0d5aea2e47ca742b6bd0907e",
+  "filename": "trigger.c",
   "language": "C",
   "discovery_class": "EXPLOIT_POC",
   "level": "file",
@@ -1271,6 +2802,34 @@
   ]
  },
  {
+  "artifact_id": "LVA-2017-7308-041",
+  "cve": "CVE-2017-7308",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-7308/exploit.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-7308-042",
+  "cve": "CVE-2017-7308",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-7308/start2.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start2.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
   "artifact_id": "LVA-2017-8824-001",
   "cve": "CVE-2017-8824",
   "type": "exploit_poc",
@@ -1349,6 +2908,140 @@
   "flags": [
    "not-source-code",
    "cve-not-in-url"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-8890-001",
+  "cve": "CVE-2017-8890",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2017/CVE-2017-8890.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2017-8890.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-8890-002",
+  "cve": "CVE-2017-8890",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-8890/exp-ret2usr.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exp-ret2usr.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-8890-003",
+  "cve": "CVE-2017-8890",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-8890/exp-smep.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exp-smep.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-8890-004",
+  "cve": "CVE-2017-8890",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-8890/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-8890-005",
+  "cve": "CVE-2017-8890",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-8890/start-smep.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start-smep.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-8890-006",
+  "cve": "CVE-2017-8890",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2017-8890/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2017-8890-007",
+  "cve": "CVE-2017-8890",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/kaismax/CVE-Poc/blob/6d8c93dabf674cea102713781cc534d577412357/2017/CVE-2017-8890.md",
+  "repository": "kaismax/CVE-Poc",
+  "commit": "6d8c93dabf674cea102713781cc534d577412357",
+  "filename": "CVE-2017-8890.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-8890-008",
+  "cve": "CVE-2017-8890",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2017/CVE-2017-8890.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2017-8890.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2017-8890-009",
+  "cve": "CVE-2017-8890",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sweatyrocket/huawei-p10-cve-2017-8890-unlock",
+  "repository": "sweatyrocket/huawei-p10-cve-2017-8890-unlock",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
   ]
  },
  {
@@ -1672,6 +3365,446 @@
   ]
  },
  {
+  "artifact_id": "LVA-2018-5333-001",
+  "cve": "CVE-2018-5333",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/De4dCr0w/Linux-kernel-EoP-exp/blob/bbed9bbea72bb305bdcab9f22e97d6a49d856aa7/2018/CVE-2018-5333/cve-2018-5333.c",
+  "repository": "De4dCr0w/Linux-kernel-EoP-exp",
+  "commit": "bbed9bbea72bb305bdcab9f22e97d6a49d856aa7",
+  "filename": "cve-2018-5333.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2018-5333-002",
+  "cve": "CVE-2018-5333",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2018/CVE-2018-5333.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2018-5333.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-003",
+  "cve": "CVE-2018-5333",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/The-Z-Labs/linux-exploit-suggester/blob/bde09673eb5577f13030637d2c8a6a8ec98cddc8/CHANGELOG",
+  "repository": "The-Z-Labs/linux-exploit-suggester",
+  "commit": "bde09673eb5577f13030637d2c8a6a8ec98cddc8",
+  "filename": "CHANGELOG",
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code",
+   "cve-not-in-url"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-004",
+  "cve": "CVE-2018-5333",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bcoles/kernel-exploits/blob/b8d8339f2dac047d5077c20a16c2ffffcc6d8b69/CVE-2018-5333/cve-2018-5333.c",
+  "repository": "bcoles/kernel-exploits",
+  "commit": "b8d8339f2dac047d5077c20a16c2ffffcc6d8b69",
+  "filename": "cve-2018-5333.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2018-5333-005",
+  "cve": "CVE-2018-5333",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2018-5333/exploit.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2018-5333-006",
+  "cve": "CVE-2018-5333",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2018-5333/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2018-5333-007",
+  "cve": "CVE-2018-5333",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2018-5333/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2018-5333-008",
+  "cve": "CVE-2018-5333",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/kaismax/CVE-Poc/blob/6d8c93dabf674cea102713781cc534d577412357/2018/CVE-2018-5333.md",
+  "repository": "kaismax/CVE-Poc",
+  "commit": "6d8c93dabf674cea102713781cc534d577412357",
+  "filename": "CVE-2018-5333.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-009",
+  "cve": "CVE-2018-5333",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/rapid7/metasploit-framework/blob/edf3870c7200ac41000dc9918793da5f87811f75/documentation/modules/exploit/linux/local/rds_atomic_free_op_null_pointer_deref_priv_esc.md",
+  "repository": "rapid7/metasploit-framework",
+  "commit": "edf3870c7200ac41000dc9918793da5f87811f75",
+  "filename": "rds_atomic_free_op_null_pointer_deref_priv_esc.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code",
+   "cve-not-in-url"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-010",
+  "cve": "CVE-2018-5333",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/rapid7/metasploit-framework/blob/edf3870c7200ac41000dc9918793da5f87811f75/modules/exploits/linux/local/rds_atomic_free_op_null_pointer_deref_priv_esc.rb",
+  "repository": "rapid7/metasploit-framework",
+  "commit": "edf3870c7200ac41000dc9918793da5f87811f75",
+  "filename": "rds_atomic_free_op_null_pointer_deref_priv_esc.rb",
+  "language": "Ruby",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": [
+   "cve-not-in-url"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-011",
+  "cve": "CVE-2018-5333",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2018/CVE-2018-5333.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2018-5333.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-012",
+  "cve": "CVE-2018-5333",
+  "type": "exploit_poc",
+  "source_url": "https://gitlab.com/penetration-test-learn/10vuln/os-exploit/bcoles-kernel-exploits",
+  "repository": "penetration-test-learn/10vuln/os-exploit/bcoles-kernel-exploits",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-013",
+  "cve": "CVE-2018-5333",
+  "type": "crash_reproducer",
+  "source_url": "http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/commit/?id=7d11f77f84b27cef452cee332f4e469503084737",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-014",
+  "cve": "CVE-2018-5333",
+  "type": "crash_reproducer",
+  "source_url": "http://packetstormsecurity.com/files/156053/Reliable-Datagram-Sockets-RDS-rds_atomic_free_op-Privilege-Escalation.html",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-015",
+  "cve": "CVE-2018-5333",
+  "type": "crash_reproducer",
+  "source_url": "http://www.securityfocus.com/bid/102510",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-016",
+  "cve": "CVE-2018-5333",
+  "type": "crash_reproducer",
+  "source_url": "https://access.redhat.com/errata/RHSA-2018:0470",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-017",
+  "cve": "CVE-2018-5333",
+  "type": "crash_reproducer",
+  "source_url": "https://github.com/joejin00/linux-uek/commit/b3dbcb0ac0da848cd188b40bdfec54a8ea716801",
+  "repository": "joejin00/linux-uek",
+  "commit": "b3dbcb0ac0da848cd188b40bdfec54a8ea716801",
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "commit",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-018",
+  "cve": "CVE-2018-5333",
+  "type": "crash_reproducer",
+  "source_url": "https://github.com/torvalds/linux/commit/7d11f77f84b27cef452cee332f4e469503084737",
+  "repository": "torvalds/linux",
+  "commit": "7d11f77f84b27cef452cee332f4e469503084737",
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "commit",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-019",
+  "cve": "CVE-2018-5333",
+  "type": "crash_reproducer",
+  "source_url": "https://lists.debian.org/debian-lts-announce/2018/05/msg00000.html",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-020",
+  "cve": "CVE-2018-5333",
+  "type": "crash_reproducer",
+  "source_url": "https://usn.ubuntu.com/3583-1/",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-021",
+  "cve": "CVE-2018-5333",
+  "type": "crash_reproducer",
+  "source_url": "https://usn.ubuntu.com/3583-2/",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-022",
+  "cve": "CVE-2018-5333",
+  "type": "crash_reproducer",
+  "source_url": "https://usn.ubuntu.com/3617-1/",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-023",
+  "cve": "CVE-2018-5333",
+  "type": "crash_reproducer",
+  "source_url": "https://usn.ubuntu.com/3617-2/",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-024",
+  "cve": "CVE-2018-5333",
+  "type": "crash_reproducer",
+  "source_url": "https://usn.ubuntu.com/3617-3/",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-025",
+  "cve": "CVE-2018-5333",
+  "type": "crash_reproducer",
+  "source_url": "https://usn.ubuntu.com/3619-1/",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-026",
+  "cve": "CVE-2018-5333",
+  "type": "crash_reproducer",
+  "source_url": "https://usn.ubuntu.com/3619-2/",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-027",
+  "cve": "CVE-2018-5333",
+  "type": "crash_reproducer",
+  "source_url": "https://usn.ubuntu.com/3632-1/",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2018-5333-028",
+  "cve": "CVE-2018-5333",
+  "type": "crash_reproducer",
+  "source_url": "https://www.debian.org/security/2018/dsa-4187",
+  "repository": null,
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "CRASH_REPRODUCER",
+  "level": "other",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
   "artifact_id": "LVA-2019-13272-001",
   "cve": "CVE-2019-13272",
   "type": "exploit_poc",
@@ -1838,6 +3971,115 @@
   "triage": "needs-resolution",
   "flags": [
    "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2019-15666-001",
+  "cve": "CVE-2019-15666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2019/CVE-2019-15666.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2019-15666.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2019-15666-002",
+  "cve": "CVE-2019-15666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/docs/api/v1/cve/CVE-2019-15666.json",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2019-15666.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2019-15666-003",
+  "cve": "CVE-2019-15666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/The-Z-Labs/linux-exploit-suggester/blob/bde09673eb5577f13030637d2c8a6a8ec98cddc8/CHANGELOG",
+  "repository": "The-Z-Labs/linux-exploit-suggester",
+  "commit": "bde09673eb5577f13030637d2c8a6a8ec98cddc8",
+  "filename": "CHANGELOG",
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code",
+   "cve-not-in-url"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2019-15666-004",
+  "cve": "CVE-2019-15666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/The-Z-Labs/linux-exploit-suggester/blob/bde09673eb5577f13030637d2c8a6a8ec98cddc8/linux-exploit-suggester.sh",
+  "repository": "The-Z-Labs/linux-exploit-suggester",
+  "commit": "bde09673eb5577f13030637d2c8a6a8ec98cddc8",
+  "filename": "linux-exploit-suggester.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": [
+   "cve-not-in-url"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2019-15666-005",
+  "cve": "CVE-2019-15666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2019-15666/exp.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exp.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2019-15666-006",
+  "cve": "CVE-2019-15666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/jollheef/lpe/blob/4a58aa80f4ab8f3389b12609887f04c3730bea07/CVE-2019-15666/CVE-2019-15666.c",
+  "repository": "jollheef/lpe",
+  "commit": "4a58aa80f4ab8f3389b12609887f04c3730bea07",
+  "filename": "CVE-2019-15666.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2019-15666-007",
+  "cve": "CVE-2019-15666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/kaismax/CVE-Poc/blob/6d8c93dabf674cea102713781cc534d577412357/2019/CVE-2019-15666.md",
+  "repository": "kaismax/CVE-Poc",
+  "commit": "6d8c93dabf674cea102713781cc534d577412357",
+  "filename": "CVE-2019-15666.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
   ]
  },
  {
@@ -2138,6 +4380,159 @@
   "triage": "needs-resolution",
   "flags": [
    "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2019-9213-001",
+  "cve": "CVE-2019-9213",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2019/CVE-2019-9213.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2019-9213.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2019-9213-002",
+  "cve": "CVE-2019-9213",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/docs/api/v1/cve/CVE-2019-9213.json",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2019-9213.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2019-9213-003",
+  "cve": "CVE-2019-9213",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2019-9213_vs_8956/boot.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "boot.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2019-9213-004",
+  "cve": "CVE-2019-9213",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2019-9213_vs_8956/exp/exp.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exp.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2019-9213-005",
+  "cve": "CVE-2019-9213",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2019-9213_vs_8956/exp/exp2.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exp2.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2019-9213-006",
+  "cve": "CVE-2019-9213",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2019-9213_vs_8956/exp/poc.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "poc.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2019-9213-007",
+  "cve": "CVE-2019-9213",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/README.md",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "README.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code",
+   "cve-not-in-url"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2019-9213-008",
+  "cve": "CVE-2019-9213",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/kaismax/CVE-Poc/blob/6d8c93dabf674cea102713781cc534d577412357/2019/CVE-2019-9213.md",
+  "repository": "kaismax/CVE-Poc",
+  "commit": "6d8c93dabf674cea102713781cc534d577412357",
+  "filename": "CVE-2019-9213.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2019-9213-009",
+  "cve": "CVE-2019-9213",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/rapid7/metasploit-framework/blob/edf3870c7200ac41000dc9918793da5f87811f75/modules/exploits/linux/local/rds_atomic_free_op_null_pointer_deref_priv_esc.rb",
+  "repository": "rapid7/metasploit-framework",
+  "commit": "edf3870c7200ac41000dc9918793da5f87811f75",
+  "filename": "rds_atomic_free_op_null_pointer_deref_priv_esc.rb",
+  "language": "Ruby",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": [
+   "cve-not-in-url"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2019-9213-010",
+  "cve": "CVE-2019-9213",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2019/CVE-2019-9213.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2019-9213.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
   ]
  },
  {
@@ -2475,6 +4870,140 @@
   ]
  },
  {
+  "artifact_id": "LVA-2020-27194-001",
+  "cve": "CVE-2020-27194",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/8lu3sh311/CVE-PoC/blob/0e321f89a2ba216d8a7eb6eb28590d1dc39a74c9/2020/CVE-2020-27194.md",
+  "repository": "8lu3sh311/CVE-PoC",
+  "commit": "0e321f89a2ba216d8a7eb6eb28590d1dc39a74c9",
+  "filename": "CVE-2020-27194.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2020-27194-002",
+  "cve": "CVE-2020-27194",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/JlSakuya/Linux-Privilege-Escalation-Exploits/blob/4be1662ef925a0fe4e8b31393593a692c2fdc255/2020/CVE-2020-27194/CVE-2020-27194.c",
+  "repository": "JlSakuya/Linux-Privilege-Escalation-Exploits",
+  "commit": "4be1662ef925a0fe4e8b31393593a692c2fdc255",
+  "filename": "CVE-2020-27194.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2020-27194-003",
+  "cve": "CVE-2020-27194",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2020/CVE-2020-27194.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2020-27194.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2020-27194-004",
+  "cve": "CVE-2020-27194",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2020-27194/exp/CVE-2020-27194.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "CVE-2020-27194.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2020-27194-005",
+  "cve": "CVE-2020-27194",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2020-27194/exp/bpf.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "bpf.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2020-27194-006",
+  "cve": "CVE-2020-27194",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2020-27194/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2020-27194-007",
+  "cve": "CVE-2020-27194",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2020-27194/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2020-27194-008",
+  "cve": "CVE-2020-27194",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/kaismax/CVE-Poc/blob/6d8c93dabf674cea102713781cc534d577412357/2020/CVE-2020-27194.md",
+  "repository": "kaismax/CVE-Poc",
+  "commit": "6d8c93dabf674cea102713781cc534d577412357",
+  "filename": "CVE-2020-27194.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2020-27194-009",
+  "cve": "CVE-2020-27194",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2020/CVE-2020-27194.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2020-27194.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
   "artifact_id": "LVA-2020-27815-001",
   "cve": "CVE-2020-27815",
   "type": "exploit_poc",
@@ -2514,6 +5043,159 @@
   "repository": "sari3l/Poc-Monitor",
   "commit": "28af8ea49f0401467d522e1a889f524d9b5d623f",
   "filename": "CVE-2020-27815.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2020-8835-001",
+  "cve": "CVE-2020-8835",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/KashaMalaga/cve2020-8835",
+  "repository": "KashaMalaga/cve2020-8835",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2020-8835-002",
+  "cve": "CVE-2020-8835",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2020/CVE-2020-8835.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2020-8835.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2020-8835-003",
+  "cve": "CVE-2020-8835",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2020-8835/exp/bpf.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "bpf.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2020-8835-004",
+  "cve": "CVE-2020-8835",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2020-8835/exp/exp_multi_core.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exp_multi_core.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2020-8835-005",
+  "cve": "CVE-2020-8835",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2020-8835/exp/exp_single_core.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exp_single_core.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2020-8835-006",
+  "cve": "CVE-2020-8835",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2020-8835/file/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2020-8835-007",
+  "cve": "CVE-2020-8835",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/kaismax/CVE-Poc/blob/6d8c93dabf674cea102713781cc534d577412357/2020/CVE-2020-8835.md",
+  "repository": "kaismax/CVE-Poc",
+  "commit": "6d8c93dabf674cea102713781cc534d577412357",
+  "filename": "CVE-2020-8835.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2020-8835-008",
+  "cve": "CVE-2020-8835",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/mthcht/awesome-lists/blob/93f83abc550b32b6634e8616ad044012bc9d6606/Lists/Others/Defender_yara_rules/Linux/Exploit/CVE-2020-8835.yara",
+  "repository": "mthcht/awesome-lists",
+  "commit": "93f83abc550b32b6634e8616ad044012bc9d6606",
+  "filename": "CVE-2020-8835.yara",
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code",
+   "defensive-name"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2020-8835-009",
+  "cve": "CVE-2020-8835",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/roadwy/DefenderYara/blob/59e39903d9e6667c7c3e55a1f2887f1faab0e423/Exploit/Linux/CVE-2020-8835/Exploit_Linux_CVE-2020-8835_A_MTB.yar",
+  "repository": "roadwy/DefenderYara",
+  "commit": "59e39903d9e6667c7c3e55a1f2887f1faab0e423",
+  "filename": "Exploit_Linux_CVE-2020-8835_A_MTB.yar",
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2020-8835-010",
+  "cve": "CVE-2020-8835",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2020/CVE-2020-8835.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2020-8835.json",
   "language": "JSON",
   "discovery_class": "EXPLOIT_POC",
   "level": "file",
@@ -2793,6 +5475,34 @@
   ]
  },
  {
+  "artifact_id": "LVA-2021-22555-053",
+  "cve": "CVE-2021-22555",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-22555/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-22555-054",
+  "cve": "CVE-2021-22555",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-22555/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
   "artifact_id": "LVA-2021-26708-001",
   "cve": "CVE-2021-26708",
   "type": "exploit_poc",
@@ -2910,6 +5620,170 @@
   "commit": "59e39903d9e6667c7c3e55a1f2887f1faab0e423",
   "filename": "Exploit_Linux_CVE-2021-26708_A_MTB.yar",
   "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-31440-001",
+  "cve": "CVE-2021-31440",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/HORKimhab/poc-cve-collection/blob/ec8314d0a57cd169d7398b6bacc1af724460d4eb/2021/31xxx/CVE-2021-31440.md",
+  "repository": "HORKimhab/poc-cve-collection",
+  "commit": "ec8314d0a57cd169d7398b6bacc1af724460d4eb",
+  "filename": "CVE-2021-31440.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-31440-002",
+  "cve": "CVE-2021-31440",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/JlSakuya/Linux-Privilege-Escalation-Exploits/blob/4be1662ef925a0fe4e8b31393593a692c2fdc255/2021/CVE-2021-31440/CVE-2021-31440.c",
+  "repository": "JlSakuya/Linux-Privilege-Escalation-Exploits",
+  "commit": "4be1662ef925a0fe4e8b31393593a692c2fdc255",
+  "filename": "CVE-2021-31440.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-31440-003",
+  "cve": "CVE-2021-31440",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/JlSakuya/Linux-Privilege-Escalation-Exploits/blob/4be1662ef925a0fe4e8b31393593a692c2fdc255/2021/CVE-2021-31440/CVE-2021-31440_2.c",
+  "repository": "JlSakuya/Linux-Privilege-Escalation-Exploits",
+  "commit": "4be1662ef925a0fe4e8b31393593a692c2fdc255",
+  "filename": "CVE-2021-31440_2.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-31440-004",
+  "cve": "CVE-2021-31440",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2021/CVE-2021-31440.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2021-31440.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-31440-005",
+  "cve": "CVE-2021-31440",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/docs/api/v1/cve/CVE-2021-31440.json",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2021-31440.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-31440-006",
+  "cve": "CVE-2021-31440",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-31440/exp/CVE-2021-31440.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "CVE-2021-31440.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-31440-007",
+  "cve": "CVE-2021-31440",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-31440/exp/CVE-2021-31440_2.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "CVE-2021-31440_2.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-31440-008",
+  "cve": "CVE-2021-31440",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-31440/exp/bpf.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "bpf.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-31440-009",
+  "cve": "CVE-2021-31440",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-31440/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-31440-010",
+  "cve": "CVE-2021-31440",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/kaismax/CVE-Poc/blob/6d8c93dabf674cea102713781cc534d577412357/2021/CVE-2021-31440.md",
+  "repository": "kaismax/CVE-Poc",
+  "commit": "6d8c93dabf674cea102713781cc534d577412357",
+  "filename": "CVE-2021-31440.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-31440-011",
+  "cve": "CVE-2021-31440",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2021/CVE-2021-31440.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2021-31440.json",
+  "language": "JSON",
   "discovery_class": "EXPLOIT_POC",
   "level": "file",
   "triage": "needs-review",
@@ -3365,6 +6239,273 @@
   "repository": "sari3l/Poc-Monitor",
   "commit": "28af8ea49f0401467d522e1a889f524d9b5d623f",
   "filename": "CVE-2021-33909.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-3490-001",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-3490/exp/5.11.16/Linux_LPE_eBPF_CVE-2021-3490-main/README.md",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "README.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-3490-002",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-3490/exp/5.11.16/Linux_LPE_eBPF_CVE-2021-3490-main/bpf.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "bpf.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-3490-003",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-3490/exp/5.11.16/Linux_LPE_eBPF_CVE-2021-3490-main/exploit.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-3490-004",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-3490/exp/5.11.16/Linux_LPE_eBPF_CVE-2021-3490-main/include/bpf_defs.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "bpf_defs.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-3490-005",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-3490/exp/5.11.16/Linux_LPE_eBPF_CVE-2021-3490-main/include/exploit_configs.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit_configs.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-3490-006",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-3490/exp/5.11.16/Linux_LPE_eBPF_CVE-2021-3490-main/include/kernel_defs.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "kernel_defs.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-3490-007",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-3490/exp/5.11.16/Linux_LPE_eBPF_CVE-2021-3490-main/include/kmem_search.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "kmem_search.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-3490-008",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-3490/exp/5.11.16/Linux_LPE_eBPF_CVE-2021-3490-main/kmem_search.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "kmem_search.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-3490-009",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-3490/exp/5.11/CVE-2021-3490.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "CVE-2021-3490.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-3490-010",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-3490/exp/5.11/bpf.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "bpf.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-3490-011",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-3490/start-5-11-16.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start-5-11-16.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-3490-012",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-3490/start-5-11.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start-5-11.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-3490-013",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/kaismax/CVE-Poc/blob/6d8c93dabf674cea102713781cc534d577412357/2021/CVE-2021-3490.md",
+  "repository": "kaismax/CVE-Poc",
+  "commit": "6d8c93dabf674cea102713781cc534d577412357",
+  "filename": "CVE-2021-3490.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-3490-014",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/mthcht/awesome-lists/blob/93f83abc550b32b6634e8616ad044012bc9d6606/Lists/Others/Defender_yara_rules/Linux/Exploit/CVE-2021-3490.yara",
+  "repository": "mthcht/awesome-lists",
+  "commit": "93f83abc550b32b6634e8616ad044012bc9d6606",
+  "filename": "CVE-2021-3490.yara",
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code",
+   "defensive-name"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-3490-015",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/prabeershakya/CVE-2021-3490-POC",
+  "repository": "prabeershakya/CVE-2021-3490-POC",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-3490-016",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/roadwy/DefenderYara/blob/59e39903d9e6667c7c3e55a1f2887f1faab0e423/Exploit/Linux/CVE-2021-3490/Exploit_Linux_CVE-2021-3490_A_MTB.yar",
+  "repository": "roadwy/DefenderYara",
+  "commit": "59e39903d9e6667c7c3e55a1f2887f1faab0e423",
+  "filename": "Exploit_Linux_CVE-2021-3490_A_MTB.yar",
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-3490-017",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/roadwy/DefenderYara/blob/59e39903d9e6667c7c3e55a1f2887f1faab0e423/Exploit/Linux/CVE-2021-3490/Exploit_Linux_CVE-2021-3490_C_MTB.yar",
+  "repository": "roadwy/DefenderYara",
+  "commit": "59e39903d9e6667c7c3e55a1f2887f1faab0e423",
+  "filename": "Exploit_Linux_CVE-2021-3490_C_MTB.yar",
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-3490-018",
+  "cve": "CVE-2021-3490",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2021/CVE-2021-3490.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2021-3490.json",
   "language": "JSON",
   "discovery_class": "EXPLOIT_POC",
   "level": "file",
@@ -3876,6 +7017,698 @@
   ]
  },
  {
+  "artifact_id": "LVA-2021-41073-001",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/8lu3sh311/CVE-PoC/blob/0e321f89a2ba216d8a7eb6eb28590d1dc39a74c9/2021/CVE-2021-41073.md",
+  "repository": "8lu3sh311/CVE-PoC",
+  "commit": "0e321f89a2ba216d8a7eb6eb28590d1dc39a74c9",
+  "filename": "CVE-2021-41073.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-41073-002",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/HORKimhab/poc-cve-collection/blob/ec8314d0a57cd169d7398b6bacc1af724460d4eb/2021/41xxx/CVE-2021-41073.md",
+  "repository": "HORKimhab/poc-cve-collection",
+  "commit": "ec8314d0a57cd169d7398b6bacc1af724460d4eb",
+  "filename": "CVE-2021-41073.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-41073-003",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/NUS-Curiosity/KernJC/blob/798845a541a5396395c7e0c1670cb4872dac7105/db/pocs/cve-2021-41073/poc.c",
+  "repository": "NUS-Curiosity/KernJC",
+  "commit": "798845a541a5396395c7e0c1670cb4872dac7105",
+  "filename": "poc.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-41073-004",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2021/CVE-2021-41073.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2021-41073.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-41073-005",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/Snoopy-Sec/Localroot-ALL-CVE/blob/da087d49b551981150a161a0a8d2be052683c2fe/2021/CVE-2021-41073/hello.c",
+  "repository": "Snoopy-Sec/Localroot-ALL-CVE",
+  "commit": "da087d49b551981150a161a0a8d2be052683c2fe",
+  "filename": "hello.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-41073-006",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-41073/exploit/bpf.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "bpf.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-41073-007",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-41073/exploit/bpf_defs.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "bpf_defs.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-41073-008",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-41073/exploit/exploit.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-41073-009",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-41073/exploit/hellofuse.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "hellofuse.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-41073-010",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-41073/exploit/hellofuse.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "hellofuse.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-41073-011",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-41073/exploit/libfuse/cuse_lowlevel.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "cuse_lowlevel.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-41073-012",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-41073/exploit/libfuse/fuse.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-41073-013",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-41073/exploit/libfuse/fuse_common.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse_common.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-41073-014",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-41073/exploit/libfuse/fuse_kernel.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse_kernel.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-41073-015",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-41073/exploit/libfuse/fuse_log.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse_log.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-41073-016",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-41073/exploit/libfuse/fuse_lowlevel.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse_lowlevel.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-41073-017",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-41073/exploit/libfuse/fuse_opt.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse_opt.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-41073-018",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/kaismax/CVE-Poc/blob/6d8c93dabf674cea102713781cc534d577412357/2021/CVE-2021-41073.md",
+  "repository": "kaismax/CVE-Poc",
+  "commit": "6d8c93dabf674cea102713781cc534d577412357",
+  "filename": "CVE-2021-41073.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-41073-019",
+  "cve": "CVE-2021-41073",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2021/CVE-2021-41073.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2021-41073.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-4154-001",
+  "cve": "CVE-2021-4154",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/8lu3sh311/CVE-PoC/blob/0e321f89a2ba216d8a7eb6eb28590d1dc39a74c9/2021/CVE-2021-4154.md",
+  "repository": "8lu3sh311/CVE-PoC",
+  "commit": "0e321f89a2ba216d8a7eb6eb28590d1dc39a74c9",
+  "filename": "CVE-2021-4154.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-4154-002",
+  "cve": "CVE-2021-4154",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/HORKimhab/poc-cve-collection/blob/ec8314d0a57cd169d7398b6bacc1af724460d4eb/2021/4xxx/CVE-2021-4154.md",
+  "repository": "HORKimhab/poc-cve-collection",
+  "commit": "ec8314d0a57cd169d7398b6bacc1af724460d4eb",
+  "filename": "CVE-2021-4154.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-4154-003",
+  "cve": "CVE-2021-4154",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/Markakd/CVE-2021-4154",
+  "repository": "Markakd/CVE-2021-4154",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-4154-004",
+  "cve": "CVE-2021-4154",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/NUS-Curiosity/KernJC/blob/798845a541a5396395c7e0c1670cb4872dac7105/db/pocs/cve-2021-4154/poc.c",
+  "repository": "NUS-Curiosity/KernJC",
+  "commit": "798845a541a5396395c7e0c1670cb4872dac7105",
+  "filename": "poc.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-4154-005",
+  "cve": "CVE-2021-4154",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2021/CVE-2021-4154.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2021-4154.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-4154-006",
+  "cve": "CVE-2021-4154",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/docs/api/v1/cve/CVE-2021-4154.json",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2021-4154.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-4154-007",
+  "cve": "CVE-2021-4154",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-4154/exploit/exploit-DirtyCred.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit-DirtyCred.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-4154-008",
+  "cve": "CVE-2021-4154",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-4154/exploit/exploit-ROP.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit-ROP.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-4154-009",
+  "cve": "CVE-2021-4154",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-4154/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-4154-010",
+  "cve": "CVE-2021-4154",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2021/CVE-2021-4154.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2021-4154.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-42008-001",
+  "cve": "CVE-2021-42008",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/8lu3sh311/CVE-PoC/blob/0e321f89a2ba216d8a7eb6eb28590d1dc39a74c9/2021/CVE-2021-42008.md",
+  "repository": "8lu3sh311/CVE-PoC",
+  "commit": "0e321f89a2ba216d8a7eb6eb28590d1dc39a74c9",
+  "filename": "CVE-2021-42008.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-42008-002",
+  "cve": "CVE-2021-42008",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/HORKimhab/poc-cve-collection/blob/c2708c2e503c44a6a2601b798c373025c489ed30/2021/42xxx/CVE-2021-42008.md",
+  "repository": "HORKimhab/poc-cve-collection",
+  "commit": "c2708c2e503c44a6a2601b798c373025c489ed30",
+  "filename": "CVE-2021-42008.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-42008-003",
+  "cve": "CVE-2021-42008",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2021/CVE-2021-42008.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2021-42008.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-42008-004",
+  "cve": "CVE-2021-42008",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/docs/api/v1/cve/CVE-2021-42008.json",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2021-42008.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-42008-005",
+  "cve": "CVE-2021-42008",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-42008/exp.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exp.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-42008-006",
+  "cve": "CVE-2021-42008",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-42008/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-42008-007",
+  "cve": "CVE-2021-42008",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/kaismax/CVE-Poc/blob/6d8c93dabf674cea102713781cc534d577412357/2021/CVE-2021-42008.md",
+  "repository": "kaismax/CVE-Poc",
+  "commit": "6d8c93dabf674cea102713781cc534d577412357",
+  "filename": "CVE-2021-42008.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-42008-008",
+  "cve": "CVE-2021-42008",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2021/CVE-2021-42008.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2021-42008.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-43267-001",
+  "cve": "CVE-2021-43267",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/DarkSprings/CVE-2021-43267-POC",
+  "repository": "DarkSprings/CVE-2021-43267-POC",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-43267-002",
+  "cve": "CVE-2021-43267",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2021/CVE-2021-43267.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2021-43267.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-43267-003",
+  "cve": "CVE-2021-43267",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/arschlochnop/VulnWatchdog/blob/9e29e0cd3692cc3ca1a22a1a695ce4915d75fd1a/data/2021/CVE-2021-43267-DarkSprings_CVE-2021-43267-POC.md",
+  "repository": "arschlochnop/VulnWatchdog",
+  "commit": "9e29e0cd3692cc3ca1a22a1a695ce4915d75fd1a",
+  "filename": "CVE-2021-43267-DarkSprings_CVE-2021-43267-POC.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-43267-004",
+  "cve": "CVE-2021-43267",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-43267/exp1.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exp1.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-43267-005",
+  "cve": "CVE-2021-43267",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2021-43267/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2021-43267-006",
+  "cve": "CVE-2021-43267",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/kaismax/CVE-Poc/blob/6d8c93dabf674cea102713781cc534d577412357/2021/CVE-2021-43267.md",
+  "repository": "kaismax/CVE-Poc",
+  "commit": "6d8c93dabf674cea102713781cc534d577412357",
+  "filename": "CVE-2021-43267.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-43267-007",
+  "cve": "CVE-2021-43267",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/r1cksec/cheatsheets/blob/4467d8661e0ca3544486d1a51eb7aa1f2d5c1300/exploit/CVE-2021-43267.md",
+  "repository": "r1cksec/cheatsheets",
+  "commit": "4467d8661e0ca3544486d1a51eb7aa1f2d5c1300",
+  "filename": "CVE-2021-43267.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-43267-008",
+  "cve": "CVE-2021-43267",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2021/CVE-2021-43267.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2021-43267.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2021-43267-009",
+  "cve": "CVE-2021-43267",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/zzhacked/CVE-2021-43267",
+  "repository": "zzhacked/CVE-2021-43267",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
   "artifact_id": "LVA-2021-47128-001",
   "cve": "CVE-2021-47128",
   "type": "exploit_poc",
@@ -4242,6 +8075,202 @@
   ]
  },
  {
+  "artifact_id": "LVA-2022-0185-044",
+  "cve": "CVE-2022-0185",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-0185/exploit/exploit_fuse.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit_fuse.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-0185-045",
+  "cve": "CVE-2022-0185",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-0185/exploit/exploit_kctf.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit_kctf.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-0185-046",
+  "cve": "CVE-2022-0185",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-0185/exploit/fakefuse.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fakefuse.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-0185-047",
+  "cve": "CVE-2022-0185",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-0185/exploit/fakefuse.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fakefuse.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-0185-048",
+  "cve": "CVE-2022-0185",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-0185/exploit/libfuse/cuse_lowlevel.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "cuse_lowlevel.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-0185-049",
+  "cve": "CVE-2022-0185",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-0185/exploit/libfuse/fuse.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-0185-050",
+  "cve": "CVE-2022-0185",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-0185/exploit/libfuse/fuse_common.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse_common.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-0185-051",
+  "cve": "CVE-2022-0185",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-0185/exploit/libfuse/fuse_kernel.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse_kernel.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-0185-052",
+  "cve": "CVE-2022-0185",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-0185/exploit/libfuse/fuse_log.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse_log.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-0185-053",
+  "cve": "CVE-2022-0185",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-0185/exploit/libfuse/fuse_lowlevel.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse_lowlevel.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-0185-054",
+  "cve": "CVE-2022-0185",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-0185/exploit/libfuse/fuse_opt.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse_opt.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-0185-055",
+  "cve": "CVE-2022-0185",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-0185/exploit/util.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "util.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-0185-056",
+  "cve": "CVE-2022-0185",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-0185/exploit/util.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "util.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-0185-057",
+  "cve": "CVE-2022-0185",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-0185/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
   "artifact_id": "LVA-2022-0492-001",
   "cve": "CVE-2022-0492",
   "type": "exploit_poc",
@@ -4475,6 +8504,20 @@
   ]
  },
  {
+  "artifact_id": "LVA-2022-0847-055",
+  "cve": "CVE-2022-0847",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-0847/exp.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exp.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
   "artifact_id": "LVA-2022-0995-001",
   "cve": "CVE-2022-0995",
   "type": "exploit_poc",
@@ -4569,6 +8612,230 @@
   "triage": "needs-review",
   "flags": [
    "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-0995-031",
+  "cve": "CVE-2022-0995",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-0995/exploit.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-0995-032",
+  "cve": "CVE-2022-0995",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-0995/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-1015-001",
+  "cve": "CVE-2022-1015",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/8lu3sh311/CVE-PoC/blob/0e321f89a2ba216d8a7eb6eb28590d1dc39a74c9/2022/CVE-2022-1015.md",
+  "repository": "8lu3sh311/CVE-PoC",
+  "commit": "0e321f89a2ba216d8a7eb6eb28590d1dc39a74c9",
+  "filename": "CVE-2022-1015.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-1015-002",
+  "cve": "CVE-2022-1015",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/HORKimhab/poc-cve-collection/blob/c2708c2e503c44a6a2601b798c373025c489ed30/2022/1xxx/CVE-2022-1015.md",
+  "repository": "HORKimhab/poc-cve-collection",
+  "commit": "c2708c2e503c44a6a2601b798c373025c489ed30",
+  "filename": "CVE-2022-1015.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-1015-003",
+  "cve": "CVE-2022-1015",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2022/CVE-2022-1015.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2022-1015.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-1015-004",
+  "cve": "CVE-2022-1015",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/docs/api/v1/cve/CVE-2022-1015.json",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2022-1015.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-1015-005",
+  "cve": "CVE-2022-1015",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-1015/exploit/exploit.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-1015-006",
+  "cve": "CVE-2022-1015",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-1015/exploit/helpers.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "helpers.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-1015-007",
+  "cve": "CVE-2022-1015",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-1015/exploit/helpers.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "helpers.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-1015-008",
+  "cve": "CVE-2022-1015",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-1015/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-1015-009",
+  "cve": "CVE-2022-1015",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-1015/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-1015-010",
+  "cve": "CVE-2022-1015",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/jiayy/android_vuln_poc-exp/blob/99d398a381cdbe12c0019075b8fa47b200e8a49f/linux/CVE-2022-1015/pwn.c",
+  "repository": "jiayy/android_vuln_poc-exp",
+  "commit": "99d398a381cdbe12c0019075b8fa47b200e8a49f",
+  "filename": "pwn.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-1015-011",
+  "cve": "CVE-2022-1015",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/pqlx/CVE-2022-1015",
+  "repository": "pqlx/CVE-2022-1015",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-1015-012",
+  "cve": "CVE-2022-1015",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2022/CVE-2022-1015.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2022-1015.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-1015-013",
+  "cve": "CVE-2022-1015",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/ysanatomic/CVE-2022-1015",
+  "repository": "ysanatomic/CVE-2022-1015",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
   ]
  },
  {
@@ -4888,6 +9155,76 @@
   ]
  },
  {
+  "artifact_id": "LVA-2022-25636-033",
+  "cve": "CVE-2022-25636",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-25636/exploit/exploit.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-25636-034",
+  "cve": "CVE-2022-25636",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-25636/exploit/fakefuse.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fakefuse.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-25636-035",
+  "cve": "CVE-2022-25636",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-25636/exploit/fakefuse.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fakefuse.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-25636-036",
+  "cve": "CVE-2022-25636",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-25636/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-25636-037",
+  "cve": "CVE-2022-25636",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-25636/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
   "artifact_id": "LVA-2022-2588-001",
   "cve": "CVE-2022-2588",
   "type": "exploit_poc",
@@ -4985,6 +9322,48 @@
   ]
  },
  {
+  "artifact_id": "LVA-2022-2588-052",
+  "cve": "CVE-2022-2588",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-2588/exploit.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-2588-053",
+  "cve": "CVE-2022-2588",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-2588/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-2588-054",
+  "cve": "CVE-2022-2588",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-2588/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
   "artifact_id": "LVA-2022-2602-001",
   "cve": "CVE-2022-2602",
   "type": "exploit_poc",
@@ -5040,6 +9419,446 @@
   "repository": "sari3l/Poc-Monitor",
   "commit": "28af8ea49f0401467d522e1a889f524d9b5d623f",
   "filename": "CVE-2022-2602.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-2602-038",
+  "cve": "CVE-2022-2602",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-2602/exploit/exploit.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-2602-039",
+  "cve": "CVE-2022-2602",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-2602/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-2602-040",
+  "cve": "CVE-2022-2602",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-2602/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-2639-001",
+  "cve": "CVE-2022-2639",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2022/CVE-2022-2639.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2022-2639.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-2639-002",
+  "cve": "CVE-2022-2639",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/Threekiii/Awesome-POC/blob/0f9e22b660cb1ea12c1c3668f9128d93e08da412/\u64cd\u4f5c\u7cfb\u7edf\u6f0f\u6d1e/Linux openvswitch \u6743\u9650\u63d0\u5347\u6f0f\u6d1e CVE-2022-2639.md",
+  "repository": "Threekiii/Awesome-POC",
+  "commit": "0f9e22b660cb1ea12c1c3668f9128d93e08da412",
+  "filename": "Linux openvswitch \u6743\u9650\u63d0\u5347\u6f0f\u6d1e CVE-2022-2639.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-2639-003",
+  "cve": "CVE-2022-2639",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-2639/exploit.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-2639-004",
+  "cve": "CVE-2022-2639",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-2639/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-2639-005",
+  "cve": "CVE-2022-2639",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-2639/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-2639-006",
+  "cve": "CVE-2022-2639",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/lal0ne/vulnerability/blob/5b9f397c1970203b1764fb7a66a0ffac39bef4cc/Linux/Kernel/CVE-2022-2639/exploit.c",
+  "repository": "lal0ne/vulnerability",
+  "commit": "5b9f397c1970203b1764fb7a66a0ffac39bef4cc",
+  "filename": "exploit.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-2639-007",
+  "cve": "CVE-2022-2639",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2022/CVE-2022-2639.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2022-2639.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-27666-001",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/8lu3sh311/CVE-PoC/blob/0e321f89a2ba216d8a7eb6eb28590d1dc39a74c9/2022/CVE-2022-27666.md",
+  "repository": "8lu3sh311/CVE-PoC",
+  "commit": "0e321f89a2ba216d8a7eb6eb28590d1dc39a74c9",
+  "filename": "CVE-2022-27666.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-27666-002",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/Albocoder/cve-2022-27666-exploits",
+  "repository": "Albocoder/cve-2022-27666-exploits",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-27666-003",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/CrackerCat/simpread/blob/e265bf94a8b35fc5d07ed71cced7008902578db7/md/CVE-2022-27666: Exploit esp6 modules in Linux kernel - ETenal.md",
+  "repository": "CrackerCat/simpread",
+  "commit": "e265bf94a8b35fc5d07ed71cced7008902578db7",
+  "filename": "CVE-2022-27666: Exploit esp6 modules in Linux kernel - ETenal.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-27666-004",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/HORKimhab/poc-cve-collection/blob/d95f3970a7824266c390c34f03f1764cfd14b894/2022/27xxx/CVE-2022-27666.md",
+  "repository": "HORKimhab/poc-cve-collection",
+  "commit": "d95f3970a7824266c390c34f03f1764cfd14b894",
+  "filename": "CVE-2022-27666.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-27666-005",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2022/CVE-2022-27666.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2022-27666.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-27666-006",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-27666/exploit/exploit.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-27666-007",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-27666/exploit/fuse_evil.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse_evil.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-27666-008",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-27666/exploit/fuse_evil.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse_evil.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-27666-009",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-27666/exploit/get_rooot.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "get_rooot.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-27666-010",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-27666/exploit/libfuse/cuse_lowlevel.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "cuse_lowlevel.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-27666-011",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-27666/exploit/libfuse/fuse.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-27666-012",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-27666/exploit/libfuse/fuse_common.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse_common.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-27666-013",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-27666/exploit/libfuse/fuse_kernel.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse_kernel.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-27666-014",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-27666/exploit/libfuse/fuse_log.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse_log.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-27666-015",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-27666/exploit/libfuse/fuse_lowlevel.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse_lowlevel.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-27666-016",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-27666/exploit/libfuse/fuse_opt.h",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "fuse_opt.h",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-27666-017",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-27666/exploit/myshell.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "myshell.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-27666-018",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-27666/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-27666-019",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/plummm/CVE-2022-27666",
+  "repository": "plummm/CVE-2022-27666",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-27666-020",
+  "cve": "CVE-2022-27666",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2022/CVE-2022-27666.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2022-27666.json",
   "language": "JSON",
   "discovery_class": "EXPLOIT_POC",
   "level": "file",
@@ -5126,6 +9945,179 @@
   "triage": "needs-review",
   "flags": [
    "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-32250-001",
+  "cve": "CVE-2022-32250",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/Kristal-g/CVE-2022-32250",
+  "repository": "Kristal-g/CVE-2022-32250",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-32250-002",
+  "cve": "CVE-2022-32250",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/OracleNep/Nday-Exploit-Plan/blob/e06c9cdebe11066693b40e07ac82c9b7af73ffd8/CVE/CVE-2022-32250/README.md",
+  "repository": "OracleNep/Nday-Exploit-Plan",
+  "commit": "e06c9cdebe11066693b40e07ac82c9b7af73ffd8",
+  "filename": "README.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-32250-003",
+  "cve": "CVE-2022-32250",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2022/CVE-2022-32250.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2022-32250.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-32250-004",
+  "cve": "CVE-2022-32250",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/arschlochnop/VulnWatchdog/blob/9e29e0cd3692cc3ca1a22a1a695ce4915d75fd1a/data/2022/CVE-2022-32250-theori-io_CVE-2022-32250-exploit.md",
+  "repository": "arschlochnop/VulnWatchdog",
+  "commit": "9e29e0cd3692cc3ca1a22a1a695ce4915d75fd1a",
+  "filename": "CVE-2022-32250-theori-io_CVE-2022-32250-exploit.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-32250-005",
+  "cve": "CVE-2022-32250",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-32250/exploit/exploit.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-32250-006",
+  "cve": "CVE-2022-32250",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-32250/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-32250-007",
+  "cve": "CVE-2022-32250",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/mthcht/awesome-lists/blob/93f83abc550b32b6634e8616ad044012bc9d6606/Lists/Others/Defender_yara_rules/Linux/Exploit/CVE-2022-32250.yara",
+  "repository": "mthcht/awesome-lists",
+  "commit": "93f83abc550b32b6634e8616ad044012bc9d6606",
+  "filename": "CVE-2022-32250.yara",
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code",
+   "defensive-name"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-32250-008",
+  "cve": "CVE-2022-32250",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/roadwy/DefenderYara/blob/59e39903d9e6667c7c3e55a1f2887f1faab0e423/Exploit/Linux/CVE-2022-32250/Exploit_Linux_CVE-2022-32250_A_MTB.yar",
+  "repository": "roadwy/DefenderYara",
+  "commit": "59e39903d9e6667c7c3e55a1f2887f1faab0e423",
+  "filename": "Exploit_Linux_CVE-2022-32250_A_MTB.yar",
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-32250-009",
+  "cve": "CVE-2022-32250",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/sari3l/Poc-Monitor/blob/088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d/2022/CVE-2022-32250.json",
+  "repository": "sari3l/Poc-Monitor",
+  "commit": "088fa15bfffb0ddb4a95c2334c5a4f5cbc13ac9d",
+  "filename": "CVE-2022-32250.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-32250-010",
+  "cve": "CVE-2022-32250",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/theori-io/CVE-2022-32250-exploit",
+  "repository": "theori-io/CVE-2022-32250-exploit",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2022-32250-011",
+  "cve": "CVE-2022-32250",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/ysanatomic/CVE-2022-32250-LPE",
+  "repository": "ysanatomic/CVE-2022-32250-LPE",
+  "commit": null,
+  "filename": null,
+  "language": null,
+  "discovery_class": "EXPLOIT_POC",
+  "level": "repository",
+  "triage": "needs-resolution",
+  "flags": [
+   "not-a-direct-file"
   ]
  },
  {
@@ -5271,6 +10263,62 @@
   "flags": [
    "not-a-direct-file"
   ]
+ },
+ {
+  "artifact_id": "LVA-2022-34918-039",
+  "cve": "CVE-2022-34918",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-34918/exploit/exploit.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-34918-040",
+  "cve": "CVE-2022-34918",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-34918/exploit/get_root.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "get_root.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-34918-041",
+  "cve": "CVE-2022-34918",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-34918/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2022-34918-042",
+  "cve": "CVE-2022-34918",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2022-34918/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
  },
  {
   "artifact_id": "LVA-2022-3567-001",
@@ -5653,6 +10701,48 @@
   "flags": [
    "not-a-direct-file"
   ]
+ },
+ {
+  "artifact_id": "LVA-2023-2598-032",
+  "cve": "CVE-2023-2598",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2023-2598/exploit.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2023-2598-033",
+  "cve": "CVE-2023-2598",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2023-2598/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2023-2598-034",
+  "cve": "CVE-2023-2598",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2023-2598/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
  },
  {
   "artifact_id": "LVA-2023-28410-001",
@@ -6452,6 +11542,34 @@
   "flags": [
    "not-a-direct-file"
   ]
+ },
+ {
+  "artifact_id": "LVA-2024-1086-058",
+  "cve": "CVE-2024-1086",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2024-1086/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2024-1086-059",
+  "cve": "CVE-2024-1086",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2024-1086/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
  },
  {
   "artifact_id": "LVA-2024-1753-001",
@@ -7688,6 +12806,96 @@
   "flags": [
    "not-a-direct-file"
   ]
+ },
+ {
+  "artifact_id": "LVA-2025-21702-001",
+  "cve": "CVE-2025-21702",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/HORKimhab/poc-cve-collection/blob/1b935395f21a14e867a139799703757db598bb42/2025/21xxx/CVE-2025-21702.md",
+  "repository": "HORKimhab/poc-cve-collection",
+  "commit": "1b935395f21a14e867a139799703757db598bb42",
+  "filename": "CVE-2025-21702.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2025-21702-002",
+  "cve": "CVE-2025-21702",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/cves/2025/CVE-2025-21702.md",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2025-21702.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2025-21702-003",
+  "cve": "CVE-2025-21702",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/SecureWithUmer/Exploit-Index/blob/c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89/docs/api/v1/cve/CVE-2025-21702.json",
+  "repository": "SecureWithUmer/Exploit-Index",
+  "commit": "c751a0d41e4b9cfb63fcbaa4bbac297088bf9e89",
+  "filename": "CVE-2025-21702.json",
+  "language": "JSON",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2025-21702-004",
+  "cve": "CVE-2025-21702",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2025-21702/exploit/exploit.c",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit.c",
+  "language": "C",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2025-21702-005",
+  "cve": "CVE-2025-21702",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2025-21702/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2025-21702-006",
+  "cve": "CVE-2025-21702",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2025-21702/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
  },
  {
   "artifact_id": "LVA-2025-21756-001",
@@ -9349,6 +14557,81 @@
   "triage": "needs-review",
   "flags": [
    "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2026-23271-001",
+  "cve": "CVE-2026-23271",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/HORKimhab/poc-cve-collection/blob/1b935395f21a14e867a139799703757db598bb42/2026/23xxx/CVE-2026-23271.md",
+  "repository": "HORKimhab/poc-cve-collection",
+  "commit": "1b935395f21a14e867a139799703757db598bb42",
+  "filename": "CVE-2026-23271.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code"
+  ]
+ },
+ {
+  "artifact_id": "LVA-2026-23271-002",
+  "cve": "CVE-2026-23271",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2026-23271/exploit/exploit.cpp",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "exploit.cpp",
+  "language": "C++",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2026-23271-003",
+  "cve": "CVE-2026-23271",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2026-23271/gdb_kernel.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "gdb_kernel.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2026-23271-004",
+  "cve": "CVE-2026-23271",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/CVE-2026-23271/start.sh",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "start.sh",
+  "language": "Shell",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "ready",
+  "flags": []
+ },
+ {
+  "artifact_id": "LVA-2026-23271-005",
+  "cve": "CVE-2026-23271",
+  "type": "exploit_poc",
+  "source_url": "https://github.com/bsauce/kernel-exploit-factory/blob/abe43c4337dadf3103a62b284195581e00cdd31f/README.md",
+  "repository": "bsauce/kernel-exploit-factory",
+  "commit": "abe43c4337dadf3103a62b284195581e00cdd31f",
+  "filename": "README.md",
+  "language": "Markdown",
+  "discovery_class": "EXPLOIT_POC",
+  "level": "file",
+  "triage": "needs-review",
+  "flags": [
+   "not-source-code",
+   "cve-not-in-url"
   ]
  },
  {

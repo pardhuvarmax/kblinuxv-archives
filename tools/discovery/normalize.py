@@ -74,9 +74,15 @@ def best_class(classes: set[str]) -> str:
     return min(classes, key=CLASS_ORDER.index)
 
 
-def normalize_cve(entry: dict, snapshot: str) -> tuple[dict, list[dict]]:
-    """Return (vulnerability record, artifact records) for one scanner CVE entry."""
+def normalize_cve(entry: dict, known_ids: dict[str, str] | None = None) -> tuple[dict, list[dict]]:
+    """Return (vulnerability record, artifact records) for one scanner CVE entry.
+
+    Every hit in `entry["sources"]` carries a `_snapshot` tag. `known_ids` maps canonical URL to an
+    artifact ID issued by an earlier import: those IDs are kept, and new URLs get the next free
+    sequence number, so an ID never changes once issued.
+    """
     cve = entry["cve_id"].upper()
+    known_ids = known_ids or {}
     groups: dict[str, list[dict]] = {}
     for hit in entry.get("sources", []):
         groups.setdefault(canonical_url(hit["url"]), []).append(hit)
@@ -87,11 +93,22 @@ def normalize_cve(entry: dict, snapshot: str) -> tuple[dict, list[dict]]:
         drafts.append((CLASS_ORDER.index(cls), key, cls, hits))
     drafts.sort(key=lambda d: (d[0], d[1]))
 
+    next_seq = 1 + max((int(i.rsplit("-", 1)[1]) for i in known_ids.values()), default=0)
+    ids = {}
+    for _, key, _, _ in drafts:
+        if key in known_ids:
+            ids[key] = known_ids[key]
+        else:
+            ids[key] = artifact_id(cve, next_seq)
+            next_seq += 1
+    drafts.sort(key=lambda d: ids[d[1]])
+
     artifacts = []
-    for seq, (_, key, cls, hits) in enumerate(drafts, 1):
+    for _, key, cls, hits in drafts:
         src = parse_source(hits[0]["url"])
+        snaps = sorted({h["_snapshot"] for h in hits})
         artifacts.append({
-            "artifact_id": artifact_id(cve, seq),
+            "artifact_id": ids[key],
             "cve": cve,
             "artifact": {
                 "type": TYPE_BY_CLASS.get(cls, "other"),
@@ -105,9 +122,9 @@ def normalize_cve(entry: dict, snapshot: str) -> tuple[dict, list[dict]]:
                 "class": cls,
                 "level": src["level"],
                 "is_reproduction_candidate": any(h["is_reproduction_candidate"] for h in hits),
-                "snapshot": snapshot,
+                "snapshots": snaps,
                 "refs": [{"source": h["source"], "kind": h["kind"], "title": h["title"],
-                          "snippet": h.get("snippet", "")} for h in hits],
+                          "snippet": h.get("snippet", ""), "snapshot": h["_snapshot"]} for h in hits],
             },
             "verification": {"state": "DISCOVERED", "source_reviewed": False, "lab_validated": False},
             "redistribution": {"status": "pending"},
@@ -119,7 +136,7 @@ def normalize_cve(entry: dict, snapshot: str) -> tuple[dict, list[dict]]:
         "subsystem": entry.get("subsystem") or None,
         "category": entry.get("class") or None,
         "severity": entry.get("severity") or None,
-        "snapshot": snapshot,
+        "snapshots": sorted({h["_snapshot"] for h in entry.get("sources", [])} or {entry["_snapshot"]}),
         "artifact_count": len(artifacts),
         "reproduction_candidate_count": sum(a["discovery"]["is_reproduction_candidate"] for a in artifacts),
     }

@@ -12,7 +12,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent))
 import yaml  # noqa: E402
-from normalize import normalize_cve  # noqa: E402
+from normalize import canonical_url, normalize_cve  # noqa: E402
 
 
 def load_snapshots(raw: Path) -> list[tuple[str, dict]]:
@@ -73,7 +73,7 @@ All records are `DISCOVERED`. Candidates are leads, not confirmed PoCs.
 
 The scanner's "unique reproduction candidates" figure (617 for the initial scan) counts one per repository
 per CVE. This importer keeps each file URL as its own artifact record, so its candidate count is higher.
-The repository-level row reconciles the two.
+The repository-level row reproduces the scanner's own repository-level count (617 for the initial scan).\nScans taken before the scanner's `github_tree` dedup fix report a higher number than that row.
 
 ## Reproduction candidates by level
 
@@ -108,13 +108,27 @@ def main() -> None:
     root = ap.parse_args().root
     snaps = load_snapshots(root / "discovery/raw")
     registry = load_registry(root / "discovery/registry/registry.yaml")
+    prior: dict[str, dict[str, str]] = defaultdict(dict)  # IDs already issued: cve -> canonical url -> id
+    prior_file = root / "discovery/normalized/artifacts.jsonl"
+    if prior_file.is_file():
+        for line in prior_file.read_text().splitlines():
+            rec = json.loads(line)
+            prior[rec["cve"]][canonical_url(rec["artifact"]["source_url"])] = rec["artifact_id"]
+
+    merged: dict[str, dict] = {}  # snapshots are merged per CVE, never replaced
+    for name, doc in snaps:
+        for entry in doc["results"]:
+            cve = entry["cve_id"].upper()
+            m = merged.setdefault(cve, {"cve_id": cve, "_snapshot": name, "sources": []})
+            for k in ("component", "subsystem", "class", "severity"):
+                m[k] = m.get(k) or entry.get(k) or ""
+            m["sources"] += [{**h, "_snapshot": name} for h in entry.get("sources", [])]
     vulns: dict[str, dict] = {}
     arts: dict[str, list[dict]] = {}
-    for name, doc in snaps:  # later snapshots replace earlier ones per CVE
-        for entry in doc["results"]:
-            v, a = normalize_cve(entry, name)
-            enrich(v, registry.get(v["cve"], {}))
-            vulns[v["cve"]], arts[v["cve"]] = v, a
+    for cve, entry in merged.items():
+        v, a = normalize_cve(entry, prior.get(cve))
+        enrich(v, registry.get(cve, {}))
+        vulns[cve], arts[cve] = v, a
     vlist = sorted(vulns.values(), key=lambda v: v["cve"])
     alist = [a for cve in sorted(arts) for a in arts[cve]]
     out = root / "discovery/normalized"
