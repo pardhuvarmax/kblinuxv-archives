@@ -3,7 +3,7 @@ name = "kb-lva"
 version = "0.0.0"
 description = "Kernel Borderlands Linux Vulnerability Archive tooling"
 requires-python = ">=3.11"
-dependencies = ["pyyaml", "requests"]
+dependencies = ["pyyaml", "requests", "jsonschema"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]

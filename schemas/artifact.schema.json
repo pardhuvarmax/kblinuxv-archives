@@ -28,19 +28,68 @@
           ]
         },
         "filename": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "language": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "source_url": {
           "type": "string"
         },
         "repository": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
         },
         "commit": {
-          "type": "string"
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "discovery": {
+      "type": "object"
+    },
+    "verification": {
+      "type": "object",
+      "properties": {
+        "state": {
+          "enum": [
+            "DISCOVERED",
+            "RETRIEVED",
+            "SOURCE_REVIEWED",
+            "LAB_VALIDATED",
+            "REJECTED"
+          ]
+        },
+        "source_reviewed": {
+          "type": "boolean"
+        },
+        "lab_validated": {
+          "type": "boolean"
+        }
+      }
+    },
+    "redistribution": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "approved",
+            "restricted",
+            "unknown",
+            "reference-only",
+            "pending"
+          ]
         }
       }
     }

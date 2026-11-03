@@ -15,14 +15,14 @@ reproduced it.
 
 ## Status
 
-Milestone M0 (foundation) is in place, with the M1 discovery baseline committed.
+M0 (foundation) is done and M1 (discovery import) is working: both scan snapshots are normalized into `discovery/normalized/` and validate against the schemas. Acquisition (M3) has not started.
 
 | Metric (initial scan, 2026-11-03) | Value |
 | --- | --- |
 | CVEs scanned | 148 |
 | Raw source hits | 5,102 |
 | Unique discovered artifacts | 4,447 |
-| Unique reproduction candidates | 617 |
+| Unique reproduction candidates (scanner, repository-level) | 617 |
 | Artifacts acquired | 0 |
 | Lab-validated reproductions | 0 |
 
