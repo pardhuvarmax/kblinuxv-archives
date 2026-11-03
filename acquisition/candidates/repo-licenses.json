@@ -1,0 +1,20 @@
+{
+ "JlSakuya/Linux-Privilege-Escalation-Exploits": "MIT",
+ "NUS-Curiosity/KernJC": "Apache-2.0",
+ "Snoopy-Sec/Localroot-ALL-CVE": "GPL-3.0",
+ "The-Z-Labs/linux-exploit-suggester": "GPL-3.0",
+ "bcoles/kernel-exploits": null,
+ "bsauce/kernel-exploit-factory": null,
+ "dahua966/WEB-AWD-Framework": null,
+ "helloexp/0day": "GPL-3.0",
+ "jiayy/android_vuln_poc-exp": null,
+ "jollheef/lpe": null,
+ "kkamagui/linux-kernel-exploits": "GPL-2.0",
+ "lal0ne/vulnerability": "MIT",
+ "lexfo/cve-2017-11176": null,
+ "out-of-tree/out-of-tree": "AGPL-3.0",
+ "rapid7/metasploit-framework": null,
+ "rix4uni/cvemapping": null,
+ "rlarabee/exploits": "GPL-3.0",
+ "xairy/kernel-exploits": null
+}
