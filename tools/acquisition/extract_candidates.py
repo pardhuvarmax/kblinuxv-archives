@@ -15,11 +15,17 @@ import json
 import re
 from collections import Counter
 from pathlib import Path
+from urllib.parse import quote
 
 SOURCE_EXT = {"C", "C++", "Python", "Shell", "Rust", "Go", "Ruby", "Perl", "JavaScript", "Assembly"}
 DEFENSIVE = re.compile(r"mitigat|detect|scanner|checker|yara|sigma|snort|suricata|nuclei|ansible|"
                        r"remediat|workaround|patch|fix|rule|hardening|monitor", re.I)
 SOURCE_HOSTS = ("github.com", "gitlab.com")
+
+
+def md_url(url: str) -> str:
+    """Percent-encode characters that break a markdown link target (spaces, parentheses, ...)."""
+    return quote(url, safe=":/?&=#%@+~-._")
 
 
 def triage(rec: dict) -> tuple[str, list[str]]:
@@ -86,7 +92,7 @@ def main() -> None:
     batch = propose_batch(cands, vulns, args.batch_size)
     lines = [f"| {c['artifact_id']} | {c['cve']} | {vulns[c['cve']]['category']} | {c['language']} | "
              f"[{c['repository']}](https://{c['source_url'].split('/')[2]}/{c['repository']}) | "
-             f"[`{c['filename']}`]({c['source_url']}) |" for c in batch]
+             f"[`{c['filename']}`]({md_url(c['source_url'])}) |" for c in batch]
     (out / "proposed-first-batch.md").write_text(
         "# Proposed first batch\n\nSuggestion only: one ready candidate per CVE, spread across vulnerability "
         "categories, preferring candidates whose URL contains the CVE ID, then `EXPLOIT_POC` in C or Python. Nothing here is approved. To approve, copy chosen "

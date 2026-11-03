@@ -2,7 +2,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "tools/acquisition"))
-from extract_candidates import triage  # noqa: E402
+from extract_candidates import md_url, triage  # noqa: E402
 
 SHA = "a" * 40
 
@@ -32,3 +32,8 @@ def test_markdown_and_defensive_need_review():
 def test_cve_not_in_url_is_flagged_but_stays_ready():
     level, flags = triage(rec(f"https://github.com/o/r/blob/{SHA}/poc.c", name="poc.c"))
     assert level == "ready" and "cve-not-in-url" in flags
+
+
+def test_md_url_encodes_link_breaking_characters():
+    out = md_url("https://github.com/o/r/blob/abc/2010/CVE-1, 2.6/x(1).c")
+    assert " " not in out and "(" not in out and ")" not in out and "," not in out
