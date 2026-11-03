@@ -1,0 +1,14 @@
+name: KB-LVA Acquisition
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "skeleton: retrieve approved artifacts, open PR from automation/acquisition-*; never execute PoCs"

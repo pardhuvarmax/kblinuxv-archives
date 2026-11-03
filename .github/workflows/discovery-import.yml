@@ -1,0 +1,17 @@
+name: KB-LVA Discovery Import
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "discovery/raw/**"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "skeleton: import and normalize discovery output (no acquisition here)"

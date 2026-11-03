@@ -1,0 +1,13 @@
+name: KB-LVA PR Checks
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "skeleton: provenance, license, file-policy and verification-state checks"

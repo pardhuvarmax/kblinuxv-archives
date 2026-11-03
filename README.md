@@ -1,146 +1,88 @@
-# KB-AL-150 CVE registry
+# KB-LVA: Kernel Borderlands Linux Vulnerability Archive
 
-Private/internal tooling, not for release — see `docs/development/Attack-LabTest-Suite.md` for the
-full benchmark framework this registry feeds.
+*Preserving Linux vulnerability reproduction artifacts for research, analysis and reproducibility.*
 
-`registry.yaml` is metadata only. **No exploit code lives here or anywhere in this repo.** Every
-entry is category D ("metadata-only reference, not yet experimentally validated" —
-`Attack-LabTest-Suite.md` §5). A reproduction script for any entry needs the operator's written
-go-ahead per CVE and its own review before it exists (§6).
+KB-LVA is an independent research dataset project within the Kernel Borderlands ecosystem. It discovers,
+acquires, preserves, classifies and curates Linux vulnerability proof-of-concepts and reproduction
+artifacts, with enough provenance and verification evidence for other researchers to study and reproduce
+them. The primary deliverable is a machine-readable dataset of actual PoC source files (where
+redistribution is permitted) plus vulnerability records, provenance, compatibility, integrity hashes,
+license status and verification evidence.
 
-## Status: 5 research passes run, 148 of 150 entries
+Finding a CVE does not mean finding a usable reproduction artifact. KB-LVA records where an artifact came
+from, what it is, whether it matches the CVE, whether it is still available, and whether anyone has
+reproduced it.
 
-The original plan was 4 cycles; a fifth pass closed most of the gap the first four left. 148/150
-is where it stopped, on purpose: every entry here is either confirmed via `WebSearch` this session
-with a source, or a long-established public-record CVE, and the last few candidates found in the
-final round were either weakly sourced or duplicates of entries already in. Padding to exactly 150
-with something unverified would be worse than stopping 2 short — it would quietly poison anything
-built on top of this registry (the CVE-benchmark framework, and anything the research paper later
-cites from it).
+## Status
 
-| Class (target) | Target | C1 | C2 | C3 | C4 | C5 | Total | vs target |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| privilege-escalation | 20 | 5 | 1 | 2 | 5 | 5 | 18 | -2 |
-| memory-corruption | 20 | 4 | 5 | 2 | 5 | 4 | 20 | 0 |
-| use-after-free | 15 | 5 | 5 | 0 | 1 | 4 | 15 | 0 |
-| race-conditions | 15 | 4 | 2 | 2 | 2 | 5 | 15 | 0 |
-| filesystem | 15 | 4 | 1 | 5 | 3 | 3 | 16 | +1 |
-| network-stack-netfilter | 15 | 5 | 2 | 0 | 3 | 4 | 14 | -1 |
-| container-isolation-escape | 15 | 5 | 1 | 5 | 0 | 5 | 16 | +1 |
-| syscall-ioctl-kernel-interface | 15 | 0 | 2 | 10 | 0 | 2 | 14 | -1 |
-| information-disclosure | 10 | 3 | 2 | 1 | 1 | 3 | 10 | 0 |
-| credential-permission-manipulation | 10 | 2 | 4 | 1 | 1 | 2 | 10 | 0 |
-| **Total** | **150** | **37** | **25** | **28** | **21** | **37** | **148** | **-2** |
+Milestone M0 (foundation) is in place, with the M1 discovery baseline committed.
 
-Six of ten classes hit their target exactly. `filesystem` and `container-isolation-escape` are 1
-over (fine — 150 per class was always a target, not a hard cap). Only `privilege-escalation` (-2),
-`network-stack-netfilter` (-1) and `syscall-ioctl-kernel-interface` (-1) are short, for a net of
-148.
+| Metric (initial scan, 2026-11-03) | Value |
+| --- | --- |
+| CVEs scanned | 148 |
+| Raw source hits | 5,102 |
+| Unique discovered artifacts | 4,447 |
+| Unique reproduction candidates | 617 |
+| Artifacts acquired | 0 |
+| Lab-validated reproductions | 0 |
 
-**Entries with extra caveats, flagged in-file** — check these before relying on them for anything:
-- `CVE-2026-31635` ("DirtyDecrypt", C3): a single, unconfirmed source claimed no vendor patch
-  existed at time of search.
-- `CVE-2026-96812` (gVisor, C3): NVD listed it as "Received" (not yet fully analyzed) at time of
-  search.
-- `CVE-2022-3567` (C4): thinly sourced this session — treat as a lead, not a confirmed technical
-  detail.
-- `CVE-2024-26594` (C4): the source found didn't name the affected subsystem; `component`/
-  `subsystem` are unconfirmed.
-- `CVE-2026-43198` (C4): severity disputed across sources (9.8 vs 7.0) — verify independently.
-- `CVE-2026-43499` ("GhostLock", C5): a third-party blog's "97% stable exploit" claim is
-  unverified; a later search in the same pass found the public PoC is Android-specific and causes
-  a crash, not demonstrated privilege escalation on this registry's target (mainline Linux). Verify
-  exploitability on a real target before relying on this entry.
-- `CVE-2026-90203` (squashfs, C5): disclosure date and CVSS not independently confirmed.
-- `CVE-2026-43502` ("ZcopyReaper", C5): exact fixing commit not confirmed this session.
-- Two ksmbd entries (`CVE-2023-52440`, `CVE-2026-31705`, C4) and one TCP/IPv6 entry
-  (`CVE-2026-43198`, C4) are remote-reachable, not local-only — most of the registry assumes a
-  local attacker; `Attack-LabTest-Suite.md`'s isolation rules (§6) apply with extra weight here.
+617 candidates are leads, not confirmed exploits.
 
-## Provenance
+## Data lifecycle
 
-- `verified-this-session` (126 entries): confirmed via `WebSearch` across all 5 passes. The
-  `references` field has a source link or a search-result citation where one was found. Several
-  entries are 2025/2026 additions summarized by secondary aggregators (CISA KEV, NVD, oss-sec)
-  rather than checked against the primary advisory directly — flagged per-entry where that matters
-  (e.g. `fixed_in: unknown-verify-against-nvd`).
-- `established-public-record` (22 entries): long-public, heavily documented CVEs (Baron Samedit,
-  PwnKit, Dirty COW, Dirty Pipe, the netfilter x_tables OOB write, the route4 UAF, the AF_PACKET
-  UDP-fragmentation UAF, the CAN BCM race, several futex/DCCP/Podman legacy flaws, and others) not
-  re-searched this session given how extensively they're already documented elsewhere. Spot-check
-  exact version ranges before relying on them.
+1. **Discovery**: the scanner identifies CVEs and candidate artifacts.
+2. **Import**: scanner JSON is normalized.
+3. **Classification**: direct source file, repository lead, patch, advisory, reproducer or other.
+4. **Deduplication**: duplicates merged without losing discovery references.
+5. **Acquisition approval**: a human selects the exact artifacts to retrieve.
+6. **Source retrieval**: from original repositories at immutable commits.
+7. **Integrity and provenance**: hashes, URLs, commits, authorship, license.
+8. **Source review**: what the artifact demonstrates and whether it belongs.
+9. **Laboratory validation**: isolated, disposable environments.
+10. **Dataset release**: versioned, citable snapshots.
 
-Either way: **every field is a starting point, not ground truth.** Verify against kernel.org, NVD
-or the vendor advisory before any reproduction work, per `Attack-LabTest-Suite.md` §4's selection
-process (deduplicate, verify technical relevance, then select).
+Artifact states: `DISCOVERED`, `RETRIEVED`, `SOURCE_REVIEWED`, `LAB_VALIDATED`, or `REJECTED`. Acquisition
+is not validation, and merging a PR is not validation.
 
-## What's NOT done, for any of the 148 entries
+## Repository layout
 
-- **`expected_observations` and `benign_twin` are "pending" for all 148.** Filling them in needs
-  each CVE's technical analysis read in full (not just the one-line summary here) and a benign
-  twin designed around the same subsystem/tooling — the lesson from
-  `datasets/attack-lab/20261031T201927` (a benign scenario that doesn't exercise the same
-  mechanism as its attack twin doesn't test anything). That is real per-entry work, not a bulk
-  pass.
-- **No disposable guest exists for any entry.** `lab.reproduction_available` is `false` across the
-  board — `Attack-LabTest-Suite.md` §5's open gap (the lab VM runs a current, patched kernel).
-  Category A (real reproduction) is not possible for any of these yet.
-- A number of entries are legacy drivers/subsystems (`CVE-2013-4515`, `CVE-2010-4077`,
-  `CVE-2013-1959`, `CVE-2014-9529`, `CVE-2010-4072`, `CVE-2016-10124`, `CVE-2016-8649`,
-  `CVE-2017-10661`, `CVE-2018-10881`, `CVE-2015-8961`, `CVE-2022-1227`, `CVE-2014-0205`,
-  `CVE-2012-2123`, `CVE-2019-19319`) unlikely to exist on any current test kernel; flagged as
-  likely to be dropped before promotion past category D.
-- Many `fixed_in` fields are `unknown-verify-against-nvd` — not resolved this session.
+| Path | Purpose |
+| --- | --- |
+| `discovery/` | Registry, immutable scanner snapshots, normalized records, import reports |
+| `acquisition/` | Candidates, approval manifests, rejections, logs |
+| `corpus/` | Curated source files by category |
+| `metadata/` | JSONL dataset layers |
+| `schemas/` | JSON Schemas |
+| `manifests/` | SHA-256 manifests and release manifests |
+| `tools/` | Pipeline code |
+| `documentation/` | Methodology and policies |
+| `tests/` | Tests |
+| `.github/` | Workflows and templates |
 
-## Next steps (in order)
+Every folder has its own README.
 
-1. Pick the first 3-5 entries to take past category D — likely the ones with the clearest
-   single-mechanism reproduction path and an existing public PoC (the nf_tables UAF chain, Dirty
-   Pipe, Dirty COW, PwnKit, Baron Samedit) — and scope what a disposable guest for each needs
-   (kernel version, image source, snapshot-and-discard, no network beyond the harness), per §5/§6.
-2. Design and document `expected_observations` + `benign_twin` for those first few before writing
-   any reproduction code.
-3. Only after an operator go-ahead per CVE: write and review the reproduction script.
-4. If the last 2-4 entries matter later, a short targeted search for
-   `privilege-escalation`/`network-stack-netfilter`/`syscall-ioctl-kernel-interface` candidates
-   would close the gap — low priority next to steps 1-3.
+## Automation
 
-## PoC/source discovery scanner (`kb_poc_discovery.py`)
+GitHub Actions prepares changes; a human decides. Import, approval, acquisition and validation are
+separate stages. Automation works on `automation/*` branches and opens pull requests against `main`.
+It never compiles or executes PoCs and never marks anything lab-validated.
 
-Metadata-only discovery tool: reads `registry.yaml` and queries public indexes (NVD, GitHub
-repository/code/commit search, GitLab, lore.kernel.org, git.kernel.org's cgit grep search, the
-Ubuntu CVE tracker, optionally local `searchsploit`) for references to each entry. **It never
-downloads, builds, executes, or modifies anything it finds.** Output goes to
-`kb-poc-discovery-report/` (`report.md`, `results.csv`, `results.json`).
+## Principles
 
-```bash
-# needs GITHUB_TOKEN / NVD_API_KEY in the environment for full coverage — see setup-tokens.sh
-.venv/bin/python kb_poc_discovery.py registry.yaml --limit 15   # validate on a subset first
-.venv/bin/python kb_poc_discovery.py registry.yaml              # full 148-entry run
-```
+Artifact-centric, provenance-preserving, classification-driven, reproducibility-aware,
+integrity-preserving, license-conscious, machine-readable, human-reviewed, independent of Kernel
+Borderlands, and versioned.
 
-**Read the classification before trusting any count out of this tool.** An earlier version
-collapsed every hit into one `poc_candidate: true/false` flag, which badly over-counted: NVD's
-"Exploit" reference tag, a TryHackMe room's notes file, and an actual working exploit script all
-set it to `true`. A manual review of the first run (15 CVEs, 377 of 475 hits flagged
-`poc_candidate`) found this made the count meaningless as a "number of PoCs found" — see the
-module docstring in `kb_poc_discovery.py` for the full writeup. The scanner now reports two
-separate axes per hit instead:
+## Not in scope
 
-- `artifact_class` — a heuristic sort into `EXPLOIT_POC`, `CRASH_REPRODUCER`, `SYZ_REPRODUCER`,
-  `PATCH_REFERENCE`, `TECHNICAL_ANALYSIS`, `VENDOR_ADVISORY`, `CVE_METADATA`, or
-  `UNRELATED_MATCH`. Only the first three count as a reproduction-candidate lead.
-- `verification_state` — every hit starts at `DISCOVERED`. Moving a specific hit to `RETRIEVED`,
-  `SOURCE_REVIEWED`, `LAB_VALIDATED`, or `REJECTED` is a manual step this script cannot perform;
-  `LAB_VALIDATED` additionally requires an isolated category-A Attack-Lab run with written
-  per-CVE authorisation (`Attack-LabTest-Suite.md` §5/§6).
+KB-LVA is not a vulnerability scanner, a CVE database replacement, an exploit-development framework, an
+attack platform, a PoC execution engine, a disclosure platform, a Kernel Borderlands defence component, or
+a benchmark. It can supply curated artifacts to benchmarks such as KB-AL-150, but does not depend on them.
 
-The report's headline is three numbers, not one: **unique artifacts discovered** (deduplicated
-repos/commits/files/references), **unique reproduction candidates** (still-unverified leads
-narrowed to the three *_POC/*_REPRODUCER classes), and **lab-validated reproductions** (always 0
-from this script). Do not treat a reproduction-candidate count as a count of usable PoCs — it is
-an unreviewed lead list for a human to triage.
+## Licensing and safety
 
-This tool, and the discovery report it produces, are a separate axis from `registry.yaml`'s own
-`category: A | B | C | D` field (lab-reproduction maturity, per `Attack-LabTest-Suite.md` §5).
-Nothing here promotes a registry entry past category D.
+Collected artifacts keep their original licenses and attribution; a public repository does not grant
+redistribution rights. Where a license is unknown or restrictive, only metadata and a source reference are
+kept. Do not run anything from this archive outside an isolated lab. See `documentation/`.
+
+The repository's own license has not been chosen yet.

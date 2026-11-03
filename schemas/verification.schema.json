@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Verification",
+  "type": "object",
+  "properties": {
+    "artifact_id": {
+      "type": "string"
+    },
+    "state": {
+      "enum": [
+        "DISCOVERED",
+        "RETRIEVED",
+        "SOURCE_REVIEWED",
+        "LAB_VALIDATED",
+        "REJECTED"
+      ]
+    },
+    "source_reviewed": {
+      "type": "boolean"
+    },
+    "lab_validated": {
+      "type": "boolean"
+    },
+    "reason": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "artifact_id",
+    "state"
+  ]
+}

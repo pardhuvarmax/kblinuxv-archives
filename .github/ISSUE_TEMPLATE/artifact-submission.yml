@@ -1,0 +1,23 @@
+name: Artifact submission
+description: Propose a Linux vulnerability reproduction artifact
+body:
+  - type: input
+    id: cve
+    attributes:
+      label: CVE ID
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Source URL (with commit)
+    validations:
+      required: true
+  - type: input
+    id: license
+    attributes:
+      label: License (if known)
+  - type: textarea
+    id: notes
+    attributes:
+      label: What does it demonstrate?
