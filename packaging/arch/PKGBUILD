@@ -16,15 +16,12 @@ makedepends=('go')
 optdepends=('github-cli: open pull requests and read your GitHub token (kblva run)')
 options=('!debug')
 
-pkgver() {
-  cd "$startdir/../.."
-  printf '0.1.0.r%s.g%s' "$(git rev-list --count HEAD)" "$(git rev-parse --short HEAD)"
-}
-
 build() {
   cd "$startdir/../.."
   export CGO_ENABLED=0 GOFLAGS="-trimpath -mod=readonly -modcacherw"
-  go build -ldflags "-s -w -X github.com/pardhuvarmax/kblinuxv-archives/internal/cli.version=$pkgver" \
+  # the package version stays fixed (makepkg would otherwise rewrite this file); the commit goes in `kblva --version`
+  local _rev; _rev="$(git rev-parse --short HEAD)$(git diff --quiet HEAD -- . && echo '' || echo '-dirty')"
+  go build -ldflags "-s -w -X github.com/pardhuvarmax/kblinuxv-archives/internal/cli.version=$pkgver+g$_rev" \
     -o "$srcdir/kblva" ./cmd/kblva
 }
 

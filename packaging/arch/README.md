@@ -9,6 +9,6 @@ sudo pacman -U kblva-*.pkg.tar.zst
 kblva config set-root /path/to/this/repository   # once, so kblva runs from any directory
 ```
 
-`makepkg -s` installs the `go` build dependency for you. The version is `0.1.0.r<commit count>.g<hash>`, taken from git. Upgrade by rebuilding after pulling, and `pacman -U` again. Remove with `sudo pacman -R kblva`.
+`makepkg -s` installs the `go` build dependency for you. The package version is `0.1.0`; `kblva --version` also shows the git commit it was built from (`0.1.0+g<hash>`, with `-dirty` if the tree had uncommitted changes). Upgrade by pulling, rebuilding, and running `pacman -U` again. Remove with `sudo pacman -R kblva`.
 
 Build products (`src/`, `pkg/`, `*.pkg.tar.zst`) are git-ignored.
