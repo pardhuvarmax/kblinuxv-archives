@@ -1,4 +1,33 @@
 # Artifacts approved for retrieval. Retrieval approval is not redistribution approval.
-approved_artifacts: []
-# - artifact_id: LVA-0000-0000-001
-#   approved: true
+# Batch 001: approved by the repository owner on 2026-11-03 ("use all 15" from proposed-first-batch.md).
+approved_artifacts:
+  - artifact_id: LVA-2024-21626-007
+    approved: true
+  - artifact_id: LVA-2010-4077-003
+    approved: true
+  - artifact_id: LVA-2021-33909-004
+    approved: true
+  - artifact_id: LVA-2018-1000204-003
+    approved: true
+  - artifact_id: LVA-2016-9793-002
+    approved: true
+  - artifact_id: LVA-2018-5333-001
+    approved: true
+  - artifact_id: LVA-2021-31440-002
+    approved: true
+  - artifact_id: LVA-2015-8550-003
+    approved: true
+  - artifact_id: LVA-2017-5123-005
+    approved: true
+  - artifact_id: LVA-2017-1000112-001
+    approved: true
+  - artifact_id: LVA-2024-23651-006
+    approved: true
+  - artifact_id: LVA-2016-0728-001
+    approved: true
+  - artifact_id: LVA-2022-0847-004
+    approved: true
+  - artifact_id: LVA-2017-16995-003
+    approved: true
+  - artifact_id: LVA-2019-15666-005
+    approved: true

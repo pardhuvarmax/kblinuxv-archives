@@ -3,6 +3,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).parent.parent / "tools/acquisition"))
 from extract_candidates import md_url, triage  # noqa: E402
+from acquire_artifacts import Refused, corpus_dir, parse_pinned  # noqa: E402
 
 SHA = "a" * 40
 
@@ -37,3 +38,23 @@ def test_cve_not_in_url_is_flagged_but_stays_ready():
 def test_md_url_encodes_link_breaking_characters():
     out = md_url("https://github.com/o/r/blob/abc/2010/CVE-1, 2.6/x(1).c")
     assert " " not in out and "(" not in out and ")" not in out and "," not in out
+
+
+def test_parse_pinned_accepts_pinned_github_blob_and_decodes_path():
+    h, repo, commit, path = parse_pinned(f"https://github.com/o/r/blob/{SHA}/a/b%2C%20c/x.c")
+    assert (h, repo, commit, path) == ("github.com", "o/r", SHA, "a/b, c/x.c")
+
+
+def test_parse_pinned_refuses_unsafe_input():
+    import pytest
+    for bad in (f"https://evil.example/o/r/blob/{SHA}/x.c", "https://github.com/o/r/blob/main/x.c",
+                f"https://github.com/o/r/blob/{SHA}/../x.c", f"https://github.com/o/r/blob/{SHA}/%2e%2e/x.c",
+                "https://github.com/o/r"):
+        with pytest.raises(Refused):
+            parse_pinned(bad)
+
+
+def test_corpus_dir():
+    assert corpus_dir({"component": "sudo", "category": "privilege-escalation"}) == "linux-userspace"
+    assert corpus_dir({"component": "linux-kernel", "category": "use-after-free"}) == "memory-corruption"
+    assert corpus_dir({"component": "linux-kernel", "category": None}) == "other"
