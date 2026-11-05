@@ -44,6 +44,8 @@ kblva run --size 15     # resolve, select, ask, pull, document, check, open a PR
 | --- | --- |
 | `status` | Dashboard: registry, candidates, retrieved artifacts, states, local-only files |
 | `show ID` | An artifact (by ID) or a CVE |
+| `add-cve CVE...` | Register new CVEs from NVD (component, subsystem and class inferred and flagged with `~`), scan them, file the snapshot, import and triage. `--dry-run` shows the entries, `--no-scan` registers only, `--pr` does it on a `data/add-*` branch and opens a PR, `--component/--subsystem/--class` override the guesses |
+| `scan CVE...` | Scan CVEs already in the registry (drives `kb_poc_discovery.py`), file the snapshot, import and triage |
 | `import` | Merge scanner snapshots into `discovery/normalized/`; issued artifact IDs never change |
 | `triage` | `ready` / `needs-review` / `needs-resolution` into `acquisition/candidates/candidates.json` |
 | `resolve` | Repository leads to specific files, as a new snapshot (then run `import` and `triage`) |
@@ -57,6 +59,10 @@ kblva run --size 15     # resolve, select, ask, pull, document, check, open a PR
 | `review status` | Count artifacts per verification state |
 | `config` | `set-root [PATH]`, `show`, `unset-root`: remember the repository so kblva runs from anywhere |
 | `validate` | Schemas, hashes and policy; or `validate schema|hashes|policy` |
+
+## Scanning new CVEs
+
+`kblva add-cve CVE-YYYY-NNNN` replaces the by-hand routine of editing `registry.yaml`, running the scanner and placing its output. The scanner stays a separate Python component (`kb_poc_discovery.py`, git-ignored). `kblva` finds it in the repository root and uses `<repo>/.venv/bin/python` if present (create it with `python3 -m venv .venv && .venv/bin/pip install pyyaml requests`); override with `--scanner`, `--python` or `$KBLVA_PYTHON`. The scan reads public metadata only and takes minutes because the public indexes are rate-limited; `--show-scanner-output` streams its progress. Each scan becomes an immutable snapshot under `discovery/raw/` with a README and checksums. Registry entries are only appended, re-parsed afterwards, and restored if one would break the file. To pull files for the new CVEs, run `kblva run`.
 
 ## What it will not do
 

@@ -8,8 +8,6 @@ package pipeline
 import (
 	"errors"
 	"fmt"
-	"os"
-	"os/exec"
 	"path/filepath"
 	"regexp"
 	"sort"
@@ -21,6 +19,7 @@ import (
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/data"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/docs"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/gh"
+	"github.com/pardhuvarmax/kblinuxv-archives/internal/gitx"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/importer"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/meta"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/policy"
@@ -86,17 +85,7 @@ func (p runner) say(s string) {
 	}
 }
 
-func (p runner) git(args ...string) (string, error) {
-	cmd := exec.Command("git", args...)
-	cmd.Dir = p.r.Root
-	var stderr strings.Builder
-	cmd.Stderr = &stderr
-	out, err := cmd.Output()
-	if err != nil {
-		return "", fmt.Errorf("git %s: %s", strings.Join(args, " "), strings.TrimSpace(stderr.String()))
-	}
-	return strings.TrimSpace(string(out)), nil
-}
+func (p runner) git(args ...string) (string, error) { return gitx.Git(p.r.Root, args...) }
 
 var logNum = regexp.MustCompile(`-(\d{3})\.md$`)
 
@@ -377,19 +366,5 @@ All are `+"`RETRIEVED`"+`: not source-reviewed, not lab-validated. Merging does 
 - [ ] Flags in the review sheet have been looked at
 - [ ] Local-only entries stay out of the repository (the policy check enforces this)
 `, s.Batch, s.Approved, s.Stored, s.Local, now.Format("2006-01-02"), s.Batch, s.Batch)
-	f, err := os.CreateTemp("", "kblva-pr-*.md")
-	if err != nil {
-		return "", err
-	}
-	defer os.Remove(f.Name())
-	f.WriteString(body)
-	f.Close()
-	cmd := exec.Command("gh", "pr", "create", "--base", "main", "--head", s.Branch,
-		"--title", "KB-LVA: Acquisition Batch #"+s.Batch, "--body-file", f.Name())
-	cmd.Dir = r.Root
-	out, err := cmd.CombinedOutput()
-	if err != nil {
-		return "", fmt.Errorf("gh pr create: %s", strings.TrimSpace(string(out)))
-	}
-	return strings.TrimSpace(string(out)), nil
+	return gitx.PR(r.Root, "main", s.Branch, "KB-LVA: Acquisition Batch #"+s.Batch, body)
 }
