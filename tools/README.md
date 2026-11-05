@@ -1,3 +1,5 @@
+> **Superseded.** These Python tools are replaced by the Go CLI `kblva` (`cmd/`, `internal/`; see `documentation/cli.md`), which reproduces their output byte for byte. They are kept for reference until they are removed.
+
 # tools
 
 Python tooling for the pipeline. None of it executes or compiles downloaded PoCs.

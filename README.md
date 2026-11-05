@@ -65,12 +65,17 @@ is not validation, and merging a PR is not validation.
 | `metadata/` | JSONL dataset layers |
 | `schemas/` | JSON Schemas |
 | `manifests/` | SHA-256 manifests and release manifests |
-| `tools/` | Pipeline code |
+| `cmd/`, `internal/` | The `kblva` Go CLI (the pipeline) |
+| `tools/` | Legacy Python tools, superseded by `kblva` |
 | `documentation/` | Methodology and policies |
 | `tests/` | Tests |
 | `.github/` | Workflows and templates |
 
 Every folder has its own README.
+
+## The `kblva` CLI
+
+The pipeline is one Go binary. `make build`, then `bin/kblva doctor` and `bin/kblva run` run a whole batch and end at a pull request you merge. To install it system-wide as a pacman package, see `packaging/arch/` and `documentation/cli.md`. Command reference: `documentation/cli.md`.
 
 ## Automation
 
