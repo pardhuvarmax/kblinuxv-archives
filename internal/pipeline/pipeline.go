@@ -16,6 +16,7 @@ import (
 	"time"
 
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/acquire"
+	"github.com/pardhuvarmax/kblinuxv-archives/internal/batches"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/data"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/docs"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/gh"
@@ -225,6 +226,9 @@ func Run(r data.Repo, o Options) (Summary, error) {
 	}); err != nil {
 		return abandon(err)
 	}
+	if err := triage.SaveLicenses(r, lic); err != nil {
+		return abandon(err)
+	}
 	batch := triage.Select(ready, vulns, stored, done, o.Size, lic, o.CVEs)
 	if len(batch) == 0 {
 		return abandon(errors.New("no ready candidates left to propose"))
@@ -252,6 +256,33 @@ func Run(r data.Repo, o Options) (Summary, error) {
 		return abandon(ErrCancelled)
 	}
 	sum.Approved = len(ids)
+	// the batch's folder under acquisition/candidates/: what was proposed, and the CVE restriction if any
+	bn, _ := strconv.Atoi(sum.Batch)
+	proposed := make([]data.Candidate, len(rows))
+	for i, row := range rows {
+		proposed[i] = row.Candidate
+	}
+	var missing, restricted []string
+	if len(o.CVEs) > 0 {
+		inBatch := map[string]bool{}
+		for _, c := range proposed {
+			inBatch[c.CVE] = true
+		}
+		for c := range o.CVEs {
+			restricted = append(restricted, c)
+			if !inBatch[c] {
+				missing = append(missing, c)
+			}
+		}
+		sort.Strings(restricted)
+		sort.Strings(missing)
+		if err := batches.Write(r, bn, "cves.txt", strings.Join(restricted, "\n")+"\n"); err != nil {
+			return abandon(err)
+		}
+	}
+	if err := batches.Write(r, bn, "proposed.md", triage.ProposalMarkdown(batches.Name(bn)+"/proposed.md", proposed, vulns, lic, missing)); err != nil {
+		return abandon(err)
+	}
 	if err := data.AppendApproved(r, fmt.Sprintf("Batch %s: approved by the repository owner on %s at the terminal prompt.", sum.Batch, now.Format("2006-01-02")), ids); err != nil {
 		return abandon(err)
 	}
@@ -275,6 +306,7 @@ func Run(r data.Repo, o Options) (Summary, error) {
 		{"Fetching NVD data for new CVEs", func() error { _, e := meta.Build(r, meta.Options{Now: now}); return e }},
 		{"Generating folder READMEs", func() error { _, e := docs.Generate(r); return e }},
 		{"Writing static review sheets", func() error { _, _, e := review.Sheets(r, sum.Batch, ids); return e }},
+		{"Arranging the batch folders", func() error { _, e := batches.Arrange(r); return e }},
 		{"Running checks (schemas, hashes, policy)", func() error { return checks(r) }},
 	}
 	for _, s := range steps {

@@ -1,6 +1,7 @@
 package triage
 
 import (
+	"os"
 	"strings"
 	"testing"
 
@@ -90,5 +91,28 @@ func TestQuoteMatchesPython(t *testing.T) {
 	}
 	if Quote("a/b c", "/") != "a/b%20c" {
 		t.Fatal("quote with safe slash")
+	}
+}
+
+func TestSaveLicensesAccumulatesAndSorts(t *testing.T) {
+	r := data.Repo{Root: t.TempDir()}
+	mit := "MIT"
+	if err := SaveLicenses(r, Licenses{"b/b": &mit, "a/a": nil}); err != nil {
+		t.Fatal(err)
+	}
+	gpl := "GPL-3.0"
+	if err := SaveLicenses(r, Licenses{"c/c": &gpl, "b/b": nil}); err != nil {
+		t.Fatal(err)
+	}
+	var got map[string]*string
+	if err := data.ReadJSON(r.P("acquisition/candidates/repo-licenses.json"), &got); err != nil {
+		t.Fatal(err)
+	}
+	if len(got) != 3 || got["a/a"] != nil || got["b/b"] != nil || got["c/c"] == nil || *got["c/c"] != "GPL-3.0" {
+		t.Fatalf("earlier entries must survive and new values win: %v", got)
+	}
+	raw, _ := os.ReadFile(r.P("acquisition/candidates/repo-licenses.json"))
+	if strings.Index(string(raw), "a/a") > strings.Index(string(raw), "b/b") || strings.Index(string(raw), "b/b") > strings.Index(string(raw), "c/c") {
+		t.Fatalf("keys must be sorted: %s", raw)
 	}
 }

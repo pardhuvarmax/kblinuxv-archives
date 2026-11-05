@@ -38,6 +38,8 @@ kblva run --size 15     # resolve, select, ask, pull, document, check, open a PR
 
 `--dry-run` stops before approval. Cancelling or `--dry-run` leaves `main` clean and stashes any refreshed data (`git stash list`) instead of deleting it. Other flags: `--cves FILE` restricts the batch to those CVEs, `--skip-resolve` skips step 2.
 
+`kblva run` keeps `acquisition/candidates/` tidy on its own: each batch gets a folder (`first-batch`, `second-batch`, `third-batch`, ...) holding `proposed.md` (what was proposed, with licenses), `approved.md` (what was retrieved, with outcomes), `cves.txt` if you restricted the run, and a README. `candidates.json` and `repo-licenses.json` (every repository license looked up so far) stay at the top level.
+
 ## Individual stages
 
 | Command | What it does |
@@ -49,7 +51,8 @@ kblva run --size 15     # resolve, select, ask, pull, document, check, open a PR
 | `import` | Merge scanner snapshots into `discovery/normalized/`; issued artifact IDs never change |
 | `triage` | `ready` / `needs-review` / `needs-resolution` into `acquisition/candidates/candidates.json` |
 | `resolve` | Repository leads to specific files, as a new snapshot (then run `import` and `triage`) |
-| `propose` | Write a proposal file: one ready file per CVE; `--licenses` looks up repository licenses |
+| `propose` | Write a proposal into the next batch's folder (`<ordinal>-batch/proposed.md`): one ready file per CVE; `--licenses` looks up repository licenses |
+| `arrange` | Arrange `acquisition/candidates/` into `first-batch/`, `second-batch/`, ... (moves old flat files, regenerates `approved.md` and READMEs; `run` does this itself) |
 | `approve` | Approve by ID, or every row of a `--proposal` file |
 | `acquire` | Pull approved files; `--sync-local` refills missing `local-only/` files and checks their hashes |
 | `meta` | Build `metadata/vulnerabilities.jsonl` from NVD and the registry |

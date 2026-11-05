@@ -1,4 +1,4 @@
-# Proposed batch (proposed-batch-002.md)
+# Proposed batch (second-batch/proposed.md)
 
 Suggestion only: one ready candidate per CVE, spread across vulnerability categories, preferring candidates whose URL contains the CVE ID, then `EXPLOIT_POC` in C or Python. Nothing here is approved. To approve, copy chosen IDs into `acquisition/approved/approved-artifacts.yaml`.
 

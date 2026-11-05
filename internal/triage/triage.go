@@ -11,6 +11,7 @@ import (
 
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/data"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/policy"
+	"github.com/pardhuvarmax/kblinuxv-archives/internal/pyjson"
 )
 
 var (
@@ -335,4 +336,24 @@ func LoadCandidates(r data.Repo) ([]data.Candidate, error) {
 		return nil, fmt.Errorf("no candidates yet: run `kblva triage` first (%w)", err)
 	}
 	return out, nil
+}
+
+// SaveLicenses merges lic into acquisition/candidates/repo-licenses.json (keys sorted, null = no license), so the
+// file accumulates every repository looked up so far.
+func SaveLicenses(r data.Repo, lic Licenses) error {
+	all := map[string]*string{}
+	_ = data.ReadJSON(r.P("acquisition/candidates/repo-licenses.json"), &all)
+	for k, v := range lic {
+		all[k] = v
+	}
+	keys := make([]string, 0, len(all))
+	for k := range all {
+		keys = append(keys, k)
+	}
+	sort.Strings(keys)
+	om := pyjson.NewOrdered()
+	for _, k := range keys {
+		om.Set(k, all[k])
+	}
+	return data.WriteJSON(r.P("acquisition/candidates/repo-licenses.json"), om, 1)
 }
