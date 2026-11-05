@@ -11,5 +11,6 @@ What the pipeline considers for acquisition.
 | [`first-batch/`](first-batch/) | 001 | 2026-11-03 | 15 |
 | [`second-batch/`](second-batch/) | 002 | 2026-11-03 | 23 |
 | [`third-batch/`](third-batch/) | 003 | 2026-11-05 | 15 |
+| [`fourth-batch/`](fourth-batch/) | 004 | 2026-11-05 | 50 |
 
 Nothing is approved until it is in `acquisition/approved/approved-artifacts.yaml`.
