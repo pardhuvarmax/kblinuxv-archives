@@ -13,6 +13,7 @@ import (
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/data"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/gh"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/meta"
+	"github.com/pardhuvarmax/kblinuxv-archives/internal/secrets"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/ui"
 )
 
@@ -233,7 +234,8 @@ func (a *App) cmdDoctor() *cobra.Command {
 			_, err := exec.LookPath("gh")
 			check(err == nil, "gh is installed", "gh is not installed (needed to open pull requests)", true)
 			check(gh.Token() != "", "GitHub token available", "no GitHub token: set GITHUB_TOKEN or run `gh auth login`", true)
-			check(os.Getenv("NVD_API_KEY") != "", "NVD_API_KEY set (faster NVD lookups)", "NVD_API_KEY not set: NVD lookups are limited to one per 6.5 s", false)
+			nvd := secrets.Source(secrets.NVD)
+			check(nvd != "", "NVD_API_KEY available ("+nvd+")", "NVD_API_KEY not set: NVD lookups are limited to one per 6.5 s (store one with `kblva keys set NVD_API_KEY`)", false)
 			ign, _ := os.ReadFile(r.P(".gitignore"))
 			check(strings.Contains(string(ign), "local-only/"), "local-only/ is git-ignored", "local-only/ is NOT in .gitignore: unlicensed files could be committed", true)
 			remote := git("remote", "get-url", "origin")

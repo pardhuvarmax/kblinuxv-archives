@@ -5,10 +5,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
-	"os"
 	"os/exec"
 	"strings"
 	"time"
+
+	"github.com/pardhuvarmax/kblinuxv-archives/internal/secrets"
 )
 
 type Client struct {
@@ -16,9 +17,9 @@ type Client struct {
 	http  *http.Client
 }
 
-// Token returns GITHUB_TOKEN, or the logged-in `gh` token. Empty means unauthenticated (low rate limit).
+// Token returns GITHUB_TOKEN (environment, keyring or encrypted file), or the logged-in `gh` token. Empty means unauthenticated (low rate limit).
 func Token() string {
-	if t := os.Getenv("GITHUB_TOKEN"); t != "" {
+	if t, _ := secrets.Get(secrets.GitHub); t != "" {
 		return t
 	}
 	if out, err := exec.Command("gh", "auth", "token").Output(); err == nil {
