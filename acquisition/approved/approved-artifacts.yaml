@@ -78,3 +78,34 @@ approved_artifacts:
     approved: true
   - artifact_id: LVA-2022-27666-006
     approved: true
+# Batch 003: approved by the repository owner on 2026-11-05 at the terminal prompt.
+  - artifact_id: LVA-2024-23652-006
+    approved: true
+  - artifact_id: LVA-2019-13272-001
+    approved: true
+  - artifact_id: LVA-2023-0386-003
+    approved: true
+  - artifact_id: LVA-2017-7308-003
+    approved: true
+  - artifact_id: LVA-2024-0193-004
+    approved: true
+  - artifact_id: LVA-2021-4034-002
+    approved: true
+  - artifact_id: LVA-2017-10661-003
+    approved: true
+  - artifact_id: LVA-2017-5123-056
+    approved: true
+  - artifact_id: LVA-2017-8890-057
+    approved: true
+  - artifact_id: LVA-2024-23653-004
+    approved: true
+  - artifact_id: LVA-2010-4077-004
+    approved: true
+  - artifact_id: LVA-2026-80530-002
+    approved: true
+  - artifact_id: LVA-2022-0185-002
+    approved: true
+  - artifact_id: LVA-2022-25636-004
+    approved: true
+  - artifact_id: LVA-2024-53104-006
+    approved: true

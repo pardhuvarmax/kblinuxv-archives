@@ -1,0 +1,387 @@
+{
+ "summary": {
+  "generated_utc": "2026-11-05T16:33:55+00:00",
+  "registry": "registry.yaml",
+  "registry_entries_scanned": 16,
+  "total_source_hits": 27
+ },
+ "results": [
+  {
+   "cve_id": "CVE-2016-0728",
+   "sources": [
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "hal0taso/CVE-2016-0728/src/cve_2016_0728.c",
+     "url": "https://github.com/hal0taso/CVE-2016-0728/blob/be70c764954a2d0f8d976d8eb8e2c71b927eb90d/src/cve_2016_0728.c",
+     "snippet": "Resolved from repository lead hal0taso/CVE-2016-0728: src/cve_2016_0728.c",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    },
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "hal0taso/CVE-2016-0728/src/cve_2016_0728_3.c",
+     "url": "https://github.com/hal0taso/CVE-2016-0728/blob/be70c764954a2d0f8d976d8eb8e2c71b927eb90d/src/cve_2016_0728_3.c",
+     "snippet": "Resolved from repository lead hal0taso/CVE-2016-0728: src/cve_2016_0728_3.c",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    },
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "hal0taso/CVE-2016-0728/src/cve_2016_0728_debug.c",
+     "url": "https://github.com/hal0taso/CVE-2016-0728/blob/be70c764954a2d0f8d976d8eb8e2c71b927eb90d/src/cve_2016_0728_debug.c",
+     "snippet": "Resolved from repository lead hal0taso/CVE-2016-0728: src/cve_2016_0728_debug.c",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    },
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "hal0taso/CVE-2016-0728/src/cve_2016_0728_m32.c",
+     "url": "https://github.com/hal0taso/CVE-2016-0728/blob/be70c764954a2d0f8d976d8eb8e2c71b927eb90d/src/cve_2016_0728_m32.c",
+     "snippet": "Resolved from repository lead hal0taso/CVE-2016-0728: src/cve_2016_0728_m32.c",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    },
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "sidrk01/cve-2016-0728/cve-2016-0728.c",
+     "url": "https://github.com/sidrk01/cve-2016-0728/blob/f4ddaf3f923a7eddb82e275ec97efb4b188c887a/cve-2016-0728.c",
+     "snippet": "Resolved from repository lead sidrk01/cve-2016-0728: cve-2016-0728.c",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2017-16995",
+   "sources": [
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "anldori/CVE-2017-16995/CVE-2017-16995.c",
+     "url": "https://github.com/anldori/CVE-2017-16995/blob/4c26db500c504e931bc59a2ea0e75a133a9d0fce/CVE-2017-16995.c",
+     "snippet": "Resolved from repository lead anldori/CVE-2017-16995: CVE-2017-16995.c",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2017-5123",
+   "sources": [
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "0x5068656e6f6c/CVE-2017-5123/CVE-2017-5123.c",
+     "url": "https://github.com/0x5068656e6f6c/CVE-2017-5123/blob/8ff13d852c8d9da1aa6aec342ce7af31eefb2ea1/CVE-2017-5123.c",
+     "snippet": "Resolved from repository lead 0x5068656e6f6c/CVE-2017-5123: CVE-2017-5123.c",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2017-6074",
+   "sources": [
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "34zY/CVE-2017-6074-DOS/cve-2017-6074-dos-only_Version2.c",
+     "url": "https://github.com/34zY/CVE-2017-6074-DOS/blob/fd55dfb9c043fcb9e52d983b18f89646c6e2a9ba/cve-2017-6074-dos-only_Version2.c",
+     "snippet": "Resolved from repository lead 34zY/CVE-2017-6074-DOS: cve-2017-6074-dos-only_Version2.c",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2017-7308",
+   "sources": [
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "anldori/CVE-2017-7308/CVE-2017-7308.c",
+     "url": "https://github.com/anldori/CVE-2017-7308/blob/9a1035e8a6e119e5b70aed33c3ab1ab7981d6580/CVE-2017-7308.c",
+     "snippet": "Resolved from repository lead anldori/CVE-2017-7308: CVE-2017-7308.c",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2017-8890",
+   "sources": [
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "sweatyrocket/huawei-p10-cve-2017-8890-unlock/exploit/CVE-2017-8890/1003/rootz.c",
+     "url": "https://github.com/sweatyrocket/huawei-p10-cve-2017-8890-unlock/blob/735becec0a62633cc4848196ce37040abbf74501/exploit/CVE-2017-8890/1003/rootz.c",
+     "snippet": "Resolved from repository lead sweatyrocket/huawei-p10-cve-2017-8890-unlock: exploit/CVE-2017-8890/1003/rootz.c",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    },
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "sweatyrocket/huawei-p10-cve-2017-8890-unlock/exploit/CVE-2017-8890/1003/rootz.h",
+     "url": "https://github.com/sweatyrocket/huawei-p10-cve-2017-8890-unlock/blob/735becec0a62633cc4848196ce37040abbf74501/exploit/CVE-2017-8890/1003/rootz.h",
+     "snippet": "Resolved from repository lead sweatyrocket/huawei-p10-cve-2017-8890-unlock: exploit/CVE-2017-8890/1003/rootz.h",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2019-13272",
+   "sources": [
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "josemlwdf/CVE-2019-13272/CVE-2019-13272.py",
+     "url": "https://github.com/josemlwdf/CVE-2019-13272/blob/be0585713821e13c595fab511be0c2e034acb37c/CVE-2019-13272.py",
+     "snippet": "Resolved from repository lead josemlwdf/CVE-2019-13272: CVE-2019-13272.py",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2021-22555",
+   "sources": [
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "xyjl-ly/CVE-2021-22555-Exploit/cve_2021_22555.c",
+     "url": "https://github.com/xyjl-ly/CVE-2021-22555-Exploit/blob/088452e991af77ba45c9263e5580ad80ec78780b/cve_2021_22555.c",
+     "snippet": "Resolved from repository lead xyjl-ly/CVE-2021-22555-Exploit: cve_2021_22555.c",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2021-4034",
+   "sources": [
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "krleejihyeong/WHS4_CVE-2021-4034/CVE-2021-4034_exploit.c",
+     "url": "https://github.com/krleejihyeong/WHS4_CVE-2021-4034/blob/28341ac74dc028f5e137236b837714330a6691e6/CVE-2021-4034_exploit.c",
+     "snippet": "Resolved from repository lead krleejihyeong/WHS4_CVE-2021-4034: CVE-2021-4034_exploit.c",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    },
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "locksec/CVE-2021-4034/cve-2021-4034.c",
+     "url": "https://github.com/locksec/CVE-2021-4034/blob/6a6fca978a353fa8281cf65e206a1ecb3688ad74/cve-2021-4034.c",
+     "snippet": "Resolved from repository lead locksec/CVE-2021-4034: cve-2021-4034.c",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    },
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "mac3d0/CVE-2021-4034-pwnkit/cve-2021-4034-poc.c",
+     "url": "https://github.com/mac3d0/CVE-2021-4034-pwnkit/blob/795bbc306481be35a479b6b737d3a305ed330390/cve-2021-4034-poc.c",
+     "snippet": "Resolved from repository lead mac3d0/CVE-2021-4034-pwnkit: cve-2021-4034-poc.c",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2022-0185",
+   "sources": [
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "chenaotian/CVE-2022-0185/qemuANDexp/exp/cve-2022-0185.c",
+     "url": "https://github.com/chenaotian/CVE-2022-0185/blob/9dcdc801e9c21088a6324da4632036cbfa249099/qemuANDexp/exp/cve-2022-0185.c",
+     "snippet": "Resolved from repository lead chenaotian/CVE-2022-0185: qemuANDexp/exp/cve-2022-0185.c",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    },
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "secjuhl/CVE-2022-0185/CVE-2022-0185.c",
+     "url": "https://github.com/secjuhl/CVE-2022-0185/blob/7758218d08e3fe94b750ebe02d21ef6d1813f84c/CVE-2022-0185.c",
+     "snippet": "Resolved from repository lead secjuhl/CVE-2022-0185: CVE-2022-0185.c",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2022-0492",
+   "sources": [
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "T1erno/CVE-2022-0492-Docker-Breakout-Checker-and-PoC/CVE-2022-0492.sh",
+     "url": "https://github.com/T1erno/CVE-2022-0492-Docker-Breakout-Checker-and-PoC/blob/71c3593c451a982be2a8aa834e2128993464b578/CVE-2022-0492.sh",
+     "snippet": "Resolved from repository lead T1erno/CVE-2022-0492-Docker-Breakout-Checker-and-PoC: CVE-2022-0492.sh",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2025-31133",
+   "sources": [
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "C-h4ck-0/Learn-about-cve-2025-31133-poc/cve-2025-31133-exploit.sh",
+     "url": "https://github.com/C-h4ck-0/Learn-about-cve-2025-31133-poc/blob/3991ae6eb6e1516326da3f07b3594f97b21a9d0d/cve-2025-31133-exploit.sh",
+     "snippet": "Resolved from repository lead C-h4ck-0/Learn-about-cve-2025-31133-poc: cve-2025-31133-exploit.sh",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    },
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "skynet-f-nvidia/CVE-2025-31133/CVE-2025-31133_poc.sh",
+     "url": "https://github.com/skynet-f-nvidia/CVE-2025-31133/blob/5cb6e71e8e9af9886b7972180742780337f0db9b/CVE-2025-31133_poc.sh",
+     "snippet": "Resolved from repository lead skynet-f-nvidia/CVE-2025-31133: CVE-2025-31133_poc.sh",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2026-23111",
+   "sources": [
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "Baba01hacker666/CVE-2026-23111/CVE-2026-23111-checker.py",
+     "url": "https://github.com/Baba01hacker666/CVE-2026-23111/blob/596f7bf5dae91ab58f69354eafb14aa4de05e709/CVE-2026-23111-checker.py",
+     "snippet": "Resolved from repository lead Baba01hacker666/CVE-2026-23111: CVE-2026-23111-checker.py",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2026-31431",
+   "sources": [
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "Industri4l-H3ll-Xpl0it3rs/CVE-2026-31431-Copy-Fail/CVE-2026-31431.py",
+     "url": "https://github.com/Industri4l-H3ll-Xpl0it3rs/CVE-2026-31431-Copy-Fail/blob/7d67ab72c8b50c4adbedc1d563cf94c5753bb901/CVE-2026-31431.py",
+     "snippet": "Resolved from repository lead Industri4l-H3ll-Xpl0it3rs/CVE-2026-31431-Copy-Fail: CVE-2026-31431.py",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2026-43499",
+   "sources": [
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "Romk-a/CVE-2026-43499-ghostlock-vivo-x100-ultra-root/src/core/session/backend/cve_2026_43499_backend.cpp",
+     "url": "https://github.com/Romk-a/CVE-2026-43499-ghostlock-vivo-x100-ultra-root/blob/02eaa7522eecada2dc7e9ffb3cf01b33153d9cc1/src/core/session/backend/cve_2026_43499_backend.cpp",
+     "snippet": "Resolved from repository lead Romk-a/CVE-2026-43499-ghostlock-vivo-x100-ultra-root: src/core/session/backend/cve_2026_43499_backend.cpp",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    }
+   ]
+  },
+  {
+   "cve_id": "CVE-2026-46300",
+   "sources": [
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "MadExploits/CVE-2026-46300/CVE-2026-46300.pl",
+     "url": "https://github.com/MadExploits/CVE-2026-46300/blob/d00116291e576dc150127712a9869d3df9173564/CVE-2026-46300.pl",
+     "snippet": "Resolved from repository lead MadExploits/CVE-2026-46300: CVE-2026-46300.pl",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    },
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "MadExploits/CVE-2026-46300/CVE-2026-46300.py",
+     "url": "https://github.com/MadExploits/CVE-2026-46300/blob/d00116291e576dc150127712a9869d3df9173564/CVE-2026-46300.py",
+     "snippet": "Resolved from repository lead MadExploits/CVE-2026-46300: CVE-2026-46300.py",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    },
+    {
+     "source": "github_tree",
+     "kind": "code",
+     "title": "MadExploits/CVE-2026-46300/CVE-2026-46300.sh",
+     "url": "https://github.com/MadExploits/CVE-2026-46300/blob/d00116291e576dc150127712a9869d3df9173564/CVE-2026-46300.sh",
+     "snippet": "Resolved from repository lead MadExploits/CVE-2026-46300: CVE-2026-46300.sh",
+     "artifact_class": "EXPLOIT_POC",
+     "is_reproduction_candidate": true,
+     "verification_state": "DISCOVERED",
+     "poc_candidate": true
+    }
+   ]
+  }
+ ]
+}
