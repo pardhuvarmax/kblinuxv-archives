@@ -83,6 +83,7 @@ LAB_VALIDATED is out of reach here: that needs isolated-lab evidence.`,
 			if err != nil {
 				return err
 			}
+			a.refreshStatus(r)
 			if !a.Out(map[string]string{"artifact_id": args[0], "state": state}) {
 				fmt.Println(ui.OK(fmt.Sprintf("%s is now %s (reviewer %s)", args[0], state, reviewer)))
 			}

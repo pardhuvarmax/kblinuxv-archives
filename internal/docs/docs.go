@@ -166,7 +166,11 @@ func artifactReadme(a data.Artifact, p data.Provenance, local bool) string {
 }
 
 // Result counts the READMEs written.
-type Result struct{ Corpus, Local int }
+type Result struct {
+	Corpus, Local int
+	// StatusUpdated is true if the root README's status block changed.
+	StatusUpdated bool
+}
 
 // Generate writes every README.
 func Generate(r data.Repo) (Result, error) {
@@ -227,7 +231,8 @@ func Generate(r data.Repo) (Result, error) {
 		}
 		res.Corpus++
 	}
-	return res, nil
+	res.StatusUpdated, _, err = UpdateStatus(r)
+	return res, err
 }
 
 func writeLocal(r data.Repo, arts []data.Artifact, prov map[string]data.Provenance, vulns map[string]meta.Vuln) (int, error) {
