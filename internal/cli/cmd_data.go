@@ -4,14 +4,16 @@ import (
 	"fmt"
 	"os"
 	"sort"
+	"strconv"
 	"strings"
 
 	"github.com/spf13/cobra"
 
+	"github.com/pardhuvarmax/kblinuxv-archives/internal/batches"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/data"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/gh"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/importer"
-	"github.com/pardhuvarmax/kblinuxv-archives/internal/pyjson"
+	"github.com/pardhuvarmax/kblinuxv-archives/internal/pipeline"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/triage"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/ui"
 )
@@ -143,13 +145,13 @@ acquisition/candidates/repo-licenses.json.`,
 				if err != nil {
 					return err
 				}
-				om := pyjson.NewOrdered()
-				for _, k := range repos {
-					om.Set(k, lic[k])
-				}
-				if err := data.WriteJSON(r.P("acquisition/candidates/repo-licenses.json"), om, 1); err != nil {
+				if err := triage.SaveLicenses(r, lic); err != nil {
 					return err
 				}
+			}
+			if output == "" {
+				n, _ := strconv.Atoi(pipeline.NextBatchNumber(r))
+				output = batches.Name(n) + "/proposed.md"
 			}
 			batch := triage.Propose(pool, vulns, size, lic)
 			inBatch := map[string]bool{}
@@ -197,7 +199,36 @@ acquisition/candidates/repo-licenses.json.`,
 	}
 	c.Flags().IntVar(&size, "size", 15, "maximum number of files to propose")
 	c.Flags().StringVar(&cvesFile, "cves", "", "file of CVE IDs (whitespace separated): propose only from these")
-	c.Flags().StringVar(&output, "output", "proposed-batch.md", "proposal file name under acquisition/candidates/")
+	c.Flags().StringVar(&output, "output", "", "proposal file under acquisition/candidates/ (default: <next>-batch/proposed.md, e.g. fourth-batch/proposed.md)")
 	c.Flags().BoolVar(&licenses, "licenses", false, "look up repository licenses and prefer storable ones")
 	return c
+}
+
+func (a *App) cmdArrange() *cobra.Command {
+	return &cobra.Command{
+		Use:   "arrange",
+		Short: "Arrange acquisition/candidates/ into first-batch/, second-batch/, ... folders",
+		Long: `Moves the flat proposal and CVE-list files older versions wrote into per-batch folders, then regenerates each
+batch's approved.md and README.md (from the acquisition logs and metadata) and the candidates README. Safe to
+re-run; 'kblva run' does this itself.`,
+		Args: cobra.NoArgs,
+		RunE: func(cmd *cobra.Command, _ []string) error {
+			r, err := a.Repo()
+			if err != nil {
+				return err
+			}
+			res, err := batches.Arrange(r)
+			if err != nil {
+				return err
+			}
+			if a.Out(res) {
+				return nil
+			}
+			for _, m := range res.Moved {
+				fmt.Println(ui.OK("moved " + m))
+			}
+			fmt.Println(ui.OK(fmt.Sprintf("%d batch folders up to date", res.Batches)))
+			return nil
+		},
+	}
 }
