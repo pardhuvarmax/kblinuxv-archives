@@ -2,14 +2,12 @@
 
 | Workflow | Trigger | Responsibility |
 | --- | --- | --- |
-| `discovery-import.yml` | manual, or new snapshot under `discovery/raw/` | Import and normalize scanner output |
-| `acquisition.yml` | manual, after an approval manifest is committed | Retrieve approved source files and open a PR |
-| `validation.yml` | pull request | Validate schemas, metadata and hashes |
-| `pull-request-checks.yml` | pull request | Policy checks before merge |
+| `validation.yml` | pull request | Schemas and Python tests |
+| `pull-request-checks.yml` | pull request | Stored-file hashes and policy |
+| `go.yml` | pull request, push to `main` | gofmt, vet, tests, build, and `kblva validate` on the real dataset |
 
-Rules: no workflow compiles or executes acquired PoCs, none sets `LAB_VALIDATED`, and write permissions are
-granted only to the workflows that need them. Pin third-party actions to reviewed commit SHAs. Never use
-`pull_request_target` to run untrusted code.
+All three are read-only (`contents: read`) and never execute or compile anything under `corpus/`. Pin third-party actions to reviewed commit SHAs, and never use `pull_request_target` to run untrusted code.
 
-`validation.yml` (schemas and tests) and `pull-request-checks.yml` (hash integrity and policy) are real and read-only.
-`discovery-import.yml` and `acquisition.yml` are still skeletons that run a placeholder step; acquisition runs locally for now.
+Importing discovery output and acquiring artifacts are not workflows: they run locally with `kblva run`, because unlicensed files must stay on the author's machine (`local-only/`) and approval happens at a terminal prompt.
+
+`workflows_test.go` (in `internal/validate`) parses every file here, so a file GitHub would reject cannot reach `main`.
