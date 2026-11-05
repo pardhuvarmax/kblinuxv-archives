@@ -166,6 +166,14 @@ func summarize(c nvdCVE) *NVD {
 	return n
 }
 
+// Delay is the pause between NVD requests: 6.5 s without an API key, 0.7 s with one.
+func Delay() time.Duration {
+	if os.Getenv("NVD_API_KEY") != "" {
+		return 700 * time.Millisecond
+	}
+	return 6500 * time.Millisecond
+}
+
 // Options controls Build.
 type Options struct {
 	Refresh  bool
@@ -206,10 +214,7 @@ func Build(r data.Repo, o Options) (added int, err error) {
 			todo = append(todo, c)
 		}
 	}
-	delay := 6500 * time.Millisecond
-	if os.Getenv("NVD_API_KEY") != "" {
-		delay = 700 * time.Millisecond
-	}
+	delay := Delay()
 	now := o.Now.UTC().Format("2006-01-02T15:04:05") + "+00:00"
 	for i, cve := range todo {
 		if i > 0 {
