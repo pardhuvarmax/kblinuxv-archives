@@ -73,7 +73,7 @@ its own, and never merges.`,
 	root.PersistentFlags().BoolVar(&app.json, "json", false, "machine-readable JSON output where supported")
 	root.PersistentFlags().BoolVar(&app.noColor, "no-color", false, "disable colors")
 	root.AddCommand(app.cmdRun(), app.cmdStatus(), app.cmdShow(), app.cmdDoctor(), app.cmdImport(), app.cmdTriage(),
-		app.cmdResolve(), app.cmdPropose(), app.cmdApprove(), app.cmdAcquire(), app.cmdMeta(), app.cmdDocs(), app.cmdReview(), app.cmdValidate(), app.cmdConfig(), app.cmdMan(), app.cmdAddCVE(), app.cmdScan())
+		app.cmdResolve(), app.cmdPropose(), app.cmdApprove(), app.cmdAcquire(), app.cmdMeta(), app.cmdDocs(), app.cmdReview(), app.cmdValidate(), app.cmdConfig(), app.cmdMan(), app.cmdAddCVE(), app.cmdScan(), app.cmdKeys())
 	if err := root.Execute(); err != nil {
 		fmt.Fprintln(os.Stderr, ui.Fail(err.Error()))
 		return 1

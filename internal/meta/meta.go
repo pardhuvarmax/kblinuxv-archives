@@ -6,13 +6,13 @@ import (
 	"encoding/json"
 	"net/http"
 	"net/url"
-	"os"
 	"sort"
 	"strings"
 	"time"
 
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/data"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/pyjson"
+	"github.com/pardhuvarmax/kblinuxv-archives/internal/secrets"
 )
 
 type CVSS struct {
@@ -96,7 +96,7 @@ var client = &http.Client{Timeout: 30 * time.Second}
 func FetchNVD(cve string) (*NVD, error) {
 	req, _ := http.NewRequest("GET", "https://services.nvd.nist.gov/rest/json/cves/2.0?cveId="+url.QueryEscape(cve), nil)
 	req.Header.Set("User-Agent", "kblva")
-	if k := os.Getenv("NVD_API_KEY"); k != "" {
+	if k, _ := secrets.Get(secrets.NVD); k != "" {
 		req.Header.Set("apiKey", k)
 	}
 	resp, err := client.Do(req)
@@ -168,7 +168,7 @@ func summarize(c nvdCVE) *NVD {
 
 // Delay is the pause between NVD requests: 6.5 s without an API key, 0.7 s with one.
 func Delay() time.Duration {
-	if os.Getenv("NVD_API_KEY") != "" {
+	if k, _ := secrets.Get(secrets.NVD); k != "" {
 		return 700 * time.Millisecond
 	}
 	return 6500 * time.Millisecond

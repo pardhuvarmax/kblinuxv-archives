@@ -57,12 +57,29 @@ kblva run --size 15     # resolve, select, ask, pull, document, check, open a PR
 | `review sheet` | Static facts and red flags per artifact (never a verdict) |
 | `review record` | Record your verdict: `--accept`, or `--reject --reason TEXT` |
 | `review status` | Count artifacts per verification state |
+| `keys` | `set`, `list`, `get`, `delete`, `import`, `test`: API keys stored encrypted (system keyring or passphrase file) |
 | `config` | `set-root [PATH]`, `show`, `unset-root`: remember the repository so kblva runs from anywhere |
 | `validate` | Schemas, hashes and policy; or `validate schema|hashes|policy` |
 
 ## Scanning new CVEs
 
 `kblva add-cve CVE-YYYY-NNNN` replaces the by-hand routine of editing `registry.yaml`, running the scanner and placing its output. The scanner stays a separate Python component (`kb_poc_discovery.py`, git-ignored). `kblva` finds it in the repository root and uses `<repo>/.venv/bin/python` if present (create it with `python3 -m venv .venv && .venv/bin/pip install pyyaml requests`); override with `--scanner`, `--python` or `$KBLVA_PYTHON`. The scan reads public metadata only and takes minutes because the public indexes are rate-limited; `--show-scanner-output` streams its progress. Each scan becomes an immutable snapshot under `discovery/raw/` with a README and checksums. Registry entries are only appended, re-parsed afterwards, and restored if one would break the file. To pull files for the new CVEs, run `kblva run`.
+
+## API keys
+
+Keep `NVD_API_KEY` and `GITHUB_TOKEN` encrypted instead of in a shell profile:
+
+```
+kblva keys set NVD_API_KEY      # typed without echo (or: pbpaste | kblva keys set NVD_API_KEY --stdin)
+kblva keys list                 # where each key is available from; never the values
+kblva keys test                 # makes one request each to confirm the keys are accepted
+kblva keys import               # move exported variables into the store, then delete the export lines
+kblva keys delete NVD_API_KEY
+```
+
+The default store is the system keyring (the Secret Service: GNOME Keyring, KWallet, ...): the OS encrypts it and unlocks it at login, so nothing is typed per command. Without a keyring, `keys set` uses a file encrypted with a passphrase (scrypt + AES-256-GCM, mode 0600, `~/.config/kblva/keys.enc`); the passphrase is asked for only when a stored key is needed. `--backend keyring|file` forces one.
+
+kblva looks for a key in the environment variable first, then the keyring, then the file, so an exported variable still wins. A key is never accepted as a command-line argument (shell history, `ps`) and never printed unless you run `keys get`. `GITHUB_TOKEN` falls back to your `gh` login. `KBLVA_NO_KEYRING=1` disables the keyring.
 
 ## What it will not do
 
@@ -73,4 +90,5 @@ It never executes or compiles anything it downloads, never sets `SOURCE_REVIEWED
 | Variable | Purpose |
 | --- | --- |
 | `GITHUB_TOKEN` | GitHub API token (falls back to the logged-in `gh`) |
-| `NVD_API_KEY` | Optional: raises the NVD rate limit |
+| `NVD_API_KEY` | Optional: raises the NVD rate limit. Prefer `kblva keys set` |
+| `KBLVA_NO_KEYRING` | Set to skip the system keyring |

@@ -19,6 +19,7 @@ import (
 
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/data"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/gh"
+	"github.com/pardhuvarmax/kblinuxv-archives/internal/secrets"
 )
 
 // DefaultSources are the scanner sources used when none are given.
@@ -155,6 +156,9 @@ func Run(r data.Repo, o Options) (Result, error) {
 	cmd := exec.Command(Python(r, o.Python), args...)
 	cmd.Dir = r.Root
 	cmd.Env = append(os.Environ(), "GITHUB_TOKEN="+gh.Token())
+	if k, _ := secrets.Get(secrets.NVD); k != "" {
+		cmd.Env = append(cmd.Env, "NVD_API_KEY="+k)
+	}
 	var buf bytes.Buffer
 	var w io.Writer = &buf
 	if o.Log != nil {
