@@ -78,6 +78,9 @@ func (a *App) runScan(r data.Repo, f *scanFlags, cves []string) (scan.Result, er
 		_, e := triage.Refresh(r)
 		return e
 	})
+	if err == nil {
+		a.refreshStatus(r)
+	}
 	return res, err
 }
 
@@ -266,6 +269,7 @@ already registered is skipped for registration but still scanned.`,
 					return err
 				}
 				fmt.Println(ui.OK(fmt.Sprintf("registered %d CVE(s) in discovery/registry/registry.yaml", len(entries))))
+				a.refreshStatus(r)
 			}
 			var res scan.Result
 			if !noScan {

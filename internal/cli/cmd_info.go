@@ -4,32 +4,19 @@ import (
 	"fmt"
 	"os"
 	"os/exec"
-	"path/filepath"
 	"sort"
 	"strings"
 
 	"github.com/spf13/cobra"
 
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/data"
+	"github.com/pardhuvarmax/kblinuxv-archives/internal/docs"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/gh"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/meta"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/secrets"
+	"github.com/pardhuvarmax/kblinuxv-archives/internal/stats"
 	"github.com/pardhuvarmax/kblinuxv-archives/internal/ui"
 )
-
-// Status is the dashboard data.
-type Status struct {
-	RegisteredCVEs   int            `json:"registered_cves"`
-	ArtifactRecords  int            `json:"artifact_records"`
-	Candidates       map[string]int `json:"candidates"`
-	Retrieved        int            `json:"retrieved"`
-	States           map[string]int `json:"states"`
-	Stored           int            `json:"stored_in_corpus"`
-	LocalOnlyRecords int            `json:"local_only_records"`
-	LocalOnlyOnDisk  int            `json:"local_only_files_on_disk"`
-	ApprovedPending  int            `json:"approved_not_retrieved"`
-	Snapshots        []string       `json:"snapshots"`
-}
 
 func (a *App) cmdStatus() *cobra.Command {
 	return &cobra.Command{
@@ -41,45 +28,10 @@ func (a *App) cmdStatus() *cobra.Command {
 			if err != nil {
 				return err
 			}
-			reg, err := data.LoadRegistry(r)
+			s, err := stats.Compute(r)
 			if err != nil {
 				return err
 			}
-			arts, _ := data.ReadJSONL[data.Artifact](r.P("discovery/normalized/artifacts.jsonl"))
-			meta, _ := data.ReadJSONL[data.Artifact](r.P("metadata/artifacts.jsonl"))
-			var cands []data.Candidate
-			_ = data.ReadJSON(r.P("acquisition/candidates/candidates.json"), &cands)
-			prov, _ := data.ReadJSONL[data.Provenance](r.P("metadata/provenance.jsonl"))
-			approved, _ := data.ApprovedList(r)
-			s := Status{RegisteredCVEs: len(reg), ArtifactRecords: len(arts), Candidates: map[string]int{}, States: map[string]int{}, Retrieved: len(meta)}
-			for _, c := range cands {
-				s.Candidates[c.Triage]++
-			}
-			pm := map[string]data.Provenance{}
-			for _, p := range prov {
-				pm[p.ArtifactID] = p
-			}
-			for _, m := range meta {
-				s.States[m.Verification.State]++
-				if m.StoredPath() != "" {
-					s.Stored++
-				} else {
-					s.LocalOnlyRecords++
-					if _, err := os.Stat(r.P("local-only", m.CVE, m.ArtifactID, filepath.Base(pm[m.ArtifactID].Path))); err == nil {
-						s.LocalOnlyOnDisk++
-					}
-				}
-			}
-			for _, id := range approved {
-				if _, ok := pm[id]; !ok {
-					s.ApprovedPending++
-				}
-			}
-			dirs, _ := filepath.Glob(r.P("discovery/raw/*/results.json"))
-			for _, d := range dirs {
-				s.Snapshots = append(s.Snapshots, filepath.Base(filepath.Dir(d)))
-			}
-			sort.Strings(s.Snapshots)
 			if a.Out(s) {
 				return nil
 			}
@@ -247,5 +199,17 @@ func (a *App) cmdDoctor() *cobra.Command {
 			}
 			return nil
 		},
+	}
+}
+
+// refreshStatus rewrites the root README's status block after a command that changed the data. It is quiet when
+// nothing changed or the README has no markers, and never fails the command that called it.
+func (a *App) refreshStatus(r data.Repo) {
+	changed, _, err := docs.UpdateStatus(r)
+	switch {
+	case err != nil:
+		fmt.Fprintln(os.Stderr, ui.Note("could not refresh the README status block: "+err.Error()))
+	case changed && !a.json:
+		fmt.Println(ui.Dim.Render("README.md status block refreshed"))
 	}
 }

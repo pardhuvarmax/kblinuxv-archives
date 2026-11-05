@@ -34,6 +34,7 @@ discovery/normalized/ and discovery/reports/import-report.md. Artifact IDs alrea
 			if err := ui.Spin("Importing snapshots", func() (e error) { res, e = importer.Run(r); return }); err != nil {
 				return err
 			}
+			a.refreshStatus(r)
 			if a.Out(res) {
 				return nil
 			}
@@ -62,6 +63,7 @@ acquisition/candidates/candidates.json and discovery/reports/candidates-report.m
 			if err != nil {
 				return err
 			}
+			a.refreshStatus(r)
 			if a.Out(counts) {
 				return nil
 			}
@@ -221,6 +223,7 @@ re-run; 'kblva run' does this itself.`,
 			if err != nil {
 				return err
 			}
+			a.refreshStatus(r)
 			if a.Out(res) {
 				return nil
 			}

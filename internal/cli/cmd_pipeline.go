@@ -193,6 +193,7 @@ against its recorded SHA-256.`,
 				}
 				outs, err = acquire.Run(r, acquire.Options{Batch: batch, Force: force, Now: time.Now(), Progress: say})
 			}
+			a.refreshStatus(r)
 			if a.Out(outs) {
 				return err
 			}
@@ -253,7 +254,11 @@ func (a *App) cmdDocs() *cobra.Command {
 				return err
 			}
 			if !a.Out(res) {
-				fmt.Println(ui.KV("corpus READMEs", fmt.Sprint(res.Corpus), "local-only READMEs", fmt.Sprint(res.Local)))
+				kv := []string{"corpus READMEs", fmt.Sprint(res.Corpus), "local-only READMEs", fmt.Sprint(res.Local)}
+				if res.StatusUpdated {
+					kv = append(kv, "README.md status block", "refreshed")
+				}
+				fmt.Println(ui.KV(kv...))
 			}
 			return nil
 		},

@@ -40,6 +40,8 @@ kblva run --size 15     # resolve, select, ask, pull, document, check, open a PR
 
 `kblva run` keeps `acquisition/candidates/` tidy on its own: each batch gets a folder (`first-batch`, `second-batch`, `third-batch`, ...) holding `proposed.md` (what was proposed, with licenses), `approved.md` (what was retrieved, with outcomes), `cves.txt` if you restricted the run, and a README. `candidates.json` and `repo-licenses.json` (every repository license looked up so far) stay at the top level.
 
+The root README's status table is generated: `import`, `triage`, `acquire`, `arrange`, `add-cve`, `scan`, `review record`, `docs` and `run` all refresh it between its `kblva:status` markers, and CI fails if it is stale. Edit nothing between those markers.
+
 ## Individual stages
 
 | Command | What it does |
