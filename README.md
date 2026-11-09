@@ -1,4 +1,4 @@
-<img align="right" width="350" src="assets/kblva.png" alt="kblva">
+<img src="assets/kblva.png" alt="kblva">
 
 
 **KB-LVA: Kernel Borderlands Linux Vulnerability Archive**
