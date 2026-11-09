@@ -1,4 +1,7 @@
-# KB-LVA: Kernel Borderlands Linux Vulnerability Archive
+<img align="right" width="350" src="assets/kblva.png" alt="kblva">
+
+
+**KB-LVA: Kernel Borderlands Linux Vulnerability Archive**
 
 *Preserving Linux vulnerability reproduction artifacts for research, analysis and reproducibility.*
 
